@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="819c00dc-739d-439b-81d7-7deb122db4a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Simulation/Lightning Network Simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Simulation/Lightning Network Simulation.iml" afterDir="false" />
-    </list>
+    <list default="true" id="819c00dc-739d-439b-81d7-7deb122db4a1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +15,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="572">
-                <caret line="72" selection-end-line="72" />
+              <first_editor relative-caret-position="465">
+                <caret line="31" selection-end-line="31" />
               </first_editor>
               <second_editor />
             </state>
@@ -32,7 +26,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Simulation/src/main/java/com/carlos/lnsim/lnsim/Load.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1180">
+            <state>
               <folding>
                 <element signature="e#0#5161#0" expanded="true" />
               </folding>
@@ -67,8 +61,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -148,6 +140,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -183,17 +177,17 @@
       <updated>1552932429738</updated>
       <workItem from="1552932431056" duration="392000" />
       <workItem from="1552932945398" duration="107000" />
+      <workItem from="1552933603353" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499000" />
+    <option name="totallyTimeSpent" value="505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24236874" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24542125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -244,8 +238,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="572">
-            <caret line="72" selection-end-line="72" />
+          <first_editor relative-caret-position="465">
+            <caret line="31" selection-end-line="31" />
           </first_editor>
           <second_editor />
         </state>
@@ -253,7 +247,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Simulation/src/main/java/com/carlos/lnsim/lnsim/Load.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1180">
+        <state>
           <folding>
             <element signature="e#0#5161#0" expanded="true" />
           </folding>

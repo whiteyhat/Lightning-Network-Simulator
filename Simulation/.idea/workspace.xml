@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lightning Network Simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lightning Network Simulation.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1693">
-              <caret line="502" column="51" lean-forward="true" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
+            <state relative-caret-position="525">
+              <caret line="502" column="51" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GUI#0;class#GUI#0" />
@@ -191,9 +188,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,11 +336,12 @@
       <workItem from="1552567941251" duration="1823000" />
       <workItem from="1552646860456" duration="18393000" />
       <workItem from="1552933018059" duration="34000" />
+      <workItem from="1552933603009" duration="65000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74495000" />
+    <option name="totallyTimeSpent" value="74560000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -357,7 +355,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.31196582" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.31562883" />
       <window_info id="Structure" order="1" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -366,7 +364,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24081632" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24081632" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38163266" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -631,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1693">
-          <caret line="502" column="51" lean-forward="true" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
+        <state relative-caret-position="525">
+          <caret line="502" column="51" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GUI#0;class#GUI#0" />
