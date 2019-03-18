@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lightning Network Simulation.iml" filepath="$PROJECT_DIR$/Lightning Network Simulation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Lightning-Network-Simulation.iml" filepath="$PROJECT_DIR$/.idea/Lightning-Network-Simulation.iml" />
     </modules>
   </component>
 </project>
