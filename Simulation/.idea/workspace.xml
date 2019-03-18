@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="502" column="51" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
+            <state relative-caret-position="576">
+              <caret line="337" column="119" selection-start-line="337" selection-start-column="119" selection-end-line="337" selection-end-column="119" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GUI#0;class#GUI#0" />
@@ -71,7 +72,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
+            <state relative-caret-position="765">
               <caret line="77" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="e#0#5161#0" expanded="true" />
@@ -188,16 +189,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552931421699" />
-    <property name="extract.method.default.visibility" value="public" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -337,11 +338,12 @@
       <workItem from="1552646860456" duration="18393000" />
       <workItem from="1552933018059" duration="34000" />
       <workItem from="1552933603009" duration="65000" />
+      <workItem from="1552934240437" duration="114000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74560000" />
+    <option name="totallyTimeSpent" value="74674000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -354,8 +356,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.31562883" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.31929183" />
       <window_info id="Structure" order="1" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -391,6 +394,11 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/Lightning-Network-Simulation" />
+    </ignored-roots>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -592,7 +600,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
+        <state relative-caret-position="765">
           <caret line="77" selection-start-line="77" selection-end-line="77" />
           <folding>
             <element signature="e#0#5161#0" expanded="true" />
@@ -629,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="502" column="51" selection-start-line="502" selection-start-column="51" selection-end-line="502" selection-end-column="51" />
+        <state relative-caret-position="576">
+          <caret line="337" column="119" selection-start-line="337" selection-start-column="119" selection-end-line="337" selection-end-column="119" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GUI#0;class#GUI#0" />
