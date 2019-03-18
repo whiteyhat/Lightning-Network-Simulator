@@ -313,39 +313,29 @@ public class GUI extends JFrame {
 			}
 		});
 
+
+		mi10.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				showWebsite("https://github.com/whiteyhat/Lightning-Network-Simulation");
+			}
+		});
+
 		mi11.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				try {
-					Desktop.getDesktop().browse(
-							URI.create("https://lightning.network/lightning-network-summary.pdf"));
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
+				showWebsite("https://lightning.network/lightning-network-summary.pdf");
 			}
 		});
 
 		mi12.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				try {
-					Desktop.getDesktop().browse(
-							URI.create("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=BUG - Lightning Network Simulator&"));
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
+				showWebsite("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=BUG - Lightning Network Simulator&");
 			}
 		});
 
 		mi13.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				try {
-					Desktop.getDesktop().browse(
-							URI.create("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK - Lightning Network Simulator&"));
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-
+				showWebsite(
+						"mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK - Lightning Network Simulator&");
 			}
 		});
 		mi1.addActionListener(new ActionListener() {
@@ -477,6 +467,14 @@ public class GUI extends JFrame {
 			}
 		});
 		return bar;
+	}
+
+	private void showWebsite(String s) {
+		try {
+			Desktop.getDesktop().browse(URI.create(s));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void updateGUI() {
