@@ -25,8 +25,7 @@ When a network is loaded. You can start the simulation by clicking Edit>Start an
 ## How to get started: ##
 
 * Get the source code 
-* You can use the main folder as an Eclipse workspace including two projects:
-* Import the two Eclipse Maven projects **javafx-d3** and **javafx-d3-demo**
+* You can use the main folder as an Eclipse or IntelliJ IDEA workspace.
 * Build the maven projects
-* Run the demo suite **com.github.javafxd3.d3.JavaFxD3DemoSuite**
-* If you do not get javafx-d3 up and running please create an issue ticket. 
+* Run the GUI suite **com.carlos.lnsim.lnsim.GUI**
+* If you do not get the simulation up and running please create an issue ticket. 
