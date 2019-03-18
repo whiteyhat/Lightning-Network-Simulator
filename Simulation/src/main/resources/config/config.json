@@ -1,0 +1,437 @@
+{
+  "Nodes":
+  [
+    {
+      "id": "1",
+      "alias": "Node1",
+      "balance": "32145",
+      "channels": [
+        {
+          "id": "1",
+          "from": "1",
+          "to": "10",
+          "capacity": "2.04",
+          "fee": "2.03",
+          "receptorNode": "2",
+          "transactions": [
+            {
+              "secret": "ikjftghiojlk",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "52",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "p;lsxcqwepcn",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "12300",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "from": "1",
+          "to": "9",
+          "capacity": "2.04",
+          "fee": "2.03",
+          "receptorNode": "2",
+          "transactions": [
+            {
+              "secret": "ikjftghiojlk",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "52",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "p;lsxcqwepcn",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "12300",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "from": "1",
+          "to": "12",
+          "capacity": "2.04",
+          "fee": "2.03",
+          "receptorNode": "2",
+          "transactions": [
+            {
+              "secret": "ikjftghiojlk",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "52",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "p;lsxcqwepcn",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "12300",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "2",
+      "alias": "Node2",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "2",
+          "to": "1",
+          "capacity": "13.34",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "alias": "Node3",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "3",
+          "to": "1",
+          "capacity": "335.94",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "alias": "Node4",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "4",
+          "to": "1",
+          "capacity": "3.93",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "alias": "Node5",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "5",
+          "to": "4",
+          "capacity": "8.45",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "alias": "Node6",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "6",
+          "to": "3",
+          "capacity": "7.34",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "alias": "Node7",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "7",
+          "from": "7",
+          "to": "8",
+          "capacity": "2.64",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "alias": "Node9",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "9",
+          "to": "8",
+          "capacity": "53.34",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "alias": "Node10",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "10",
+          "to": "1",
+          "capacity": "43.03",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "alias": "Node11",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "11",
+          "to": "1",
+          "capacity": "4.01",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "alias": "Node12",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "12",
+          "to": "3",
+          "capacity": "10.24",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "alias": "Node13",
+      "balance": "324",
+      "channels":
+      [
+        {
+          "id": "1",
+          "from": "13",
+          "to": "1",
+          "capacity": "2.91",
+          "fee": "0.03",
+          "receptorNode": "1",
+          "transactions": [
+            {
+              "secret": "asdfghjkl",
+              "paymentRequest": "lnbt1234567890asdfghjkl",
+              "tokens": "400",
+              "createdAt": "23/03/2018 12:23:23",
+              "expiredAt": "23/03/2018 14:23:23"
+            },
+            {
+              "secret": "asbdhfopasd",
+              "paymentRequest": "lnbt12354b5r4i3nlbh6k3lu45",
+              "tokens": "987",
+              "createdAt": "21/12/2013 10:00:00",
+              "expiredAt": "21/12/2013 11:00:23"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
