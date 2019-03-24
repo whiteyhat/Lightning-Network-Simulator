@@ -46,8 +46,7 @@ public class Node {
 
     public Node findNode(Node mynode, int id, ArrayList<Node> nodes) {
         for(Node node : nodes) {
-            System.out.println(node.getId());
-            if(String.valueOf(getId()).equals(String.valueOf(id))) {
+            if(node.getId() == id) {
                 mynode = node;
             }
         }

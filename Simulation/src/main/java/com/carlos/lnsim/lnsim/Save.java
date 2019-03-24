@@ -50,11 +50,11 @@ public class Save {
 				Random random = new Random();
 				channels.put("id",String.valueOf(j));
 				channels.put("from",String.valueOf(i));
-				int randomNumber = random.nextInt(nodeSize + 1);
+				int randomNumber = random.nextInt(nodeSize);
 				boolean valid = false;
 				do {
 					if (randomNumber == i){
-						randomNumber = random.nextInt(nodeSize + 1);
+						randomNumber = random.nextInt(nodeSize);
 					} else {
 						valid = true;
 					}

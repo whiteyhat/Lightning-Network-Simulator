@@ -3,3 +3,6 @@
 .recommenders
 .DS_Store
 .idea/
+Simulation/lnsim.uml
+*.xml
+Simulation/.idea/workspace.xml

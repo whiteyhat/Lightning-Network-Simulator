@@ -40,6 +40,7 @@ public class GUI extends JFrame {
 	private SwingWorker<Boolean, Void> backgroundProcess;
 	private mxGraphComponent graphComponent;
 	private boolean New;
+	private JLabel transactionLabel, feesLabel;
 
 	public GUI() {
 		super("Lightning Network Simulation");
@@ -48,10 +49,8 @@ public class GUI extends JFrame {
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
-		graphComponent = drawSimulation(load);
 
 		JLabel label;
-
 		JMenuBar bar = drawMenuBar(graphComponent);
 
 		File file = new File("src/main/resources/start.png");
@@ -93,7 +92,9 @@ public class GUI extends JFrame {
 
 			}
 
+			int j = load.getNodes().size();
 			for (Channel channel: load.getChannels()) {
+				j++;
 				Element relation = doc.createElement("Channel");
 				relation.setAttribute("capacity", String.valueOf(channel.getCapacity()));
 
@@ -102,20 +103,21 @@ public class GUI extends JFrame {
 				mxCell toCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getTo()+1));
 
 				if (channel.getCapacity() > 80.0){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=7");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=7");
 				} else if ((channel.getCapacity() >= 70.0)&& (channel.getCapacity() <= 80.0)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=6");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=6");
 				} else if ((channel.getCapacity() >= 60.0)&& (channel.getCapacity() <= 79.9)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=5");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=5");
 				} else if ((channel.getCapacity() >= 50.0)&& (channel.getCapacity() <= 69.9)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=blue;strokeWidth=4");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=blue;strokeWidth=4");
 				} else if ((channel.getCapacity() >= 40.0)&& (channel.getCapacity() <= 59.9)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=blue;strokeWidth=3");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=blue;strokeWidth=3");
 				} else if ((channel.getCapacity() >= 30.0)&& (channel.getCapacity() <= 49.9)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=2");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=2");
 				} else if ((channel.getCapacity() >= 20.0)&& (channel.getCapacity() <= 39.9)){
-					graph.insertEdge(parent, String.valueOf(channel.getId()), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
+					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
 				}
+
 
 			}
 		}
@@ -307,9 +309,14 @@ public class GUI extends JFrame {
 		JButton start = new JButton("Start");
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
+				chargeSimulation(graphComponent);
 				Save save = new Save();
 				save.createNetwork(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
 				restartSim(mi4, "src/main/resources/config/custom.json");
+			}
+
+			private void chargeSimulation(mxGraphComponent graphComponent) {
+				graphComponent = drawSimulation(load);
 			}
 		});
 
@@ -365,86 +372,61 @@ public class GUI extends JFrame {
 
 		mi4.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
-				channels = String.valueOf(load.getChannels().size());
-				size = String.valueOf(load.getNodes().size());
-				tx = String.valueOf(load.getTransactions().size());
-				Double amount = 0.00;
-				for (com.carlos.lnsim.lnsim.Node node: load.getNodes()) {
-					amount += node.getBalance();
-				}
-				balance = String.valueOf(amount);
-				Font font = new Font("Courier", Font.BOLD, 12);
-				panel1[0] = new JPanel();
-				panel1[0].add(new JLabel("Transactions: ")).setFont(font);
-				JLabel transactionLabel = new JLabel(tx);
-				panel1[0].add(transactionLabel);
-				panel1[0].add(new JLabel("Channels: ")).setFont(font);
-				panel1[0].add(new JLabel(channels));
-				panel1[0].add(new JLabel("Network Balance: ")).setFont(font);
-				panel1[0].add(new JLabel(balance));
-				panel1[0].add(new JLabel("Network Size: ")).setFont(font);
-				panel1[0].add(new JLabel(size));
-				panel1[0].setLayout(new GridLayout(0,2));
-				getContentPane().add(panel1[0], BorderLayout.EAST);
-
-				pbar[0] = new JProgressBar();
-				pbar[0].setMinimum(0);
-				pbar[0].setMaximum(3000);
-				getContentPane().add(pbar[0], BorderLayout.SOUTH);
+				transactionLabel = new JLabel();
+				feesLabel = new JLabel();
+				resultsBar(panel1, pbar, transactionLabel, feesLabel);
 				final int[] value = { 0 };
+				int recipient = 1;
+				TrafficGenerator trafficGenerator = new TrafficGenerator();
 
-//				new Thread(new Runnable() {
-//					@Override public void run() {
-//						TrafficGenerator trafficGenerator = new TrafficGenerator();
-//
-//							for (Channel channel : load.getChannels()) {
-//
-//								for(com.carlos.lnsim.lnsim.Node selectedNode : load.getNodes()) {
-//									if(String.valueOf(selectedNode.getId()).equals(String.valueOf(channel.getTo()))) {
-//										boolean valid = false;
-//										do {
-//											trafficGenerator.getTransactions().add(new Transaction(selectedNode, 2));
-//											selectedNode.setBalance(selectedNode.getBalance()-2);
-//											channel.setCapacity(channel.getCapacity()-2.0);
-//											if ((selectedNode.getBalance() < 1) || (channel.getCapacity() < 1.0)){
-//												valid = true;
-//											}
-//										}while (!valid);
-//									}
-//								}
-//							}
-//
-//							transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
-//
-//					}
-//				}).start();
+				Thread t = new Thread(new Runnable() {
+					public void run() {
+						double feeCounter = 0;
+						for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
+							com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
+							Channel currentChannel = null;
+							double fee = 0;
+							if (!node.getChannels().isEmpty()){
+								for (Channel channel : node.getChannels()) {
+									to = to.findNode(to, channel.getTo(), load.getNodes());
+									currentChannel = channel;
+									fee = channel.getFee();
+									feeCounter += channel.getFee();
+									feesLabel.setText(String.valueOf(feeCounter));
+								}
+								if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+									do {
+										node.setBalance((node.getBalance() - recipient) - (int)fee);
+										to.setBalance(to.getBalance() + recipient);
+										currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
+										trafficGenerator.getTransactions().add(new Transaction(to, recipient));
 
+									}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+								} else {
+									timer[0].stop();
+								}
+
+
+								if (node.getBalance() < 0){
+									node.setBalance(0);
+								}
+								updateGUI();
+							}
+						}
+					}
+				});
+
+				t.start();
 
 							ActionListener actionListener = new ActionListener() {
 								@Override public void actionPerformed(ActionEvent e) {
+									transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
 									pbar[0].setValue(value[0]++);
-									for (Channel ch : load.getChannels()) {
-										ch.setCapacity(ch.getCapacity()- 1.0);
-									}
-
-									for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
-										node.setBalance(node.getBalance() -1);
-									}
-									updateGUI();
-									mi6.setEnabled(true);
-									mi5.setEnabled(true);
-									mi4.setEnabled(false);
-
 								}
 							};
-
-
-
-				timer[0] = new Timer(300, actionListener);
+				timer[0] = new Timer(100, actionListener);
 				timer[0].start();
 			}
-
 		});
 
 		mi5.addActionListener(new ActionListener() {
@@ -463,10 +445,40 @@ public class GUI extends JFrame {
 				timer[0].stop();
 				getContentPane().remove(pbar[0]);
 				getContentPane().remove(panel1[0]);
-
 			}
 		});
 		return bar;
+	}
+
+	private void resultsBar(JPanel[] panel1, JProgressBar[] pbar, JLabel transactionLabel, JLabel feesLabel) {
+		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
+		channels = String.valueOf(load.getChannels().size());
+		size = String.valueOf(load.getNodes().size());
+		tx = String.valueOf(load.getTransactions().size());
+		Double amount = 0.00;
+		for (com.carlos.lnsim.lnsim.Node node: load.getNodes()) {
+			amount += node.getBalance();
+		}
+		balance = String.valueOf(amount);
+		Font font = new Font("Courier", Font.BOLD, 12);
+		panel1[0] = new JPanel();
+		panel1[0].add(new JLabel("Transactions: ")).setFont(font);
+		panel1[0].add(transactionLabel);
+		panel1[0].add(new JLabel("Fees: ")).setFont(font);
+		panel1[0].add(feesLabel);
+		panel1[0].add(new JLabel("Channels: ")).setFont(font);
+		panel1[0].add(new JLabel(channels));
+		panel1[0].add(new JLabel("Network Balance: ")).setFont(font);
+		panel1[0].add(new JLabel(balance));
+		panel1[0].add(new JLabel("Network Size: ")).setFont(font);
+		panel1[0].add(new JLabel(size));
+		panel1[0].setLayout(new GridLayout(0,2));
+		getContentPane().add(panel1[0], BorderLayout.EAST);
+
+		pbar[0] = new JProgressBar();
+		pbar[0].setMinimum(0);
+		pbar[0].setMaximum(3000);
+		getContentPane().add(pbar[0], BorderLayout.SOUTH);
 	}
 
 	private void showWebsite(String s) {
@@ -484,6 +496,9 @@ public class GUI extends JFrame {
 		JMenuBar bar = drawMenuBar(graphComponent);
 		startSim(graphComponent, bar);
 
+		final JProgressBar[] pbar = { null };
+		final JPanel[] panel1 = new JPanel[1];
+		resultsBar(panel1, pbar, transactionLabel, feesLabel);
 	}
 
 	public void restartSim(JMenuItem mi4, String s) {
@@ -504,10 +519,6 @@ public class GUI extends JFrame {
 	}
 
 	private void startSim(mxGraphComponent graphComponent, JMenuBar bar) {
-
-		if (!New){
-
-		}
 		// add graph
 		getContentPane().removeAll();
 		getContentPane().add(graphComponent, BorderLayout.CENTER);

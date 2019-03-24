@@ -42,7 +42,7 @@ public class Load {
         if (readyToLoad){
             nodesJson = getJsonFile(parser, path);
         }else {
-           nodesJson = getJsonFile(parser, "src/main/resources/config/tiny.json");
+           nodesJson = getJsonFile(parser, "src/main/resources/config/custom.json");
         }
         // FOR EACH NODE
         for (int i = 0; i <nodesJson.size() ; i++) {
@@ -99,7 +99,15 @@ public class Load {
             getChannels(transactions, channels, channelsJson, j);
         }
 
-        nodes.add(new Node(alias, Integer.parseInt(id), Integer.parseInt(balance), channels, transactions));
+        ArrayList<Channel> nodeChannels = new ArrayList<>();
+
+        for (Channel channel : channels) {
+            if (channel.getFrom() == Integer.parseInt(id)){
+                nodeChannels.add(channel);
+            }
+        }
+
+        nodes.add(new Node(alias, Integer.parseInt(id), Integer.parseInt(balance), nodeChannels, transactions));
     }
 
     private  void getChannels(ArrayList<Transaction> transactions, ArrayList<Channel> channels, JSONArray channelsJson, int j) {
