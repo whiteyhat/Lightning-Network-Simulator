@@ -13,6 +13,8 @@ package com.carlos.lnsim.lnsim;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,6 +26,9 @@ public class Load {
     private ArrayList<Node> nodes;
     private boolean readyToLoad = false;
     private String path = "";
+    private TrafficGenerator trafficGenerator;
+    private HashMap<Node, Node> routingTable;
+
     public Load() {
         try {
             start();
@@ -35,6 +40,8 @@ public class Load {
 
     public void start() throws IOException, ParseException {
         transactions = new ArrayList<Transaction>();
+        routingTable = new HashMap<>();
+        trafficGenerator = new TrafficGenerator(routingTable);
         channels = new ArrayList<Channel>();
         nodes = new ArrayList<Node>();
         JSONParser parser = new JSONParser();
@@ -48,6 +55,26 @@ public class Load {
         for (int i = 0; i <nodesJson.size() ; i++) {
             getNodes(nodesJson, transactions, channels, nodes, i);
         }
+
+        com.carlos.lnsim.lnsim.Node from = new com.carlos.lnsim.lnsim.Node();
+        com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
+
+        for (Node node : getNodes()) {
+            for (Channel channel : node.getChannels()) {
+                to = to.findNode(to, channel.getTo(), getNodes());
+                from = from.findNode(from, channel.getFrom(), getNodes());
+
+                trafficGenerator.addLink(from, to);
+            }
+        }
+    }
+
+    public HashMap<Node, Node> getRoutingTable() {
+        return routingTable;
+    }
+
+    public TrafficGenerator getTrafficGenerator() {
+        return trafficGenerator;
     }
 
     public String getPath() {
