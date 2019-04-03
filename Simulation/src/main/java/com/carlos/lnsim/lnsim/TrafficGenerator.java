@@ -15,10 +15,28 @@ import java.util.*;
 public class TrafficGenerator {
 
 	private Queue<Transaction> transactions;
+	private HashMap<Node, Node> routingtable;
 
-	public TrafficGenerator() {
+	public TrafficGenerator(HashMap routingtable) {
 		transactions =new LinkedList<Transaction>() {
 		};
+		this.routingtable = routingtable;
+	}
+
+	public void setRoutingtable(HashMap<Node, Node> routingtable) {
+		this.routingtable = routingtable;
+	}
+
+	public void setTransactions(Queue<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public HashMap<Node, Node> getRoutingtable() {
+		return routingtable;
+	}
+
+	public void addLink(Node from, Node to) {
+	routingtable.put(from, to);
 	}
 
 	public void addTransaction(Transaction transaction) {
@@ -52,14 +70,6 @@ public class TrafficGenerator {
 	}
 
 	public static void main(String[] args){
-		TrafficGenerator trafficGenerator = new TrafficGenerator();
-
-		for (int i = 0; i < 3; i++) {
-			Transaction t = new Transaction(new Node(), 1);
-			trafficGenerator.addTransaction(t);
-		}
-
-		System.out.println(trafficGenerator.trafficSize());
 
 	}
 }
