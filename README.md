@@ -3,10 +3,9 @@
 
 This repository is a majors dissertation project for Aberystwyth University. The aim of this project is educational.
 
-## Current state
-
-* GUI: In development
-* Routing: In development
+## Current status
+* Simulation tool: Stable ✅
+* Analysis tool: In development
 
 ## How it works: ##
 
