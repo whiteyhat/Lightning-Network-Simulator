@@ -1,5 +1,5 @@
 # Lightning Network Simulation #
-![Alt text](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/screenshot.gif "Screenshot")
+![Screenshot](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/Screenshots/screenshot.gif)
 
 This repository is a majors dissertation project for Aberystwyth University. The aim of this project is educational.
 
