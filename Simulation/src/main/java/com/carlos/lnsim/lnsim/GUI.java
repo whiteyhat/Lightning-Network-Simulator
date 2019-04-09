@@ -438,7 +438,7 @@ public class GUI extends JFrame {
 
 		mi10.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				showWebsite("https://github.com/whiteyhat/Lightning-Network-Simulation");
+				showWebsite("https://github.com/whiteyhat/Lightning-Network-Simulation/wiki");
 			}
 		});
 
@@ -450,7 +450,7 @@ public class GUI extends JFrame {
 
 		mi12.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				showWebsite("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=BUG - Lightning Network Simulator&");
+				showWebsite("https://github.com/whiteyhat/Lightning-Network-Simulation/issues");
 			}
 		});
 
