@@ -2,11 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item">
+      <change beforePath="$PROJECT_DIR$/../.idea/Lightning-Network-Simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/Lightning-Network-Simulation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/Carlos.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/Carlos.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_vlsi_mxgraph_jgraphx_3_9_8_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_vlsi_mxgraph_jgraphx_3_9_8_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lightning Network Simulation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lightning Network Simulation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Diagrams/UML-Class-Diagram.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Diagrams/UML-Class-Diagram.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Screenshots/screenshot.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Screenshots/screenshot.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/big.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/big.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/custom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/medium.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/medium.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/small.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/small.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/tiny.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/tiny.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/custom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/analisys3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/analisys3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/analysis1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/analysis1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/analysis2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/analysis2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/create.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/create.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/end.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/end.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/export.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/export.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/load.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/load.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/start.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mock-ups/welcome.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mock-ups/welcome.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/start.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tiny.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tiny.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,7 +87,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
+            <state relative-caret-position="-1319">
               <caret line="125" column="103" selection-start-line="125" selection-start-column="103" selection-end-line="125" selection-end-column="103" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -173,7 +225,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -219,6 +270,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -383,6 +435,7 @@
       <workItem from="1554320231575" duration="1263000" />
       <workItem from="1554371624582" duration="5905000" />
       <workItem from="1554576303314" duration="1006000" />
+      <workItem from="1554804502671" duration="421000" />
     </task>
     <task id="LOCAL-00001" summary="Link to GitHub repo on Getting Started Bar Menu item">
       <created>1552934386814</created>
@@ -395,7 +448,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="113228000" />
+    <option name="totallyTimeSpent" value="113649000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,7 +463,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.25702077" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.26007327" />
       <window_info id="Structure" order="1" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -536,27 +589,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/plotly/PlotlyPieDemo.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/d3/demo/Data.java" />
     <entry file="file://$PROJECT_DIR$/../javafx-d3/main/java/com/carlos/lnsim/d3/wrapper/Element.java" />
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/io/ObjectOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="1547" selection-start-line="1547" selection-end-line="1547" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/io/FileOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaMenuItemUI.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/io/ObjectOutputStream.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/io/FileOutputStream.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/jre/lib/rt.jar!/com/apple/laf/AquaMenuItemUI.class" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/config/small.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -609,20 +644,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/vlsi/mxgraph/jgraphx/3.9.8.1/jgraphx-3.9.8.1.jar!/com/mxgraph/view/mxGraph.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="1167" column="18" selection-start-line="1167" selection-start-column="18" selection-end-line="1167" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="747" selection-start-line="747" selection-end-line="747" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/vlsi/mxgraph/jgraphx/3.9.8.1/jgraphx-3.9.8.1.jar!/com/mxgraph/view/mxGraph.class" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/lang/Thread.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/config/custom.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -946,7 +969,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="635">
+        <state relative-caret-position="-1319">
           <caret line="125" column="103" selection-start-line="125" selection-start-column="103" selection-end-line="125" selection-end-column="103" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1070,7 +1093,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>11</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
