@@ -2,6 +2,7 @@
 ![Screenshot](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/Screenshots/screenshot.gif)
 
 This repository is a majors dissertation project for Aberystwyth University. The aim of this project is educational.
+Please, read the [Wiki](https://github.com/whiteyhat/Lightning-Network-Simulation/wiki).
 
 ## Current status
 * Simulation tool: Stable ✅
@@ -23,8 +24,9 @@ When a network is loaded. You can start the simulation by clicking Edit>Start an
 
 ## How to get started: ##
 
-* Get the source code 
+* Get the source code.
+* Make sure you have JDK SE 8.
 * You can use the main folder as an Eclipse or IntelliJ IDEA workspace.
-* Build the maven projects
+* Build the maven projects.
 * Run the GUI suite **com.carlos.lnsim.lnsim.GUI**
 * If you do not get the simulation up and running please create an issue ticket. 
