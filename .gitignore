@@ -7,3 +7,4 @@ Simulation/lnsim.uml
 *.xml
 Simulation/.idea/workspace.xml
 Simulation/src/main/resources/config/custom.json
+*.xml

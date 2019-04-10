@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" afterDir="false" />
-    </list>
+    <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item" />
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -466,7 +463,7 @@
       <workItem from="1554804502671" duration="1003000" />
       <workItem from="1554821806898" duration="177000" />
       <workItem from="1554824667376" duration="309000" />
-      <workItem from="1554839844186" duration="3132000" />
+      <workItem from="1554839844186" duration="3307000" />
     </task>
     <task id="LOCAL-00001" summary="Link to GitHub repo on Getting Started Bar Menu item">
       <created>1552934386814</created>
@@ -479,7 +476,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117849000" />
+    <option name="totallyTimeSpent" value="118024000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
