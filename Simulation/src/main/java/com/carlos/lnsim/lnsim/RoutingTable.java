@@ -62,8 +62,4 @@ public class RoutingTable {
 
 		return directions;
 	}
-
-
-
-
 }
