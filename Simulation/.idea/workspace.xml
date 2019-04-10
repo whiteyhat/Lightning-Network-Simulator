@@ -28,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6970">
+            <state relative-caret-position="3693">
               <caret line="673" column="21" selection-start-line="673" selection-start-column="8" selection-end-line="673" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -49,6 +49,15 @@
                 <element signature="method#chooseFile#0;class#GUI#0" />
                 <element signature="method#main#0;class#GUI#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-397">
+              <caret line="46" column="36" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -190,6 +199,7 @@
       <find>timer[0</find>
       <find>frame</find>
       <find>panel1</find>
+      <find>panel1[0].set</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -479,7 +489,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118337000" />
+    <option name="totallyTimeSpent" value="118783000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,9 +502,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.26923078" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853373" visible="true" weight="0.26923078" />
       <window_info id="Structure" order="1" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -503,7 +512,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.16020408" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.16020408" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45816326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -865,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="46" column="36" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1015,7 +1017,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6970">
+        <state relative-caret-position="3693">
           <caret line="673" column="21" selection-start-line="673" selection-start-column="8" selection-end-line="673" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1033,6 +1035,13 @@
             <element signature="method#chooseFile#0;class#GUI#0" />
             <element signature="method#main#0;class#GUI#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-397">
+          <caret line="46" column="36" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="36" />
         </state>
       </provider>
     </entry>
