@@ -50,9 +50,7 @@ public class GUI extends JFrame {
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
-
 		init();
-
 	}
 
 	private void init() {
