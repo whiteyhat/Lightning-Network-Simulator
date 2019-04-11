@@ -16,22 +16,36 @@ import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Save {
+public class NetwrokMapGenerator {
+	public int nodeSize, channelsPerNode;
+
+	public NetwrokMapGenerator(int nodeSize, int channelsPerNode) {
+		this.nodeSize = nodeSize;
+		this.channelsPerNode = channelsPerNode;
+	}
 
 	public static void main(String[] args) throws IOException {
 		Random rand = new Random();
 		init(10, rand.nextInt(10), 2);
 	}
 
-	public void createNetwork(int nodeSize, int channelsPerNode){
+	public void createNetwork(){
 		Random rand = new Random();
 		rand.setSeed(System.currentTimeMillis());
-//		TODO Save seed in config file to replicate scenario
+//		TODO NetwrokMapGenerator seed in config file to replicate scenario
 		try {
 			init(nodeSize, channelsPerNode, 2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int getNodeSize() {
+		return nodeSize;
+	}
+
+	public int getChannelsPerNode() {
+		return channelsPerNode;
 	}
 
 	private static void init(int nodeSize, int channelsPerNode, int tx) throws IOException {
@@ -79,7 +93,6 @@ public class Save {
 		}
 
 		json.put("Nodes", config);
-		System.out.println(config);
 		// try-with-resources statement based on post comment below :)
 		try (FileWriter file = new FileWriter("src/main/resources/config/custom.json")) {
 			file.write(json.toJSONString());
