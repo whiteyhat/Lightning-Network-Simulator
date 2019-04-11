@@ -53,6 +53,20 @@ public class GUI extends JFrame {
 		init();
 	}
 
+	public GUI(Load load) {
+		super("Lightning Network Simulator");
+
+		this.load = load;
+		load = new Load();
+		New = true;
+		width = new ArrayList<>();
+		height = new ArrayList<>();
+		init();
+	}
+
+
+
+
 	private void init() {
 		JLabel label;
 		JMenuBar bar = drawMenuBar(graphComponent);
@@ -423,8 +437,7 @@ public class GUI extends JFrame {
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chargeSimulation(graphComponent);
-				Save save = new Save();
-				save.createNetwork(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
+				NetwrokMapGenerator netwrokMapGenerator = new NetwrokMapGenerator(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 
@@ -629,14 +642,14 @@ public class GUI extends JFrame {
 		}
 	}
 
-	private void setCapacities(int i, int j) {
+	public void setCapacities(int i, int j) {
 		for (Channel c : load.getChannels()) {
 			c.setCapacity((double) ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
 		updateGraph();
 	}
 
-	private void setBalances(int i, int j) {
+	public void setBalances(int i, int j) {
 		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
 			node.setBalance(ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
