@@ -1,3 +1,4 @@
+![travis](https://travis-ci.com/whiteyhat/Lightning-Network-Simulator.svg?branch=master)
 # Lightning Network Simulation #
 ![Screenshot](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/Screenshots/screenshot.gif)
 
