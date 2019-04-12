@@ -24,6 +24,10 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.Timer;
 import com.mxgraph.model.mxGraphModel;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
+import javafx.scene.web.WebView;
 import org.jfree.ui.RefineryUtilities;
 import org.json.simple.parser.ParseException;
 import org.w3c.dom.*;
@@ -67,19 +71,20 @@ public class GUI extends JFrame {
 	}
 
 	private void init() {
-		JLabel label;
 		JMenuBar bar = drawMenuBar(graphComponent);
 
-		File file = new File("src/main/resources/start.png");
-		BufferedImage image = null;
-		try {
-			image = ImageIO.read(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		JFXPanel jfxPanel = new JFXPanel();
+		getContentPane().add(jfxPanel);
 
-		label = new JLabel(new ImageIcon(image));
-		getContentPane().add(label);
+		// Creation of scene and future interactions with JFXPanel
+		// should take place on the JavaFX Application Thread
+		Platform.runLater(() -> {
+			WebView webView = new WebView();
+			jfxPanel.setScene(new Scene(webView));
+			webView.getEngine().load("https://github.com/whiteyhat/Lightning-Network-Simulation/wiki");
+		});
+
+
 		getContentPane().add(bar, BorderLayout.NORTH);
 	}
 
