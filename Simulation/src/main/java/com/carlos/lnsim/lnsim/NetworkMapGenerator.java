@@ -64,6 +64,10 @@ public class NetworkMapGenerator {
 		}
 	}
 
+	public void setLoad(Load load) {
+		this.load = load;
+	}
+
 	public int getNodeSize() {
 		return nodeSize;
 	}
@@ -120,20 +124,28 @@ public class NetworkMapGenerator {
 
 
 		if (simulationCompleted){
+			int networkBalance = 0;
+			int fees = 0;
+			for (Node n : load.getNodes()) {
+				networkBalance += n.getBalance();
+			}
+
+			for (Channel c : load.getChannels()) {
+				fees += c.getFee();
+			}
+
 			JSONObject results = new JSONObject();
 			JSONArray resultValues = new JSONArray();
-			results.put("Transactions", "");
+			results.put("Transactions", String.valueOf(load.getTransactionAmount()));
 			results.put("Failed Transactions", "");
-			results.put("Hops", "");
-			results.put("Fees", "");
-			results.put("Channels", "");
-			results.put("Congested Channels", "");
-			results.put("Network Balance", "");
-			results.put("Network Size", "");
-
+			results.put("Hops", String.valueOf(load.getHops()));
+			results.put("Fees", String.valueOf(fees));
+			results.put("Channels", String.valueOf(load.getChannels().size()));
+			results.put("Congested Channels", load.getCongestedChannels());
+			results.put("Network Balance", String.valueOf(networkBalance));
+			results.put("Network Size", String.valueOf(load.getNodes().size()));
 
 			resultValues.add(results);
-
 
 			json.put("Results", resultValues);
 		}
