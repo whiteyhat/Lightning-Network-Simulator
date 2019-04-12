@@ -34,6 +34,17 @@ public class NetworkMapGenerator {
 		createNetwork();
 	}
 
+	public NetworkMapGenerator() {
+	}
+
+	public void setNodeSize(int nodeSize) {
+		this.nodeSize = nodeSize;
+	}
+
+	public void setChannelsPerNode(int channelsPerNode) {
+		this.channelsPerNode = channelsPerNode;
+	}
+
 	public boolean isSimulationCompleted() {
 		return simulationCompleted;
 	}
