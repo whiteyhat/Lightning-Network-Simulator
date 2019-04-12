@@ -28,6 +28,7 @@ public class Load {
     private String path = "";
     private TrafficGenerator trafficGenerator;
     private HashMap<Node, Node> routingTable;
+    private int hops, congestedChannels, failedTransactions, transactionAmount;
 
     public Load() {
         try {
@@ -169,5 +170,37 @@ public class Load {
 
         String transactionTokens = (String) transaction.get("tokens");
 
+    }
+
+    public int getHops() {
+        return hops;
+    }
+
+    public void setHops(int hops) {
+        this.hops = hops;
+    }
+
+    public int getCongestedChannels() {
+        return congestedChannels;
+    }
+
+    public void setCongestedChannels(int congestedChannels) {
+        this.congestedChannels = congestedChannels;
+    }
+
+    public int getFailedTransactions() {
+        return failedTransactions;
+    }
+
+    public void setFailedTransactions(int failedTransactions) {
+        this.failedTransactions = failedTransactions;
+    }
+
+    public int getTransactionAmount() {
+        return transactionAmount;
+    }
+
+    public void setTransactionAmount(int transactionAmount) {
+        this.transactionAmount = transactionAmount;
     }
 }

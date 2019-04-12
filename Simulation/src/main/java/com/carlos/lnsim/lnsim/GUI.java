@@ -13,8 +13,6 @@ package com.carlos.lnsim.lnsim;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +40,7 @@ public class GUI extends JFrame {
 	private String tx, balance, size, channels;
 	private mxGraphComponent graphComponent;
 	private boolean New;
+	NetworkMapGenerator networkMapGenerator;
 	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannels;
 	private ArrayList<Integer> transactionsBuffer;
 
@@ -49,6 +48,7 @@ public class GUI extends JFrame {
 		super("Lightning Network Simulator");
 
 		load = new Load();
+		networkMapGenerator = new NetworkMapGenerator();
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
@@ -65,9 +65,6 @@ public class GUI extends JFrame {
 		height = new ArrayList<>();
 		init();
 	}
-
-
-
 
 	private void init() {
 		JLabel label;
@@ -440,7 +437,10 @@ public class GUI extends JFrame {
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chargeSimulation(graphComponent);
-				NetworkMapGenerator networkMapGenerator = new NetworkMapGenerator(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
+				networkMapGenerator.setNodeSize(Integer.parseInt(nodesSize[0].getText()));
+				networkMapGenerator.setChannelsPerNode(Integer.parseInt(channelsSize[0].getText()));
+				networkMapGenerator.setLoad(load);
+				networkMapGenerator.createNetwork();
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 
@@ -613,6 +613,7 @@ public class GUI extends JFrame {
 						hops++;
 						System.out.println("Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
 						hopsLabel.setText(String.valueOf(hops));
+						load.setHops(hops);
 					}
 
 				}
@@ -625,11 +626,13 @@ public class GUI extends JFrame {
 						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
 						transactions++;
 						transactionsBuffer.add(transactions);
+						load.setTransactionAmount(transactionsBuffer.size());
 
 					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 					if (currentChannel.getCapacity()< 1){
 						congestion++;
 						congestedChannels.setText(String.valueOf(congestion));
+						load.setCongestedChannels(congestion);
 					}
 				} else {
 					timer[0].stop();
@@ -639,6 +642,9 @@ public class GUI extends JFrame {
 				if (node.getBalance() < 0){
 					node.setBalance(0);
 				}
+
+				networkMapGenerator.setSimulationCompleted(true);
+				networkMapGenerator.createNetwork();
 				transactionLabel.setText(String.valueOf(transactions));
 				updateGUI();
 			}
@@ -649,14 +655,18 @@ public class GUI extends JFrame {
 		for (Channel c : load.getChannels()) {
 			c.setCapacity((double) ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
+		New = false;
 		updateGraph();
+		New = true;
 	}
 
 	public void setBalances(int i, int j) {
 		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
 			node.setBalance(ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
+		New = false;
 		updateGraph();
+		New = true;
 	}
 
 	private void resultsBar(JPanel[] panel1, JProgressBar[] pbar, JLabel transactionLabel, JLabel feesLabel) {
