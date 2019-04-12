@@ -16,25 +16,38 @@ import java.util.Random;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class NetwrokMapGenerator {
-	public int nodeSize, channelsPerNode;
+public class NetworkMapGenerator {
+	private int nodeSize, channelsPerNode;
+	private boolean simulationCompleted;
+	private Load load;
 
-	public NetwrokMapGenerator(int nodeSize, int channelsPerNode) {
+	public NetworkMapGenerator(int nodeSize, int channelsPerNode, Load load) {
 		this.nodeSize = nodeSize;
 		this.channelsPerNode = channelsPerNode;
+		this.load = load;
+		createNetwork();
 	}
 
-	public static void main(String[] args) throws IOException {
-		Random rand = new Random();
-		init(10, rand.nextInt(10), 2);
+	public NetworkMapGenerator(int nodeSize, int channelsPerNode) {
+		this.nodeSize = nodeSize;
+		this.channelsPerNode = channelsPerNode;
+		createNetwork();
+	}
+
+	public boolean isSimulationCompleted() {
+		return simulationCompleted;
+	}
+
+	public void setSimulationCompleted(boolean simulationCompleted) {
+		this.simulationCompleted = simulationCompleted;
 	}
 
 	public void createNetwork(){
 		Random rand = new Random();
 		rand.setSeed(System.currentTimeMillis());
-//		TODO NetwrokMapGenerator seed in config file to replicate scenario
+//		TODO NetworkMapGenerator seed in config file to replicate scenario
 		try {
-			init(nodeSize, channelsPerNode, 2);
+			init(nodeSize, channelsPerNode, 2, load);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +61,7 @@ public class NetwrokMapGenerator {
 		return channelsPerNode;
 	}
 
-	private static void init(int nodeSize, int channelsPerNode, int tx) throws IOException {
+	private void init(int nodeSize, int channelsPerNode, int tx, Load load) throws IOException {
 		JSONObject json = new JSONObject();
 		JSONArray config = new JSONArray();
 		for (int i = 0; i < nodeSize; i++) {
@@ -93,6 +106,26 @@ public class NetwrokMapGenerator {
 		}
 
 		json.put("Nodes", config);
+
+
+		if (simulationCompleted){
+			JSONObject results = new JSONObject();
+			JSONArray resultValues = new JSONArray();
+			results.put("Transactions", "");
+			results.put("Failed Transactions", "");
+			results.put("Hops", "");
+			results.put("Fees", "");
+			results.put("Channels", "");
+			results.put("Congested Channels", "");
+			results.put("Network Balance", "");
+			results.put("Network Size", "");
+
+
+			resultValues.add(results);
+
+
+			json.put("Results", resultValues);
+		}
 		// try-with-resources statement based on post comment below :)
 		try (FileWriter file = new FileWriter("src/main/resources/config/custom.json")) {
 			file.write(json.toJSONString());

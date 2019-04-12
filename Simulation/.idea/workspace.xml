@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetwrokMapGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetwrokMapGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/custom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/javafxd3.png" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,32 +34,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1929">
-              <caret line="651" column="10" selection-start-line="651" selection-start-column="10" selection-end-line="651" selection-end-column="10" />
+            <state relative-caret-position="592">
+              <caret line="230" column="107" selection-start-line="230" selection-start-column="107" selection-end-line="230" selection-end-column="107" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#drawSimulation#0;class#GUI#0" />
-                <element signature="method#editValue#0;class#GUI#0" />
-                <element signature="method#createGraph#0;class#GUI#0" />
                 <element signature="method#updateGraph#0;class#GUI#0" />
-                <element signature="e#11339#11340#0" expanded="true" />
-                <element signature="e#11369#11370#0" expanded="true" />
-                <element signature="e#11801#11802#0" expanded="true" />
-                <element signature="e#11832#11833#0" expanded="true" />
-                <element signature="e#11955#11956#0" expanded="true" />
-                <element signature="e#11987#11988#0" expanded="true" />
-                <element signature="e#12108#12109#0" expanded="true" />
-                <element signature="e#12141#12142#0" expanded="true" />
-                <element signature="e#16174#16175#0" expanded="true" />
-                <element signature="e#16216#16217#0" expanded="true" />
+                <element signature="e#11939#11940#0" expanded="true" />
+                <element signature="e#11969#11970#0" expanded="true" />
+                <element signature="e#12401#12402#0" expanded="true" />
+                <element signature="e#12432#12433#0" expanded="true" />
+                <element signature="e#12555#12556#0" expanded="true" />
+                <element signature="e#12587#12588#0" expanded="true" />
+                <element signature="e#12708#12709#0" expanded="true" />
+                <element signature="e#12741#12742#0" expanded="true" />
+                <element signature="method#actionPerformed#0;class#13767:14208" />
+                <element signature="e#14155#14156#0" expanded="true" />
+                <element signature="e#14203#14204#0" expanded="true" />
+                <element signature="e#16780#16781#0" expanded="true" />
+                <element signature="e#16822#16823#0" expanded="true" />
                 <element signature="method#stressTest#0;class#GUI#0" />
-                <element signature="e#16792#16793#0" expanded="true" />
-                <element signature="e#16845#16846#0" expanded="true" />
-                <element signature="e#16993#16994#0" expanded="true" />
-                <element signature="e#17043#17044#0" expanded="true" />
+                <element signature="e#17398#17399#0" expanded="true" />
+                <element signature="e#17451#17452#0" expanded="true" />
+                <element signature="e#17599#17600#0" expanded="true" />
+                <element signature="e#17649#17650#0" expanded="true" />
                 <element signature="method#shortestPathRoutin1Hop#0;class#GUI#0" />
                 <element signature="method#shortestPathRouting#0;class#GUI#0" />
                 <element signature="method#setBalances#0;class#GUI#0" />
@@ -68,70 +69,19 @@
                 <element signature="method#restartSim#0;class#GUI#0" />
                 <element signature="method#startSim#0;class#GUI#0" />
                 <element signature="method#chooseFile#0;class#GUI#0" />
-                <element signature="method#main#0;class#GUI#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1301">
-              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+            <state relative-caret-position="285">
+              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="40" column="10" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3096#3097#0" expanded="true" />
-                <element signature="e#3131#3132#0" expanded="true" />
-                <element signature="method#getJsonFile#0;class#Load#0" />
-                <element signature="method#getNodes#1;class#Load#0" />
-                <element signature="method#getChannels#1;class#Load#0" />
-                <element signature="method#getTransactions#1;class#Load#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetwrokMapGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1245">
-              <caret line="95" selection-start-line="95" selection-end-line="95" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#init#0;class#NetwrokMapGenerator#0" />
               </folding>
             </state>
           </provider>
@@ -167,6 +117,8 @@
       <find>panel1</find>
       <find>panel1[0].set</find>
       <find>setCapa</find>
+      <find>Netwro</find>
+      <find>Capacity:</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -205,10 +157,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/tiny.json" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/FunctionalTests.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetwrokMapGenerator.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" />
       </list>
     </option>
   </component>
@@ -275,13 +228,6 @@
               <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Simulation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -305,6 +251,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="test-classes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -362,22 +325,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AnalysisToolTests.ManageInputSimulations">
+  <component name="RunManager" selected="Application.GUI">
     <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.carlos.lnsim.lnsim.GUI" />
-      <module name="Lightning Network Simulation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.carlos.lnsim.lnsim.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlotResults" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.carlos.lnsim.lnsim.PlotResults" />
       <module name="Lightning Network Simulation" />
       <extension name="coverage">
         <pattern>
@@ -420,6 +370,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SimulationToolTests.DisplayNetwork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Lightning Network Simulation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.carlos.lnsim.lnsim.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.carlos.lnsim.lnsim" />
+      <option name="MAIN_CLASS_NAME" value="com.carlos.lnsim.lnsim.SimulationToolTests" />
+      <option name="METHOD_NAME" value="DisplayNetwork" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SimulationToolTests.createNetwork" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Lightning Network Simulation" />
       <extension name="coverage">
@@ -438,11 +404,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GUI" />
+        <item itemvalue="JUnit.SimulationToolTests.DisplayNetwork" />
         <item itemvalue="JUnit.AnalysisToolTests.ManageInputSimulations" />
         <item itemvalue="JUnit.SimulationToolTests" />
         <item itemvalue="JUnit.SimulationToolTests.createNetwork" />
-        <item itemvalue="Application.GUI" />
-        <item itemvalue="Application.PlotResults" />
       </list>
     </recent_temporary>
   </component>
@@ -507,39 +473,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FunctionalTests - 2019.04.11 at 15h 18m 35s.xml">
-      <configuration name="FunctionalTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 11h 58m 14s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FunctionalTests - 2019.04.11 at 15h 22m 54s.xml">
-      <configuration name="FunctionalTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 11h 58m 29s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FunctionalTests - 2019.04.11 at 15h 23m 00s.xml">
-      <configuration name="FunctionalTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 11h 59m 03s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FunctionalTests - 2019.04.11 at 15h 23m 09s.xml">
-      <configuration name="FunctionalTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 11h 59m 37s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SimulationToolTests - 2019.04.11 at 15h 57m 35s.xml">
-      <configuration name="SimulationToolTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 00m 30s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SimulationToolTests - 2019.04.11 at 15h 58m 16s.xml">
-      <configuration name="SimulationToolTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 00m 54s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SimulationToolTests - 2019.04.11 at 16h 08m 25s.xml">
-      <configuration name="SimulationToolTests" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 01m 47s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnalysisToolTests_ManageInputSimulations - 2019.04.11 at 16h 33m 05s.xml">
-      <configuration name="AnalysisToolTests.ManageInputSimulations" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 03m 10s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnalysisToolTests_ManageInputSimulations - 2019.04.11 at 16h 35m 32s.xml">
-      <configuration name="AnalysisToolTests.ManageInputSimulations" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 08m 19s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AnalysisToolTests_ManageInputSimulations - 2019.04.11 at 16h 36m 30s.xml">
-      <configuration name="AnalysisToolTests.ManageInputSimulations" configurationId="JUnit" />
+    <history-entry file="SimulationToolTests_DisplayNetwork - 2019.04.12 at 12h 09m 56s.xml">
+      <configuration name="SimulationToolTests.DisplayNetwork" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124860000" />
+    <option name="totallyTimeSpent" value="129019000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -563,7 +529,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5014663" side_tool="true" weight="0.25274727" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.25918368" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.10612245" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45816326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -600,6 +566,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="Link to GitHub repo on Getting Started Bar Menu item" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java</url>
+          <line>163</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="to" language="JAVA" />
@@ -661,9 +637,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Lightning Network Simulation.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.project" />
     <entry file="file://$PROJECT_DIR$/.classpath" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/plotly/PlotlyScatterDemo.java" />
@@ -1062,16 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetwrokMapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="95" selection-start-line="95" selection-end-line="95" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -1091,35 +1054,69 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1301">
-          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
+          <caret line="146" selection-start-line="146" selection-end-line="146" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="39" column="28" lean-forward="true" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/javafxd3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#init#0;class#NetwrokMapGenerator#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1929">
-          <caret line="651" column="10" selection-start-line="651" selection-start-column="10" selection-end-line="651" selection-end-column="10" />
+        <state relative-caret-position="592">
+          <caret line="230" column="107" selection-start-line="230" selection-start-column="107" selection-end-line="230" selection-end-column="107" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#drawSimulation#0;class#GUI#0" />
-            <element signature="method#editValue#0;class#GUI#0" />
-            <element signature="method#createGraph#0;class#GUI#0" />
             <element signature="method#updateGraph#0;class#GUI#0" />
-            <element signature="e#11339#11340#0" expanded="true" />
-            <element signature="e#11369#11370#0" expanded="true" />
-            <element signature="e#11801#11802#0" expanded="true" />
-            <element signature="e#11832#11833#0" expanded="true" />
-            <element signature="e#11955#11956#0" expanded="true" />
-            <element signature="e#11987#11988#0" expanded="true" />
-            <element signature="e#12108#12109#0" expanded="true" />
-            <element signature="e#12141#12142#0" expanded="true" />
-            <element signature="e#16174#16175#0" expanded="true" />
-            <element signature="e#16216#16217#0" expanded="true" />
+            <element signature="e#11939#11940#0" expanded="true" />
+            <element signature="e#11969#11970#0" expanded="true" />
+            <element signature="e#12401#12402#0" expanded="true" />
+            <element signature="e#12432#12433#0" expanded="true" />
+            <element signature="e#12555#12556#0" expanded="true" />
+            <element signature="e#12587#12588#0" expanded="true" />
+            <element signature="e#12708#12709#0" expanded="true" />
+            <element signature="e#12741#12742#0" expanded="true" />
+            <element signature="method#actionPerformed#0;class#13767:14208" />
+            <element signature="e#14155#14156#0" expanded="true" />
+            <element signature="e#14203#14204#0" expanded="true" />
+            <element signature="e#16780#16781#0" expanded="true" />
+            <element signature="e#16822#16823#0" expanded="true" />
             <element signature="method#stressTest#0;class#GUI#0" />
-            <element signature="e#16792#16793#0" expanded="true" />
-            <element signature="e#16845#16846#0" expanded="true" />
-            <element signature="e#16993#16994#0" expanded="true" />
-            <element signature="e#17043#17044#0" expanded="true" />
+            <element signature="e#17398#17399#0" expanded="true" />
+            <element signature="e#17451#17452#0" expanded="true" />
+            <element signature="e#17599#17600#0" expanded="true" />
+            <element signature="e#17649#17650#0" expanded="true" />
             <element signature="method#shortestPathRoutin1Hop#0;class#GUI#0" />
             <element signature="method#shortestPathRouting#0;class#GUI#0" />
             <element signature="method#setBalances#0;class#GUI#0" />
@@ -1129,27 +1126,6 @@
             <element signature="method#restartSim#0;class#GUI#0" />
             <element signature="method#startSim#0;class#GUI#0" />
             <element signature="method#chooseFile#0;class#GUI#0" />
-            <element signature="method#main#0;class#GUI#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

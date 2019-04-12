@@ -17,12 +17,13 @@ import static org.junit.Assert.*;
 public class AnalysisToolTests {
 
 	@Test public void ManageInputSimulations() {
+		Load load = null;
 		System.out.println("Creating network map using the network data model syntax");
-		NetwrokMapGenerator network = new NetwrokMapGenerator(40, 3);
+		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, load);
 		System.out.println("Network Map created");
 		network.createNetwork();
 		System.out.println("Loading network map into the simulation");
-		Load load = new Load();
+		load = new Load();
 		System.out.println("Network loaded into the simulation");
 
 		System.out.println("Displaying simulation");
