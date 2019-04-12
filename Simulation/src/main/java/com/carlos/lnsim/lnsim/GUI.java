@@ -13,8 +13,6 @@ package com.carlos.lnsim.lnsim;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -441,13 +439,13 @@ public class GUI extends JFrame {
 				chargeSimulation(graphComponent);
 				networkMapGenerator.setNodeSize(Integer.parseInt(nodesSize[0].getText()));
 				networkMapGenerator.setChannelsPerNode(Integer.parseInt(channelsSize[0].getText()));
+				networkMapGenerator.setLoad(load);
 				networkMapGenerator.createNetwork();
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 
 			private void chargeSimulation(mxGraphComponent graphComponent) {
 				graphComponent = drawSimulation(load);
-				//networkMapGenerator = new NetworkMapGenerator(load.getNodes().size(), load.getChannels().size());
 			}
 		});
 
@@ -615,6 +613,7 @@ public class GUI extends JFrame {
 						hops++;
 						System.out.println("Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
 						hopsLabel.setText(String.valueOf(hops));
+						load.setHops(hops);
 					}
 
 				}
@@ -627,11 +626,13 @@ public class GUI extends JFrame {
 						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
 						transactions++;
 						transactionsBuffer.add(transactions);
+						load.setTransactionAmount(transactionsBuffer.size());
 
 					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 					if (currentChannel.getCapacity()< 1){
 						congestion++;
 						congestedChannels.setText(String.valueOf(congestion));
+						load.setCongestedChannels(congestion);
 					}
 				} else {
 					timer[0].stop();
