@@ -13,6 +13,8 @@ package com.carlos.lnsim.lnsim;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -125,6 +127,7 @@ public class GUI extends JFrame {
 				j++;
 				Element relation = doc.createElement("Channel");
 				relation.setAttribute("capacity", String.valueOf(channel.getCapacity()));
+				relation.setAttribute("fee", String.valueOf(channel.getFee()));
 
 
 				mxCell fromCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getFrom()+1));
@@ -224,8 +227,8 @@ public class GUI extends JFrame {
 							}
 							else if (elt.getTagName().equalsIgnoreCase("Channel"))
 							{
-								return elt.getTagName() + " (Capacity: "
-										+ elt.getAttribute("capacity") + ")";
+								return " Capacity: "
+										+ elt.getAttribute("capacity") + " \nFee: " + elt.getAttribute("fee");
 							}
 
 						}
@@ -437,7 +440,7 @@ public class GUI extends JFrame {
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chargeSimulation(graphComponent);
-				NetwrokMapGenerator netwrokMapGenerator = new NetwrokMapGenerator(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
+				NetworkMapGenerator networkMapGenerator = new NetworkMapGenerator(Integer.parseInt(nodesSize[0].getText()), Integer.parseInt(channelsSize[0].getText()));
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 

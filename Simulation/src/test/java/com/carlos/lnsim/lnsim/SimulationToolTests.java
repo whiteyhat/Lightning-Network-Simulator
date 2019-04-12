@@ -12,13 +12,20 @@ package com.carlos.lnsim.lnsim;
 
 import org.junit.Test;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.InputEvent;
+
 import static org.junit.Assert.*;
 
 public class SimulationToolTests {
 
+	/**
+	 * Unit test
+	 */
 	@Test
 	public void createNetworkMap() {
-		NetwrokMapGenerator network = new NetwrokMapGenerator(40, 3);
+		NetworkMapGenerator network = new NetworkMapGenerator(40, 3);
 		System.out.println("Creating network map using the network data model syntax");
 		network.createNetwork();
 		System.out.println("Network Map created");
@@ -26,10 +33,13 @@ public class SimulationToolTests {
 		assertEquals(3, network.getChannelsPerNode());
 	}
 
+	/**
+	 * Unit test
+	 */
 	@Test
 	public void LoadNetworkSimulation() {
 		System.out.println("Creating network map using the network data model syntax");
-		NetwrokMapGenerator network = new NetwrokMapGenerator(40, 3);
+		NetworkMapGenerator network = new NetworkMapGenerator(40, 3);
 		System.out.println("Network Map created");
 		network.createNetwork();
 		System.out.println("Loading network map into the simulation");
@@ -41,7 +51,60 @@ public class SimulationToolTests {
 
 	@Test
 	public void DisplayNetwork() {
-		//TODO
+		Load load = null;
+		System.out.println("Creating network map using the network data model syntax");
+		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, load);
+		System.out.println("Network Map created");
+		network.createNetwork();
+		System.out.println("Loading network map into the simulation");
+		load = new Load();
+		System.out.println("Network loaded into the simulation");
+
+		System.out.println("Displaying simulation");
+
+		GUI frame = new GUI();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
+		frame.setVisible(true);
+
+		Robot bot = null;
+		try {
+			bot = new Robot();
+			bot.mouseMove(14,16);
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			//add time between press and release or the input event system may
+			//not think it is a click
+			try{Thread.sleep(250);}catch(InterruptedException e){}
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
+
+			bot.mouseMove(22,56);
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			//add time between press and release or the input event system may
+			//not think it is a click
+			try{Thread.sleep(250);}catch(InterruptedException e){}
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
+			Rectangle rectangle = new Rectangle();
+			rectangle.setSize(700, 1000);
+			bot.createScreenCapture(rectangle);
+
+			bot.mouseMove(871,446);
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			//add time between press and release or the input event system may
+			//not think it is a click
+			try{Thread.sleep(250);}catch(InterruptedException e){}
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
+
+			bot.mouseMove(1061,657);
+			bot.mousePress(InputEvent.BUTTON1_MASK);
+			//add time between press and release or the input event system may
+			//not think it is a click
+			try{Thread.sleep(250);}catch(InterruptedException e){}
+			bot.mouseRelease(InputEvent.BUTTON1_MASK);
+		} catch (AWTException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Test
