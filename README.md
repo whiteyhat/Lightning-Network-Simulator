@@ -1,4 +1,5 @@
 ![travis](https://travis-ci.com/whiteyhat/Lightning-Network-Simulator.svg?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Lightning Network Simulation #
 ![Screenshot](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/Screenshots/screenshot.gif)
 
