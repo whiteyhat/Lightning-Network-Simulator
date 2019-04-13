@@ -10,25 +10,25 @@
 
 package com.carlos.lnsim.lnsim;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
 
-public class PieResults extends ApplicationFrame {
+public class PieResults extends JDialog {
 
 
 	private double totalChannels, congestedChannels;
 
 	public PieResults( String title, double totalChannels, double congestedChannels ) {
-		super( title );
+		setTitle(title);
 		this.totalChannels = totalChannels;
 		this.congestedChannels = congestedChannels;
 		setContentPane(createDemoPanel( ));
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
 	}
 
 	private PieDataset createDataset() {
@@ -60,13 +60,5 @@ public class PieResults extends ApplicationFrame {
 	public JPanel createDemoPanel() {
 		JFreeChart chart = createChart(createDataset( ) );
 		return new ChartPanel( chart );
-	}
-
-
-	public static void main( String[ ] args ) {
-//		PieResults demo = new PieResults( "Lightning Network Simulator" );
-//		demo.setSize( 560 , 367 );
-//		RefineryUtilities.centerFrameOnScreen( demo );
-//		demo.setVisible( true );
 	}
 }

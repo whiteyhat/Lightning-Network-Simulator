@@ -392,7 +392,6 @@ public class GUI extends JFrame {
 			@Override public void actionPerformed(ActionEvent e) {
 				PieResults demo = new PieResults( "Lightning Network Simulator", Double.parseDouble(channels), Double.parseDouble(congestedChannels.getText()));
 				demo.setSize( 560 , 367 );
-				demo.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				RefineryUtilities.centerFrameOnScreen( demo );
 				demo.setVisible( true );
 			}

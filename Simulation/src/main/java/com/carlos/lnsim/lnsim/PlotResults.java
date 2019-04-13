@@ -11,9 +11,7 @@
 package com.carlos.lnsim.lnsim;
 
 import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -23,11 +21,11 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-public class PlotResults extends JFrame {
+public class PlotResults extends JDialog {
 	private static final long serialVersionUID = 6294689542092367723L;
 
 	public PlotResults(String title) {
-		super(title);
+		setTitle(title);
 
 		// Create dataset
 		XYDataset dataset = createDataset();
