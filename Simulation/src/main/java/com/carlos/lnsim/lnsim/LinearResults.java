@@ -17,13 +17,14 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
-public class LinearResults extends ApplicationFrame {
+public class LinearResults extends JDialog {
 	ArrayList<Integer> nodes;
 
 	public LinearResults(String title, String chartTitle, ArrayList<Integer> nodes) {
-		super(title);
+		setTitle(title);
 		this.nodes = nodes;
 		JFreeChart lineChart = ChartFactory
 				.createLineChart(chartTitle, "Seconds", "Transactions", createDataset(), PlotOrientation.VERTICAL, true,
