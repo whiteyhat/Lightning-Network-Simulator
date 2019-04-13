@@ -136,7 +136,7 @@ public class NetworkMapGenerator {
 
 			JSONObject results = new JSONObject();
 			JSONArray resultValues = new JSONArray();
-			results.put("Transactions", String.valueOf(load.getTransactionAmount()));
+			results.put("Transactions", String.valueOf(load.getTrafficGenerator().trafficSize()));
 			results.put("Failed Transactions", "");
 			results.put("Hops", String.valueOf(load.getHops()));
 			results.put("Fees", String.valueOf(fees));

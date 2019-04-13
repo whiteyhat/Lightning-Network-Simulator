@@ -15,14 +15,13 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
-
 import javax.swing.*;
-import java.util.ArrayList;
+import java.util.Queue;
 
 public class LinearResults extends JDialog {
-	ArrayList<Integer> nodes;
+	Queue<Transaction> nodes;
 
-	public LinearResults(String title, String chartTitle, ArrayList<Integer> nodes) {
+	public LinearResults(String title, String chartTitle, Queue<Transaction> nodes) {
 		setTitle(title);
 		this.nodes = nodes;
 		JFreeChart lineChart = ChartFactory
@@ -38,9 +37,9 @@ public class LinearResults extends JDialog {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
 		int time = 0;
-		for (Integer value : nodes) {
+		for (Transaction value : nodes) {
 			time += 10;
-			dataset.addValue(value, "Transactions", String.valueOf(time));
+			dataset.addValue(Double.parseDouble(value.toString()), "Transactions", String.valueOf(time));
 		}
 		return dataset;
 	}
