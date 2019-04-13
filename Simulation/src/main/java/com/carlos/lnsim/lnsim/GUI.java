@@ -43,7 +43,6 @@ public class GUI extends JFrame {
 	private boolean New;
 	NetworkMapGenerator networkMapGenerator;
 	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannels;
-	private ArrayList<Integer> transactionsBuffer;
 
 	public GUI() {
 		super("Lightning Network Simulator");
@@ -401,7 +400,7 @@ public class GUI extends JFrame {
 			@Override public void actionPerformed(ActionEvent e) {
 				LinearResults chart = new LinearResults(
 						"Lightning Network Simulator" ,
-						"Node Analysis", transactionsBuffer);
+						"Node Analysis", load.getTrafficGenerator().getTransactions());
 
 				chart.pack( );
 				RefineryUtilities.centerFrameOnScreen( chart );
@@ -512,7 +511,6 @@ public class GUI extends JFrame {
 
 	private void stressTest(JPanel[] panel1, JProgressBar[] pbar, Timer[] timer) {
 		boolean routing = true;
-		transactionsBuffer = new ArrayList<>();
 		transactionLabel = new JLabel();
 		feesLabel = new JLabel();
 		hopsLabel = new JLabel();
@@ -626,8 +624,7 @@ public class GUI extends JFrame {
 						to.setBalance(to.getBalance() + recipient);
 						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
 						transactions++;
-						transactionsBuffer.add(transactions);
-						load.setTransactionAmount(transactionsBuffer.size());
+						load.getTrafficGenerator().addTransaction(new Transaction(to, (double) recipient));
 
 					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 					if (currentChannel.getCapacity()< 1){
