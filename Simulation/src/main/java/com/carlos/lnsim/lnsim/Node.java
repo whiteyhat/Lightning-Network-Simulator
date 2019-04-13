@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class Node {
     private String alias;
     private int id;
-    private Float inboundCapacity;
-    private Float outboundCapacity;
-    private int balance;
+    private Double inboundCapacity;
+    private Double outboundCapacity;
+    private Double balance;
     private ArrayList<Channel> channels;
     private ArrayList<Transaction> transactions;
 
-    public Node(String alias, int id, int balance, ArrayList<Channel> channels, ArrayList<Transaction> transactions) {
+    public Node(String alias, int id, Double balance, ArrayList<Channel> channels, ArrayList<Transaction> transactions) {
         this.alias = alias;
         this.id = id;
         this.balance = balance;
@@ -79,27 +79,27 @@ public class Node {
         this.id = id;
     }
 
-    public Float getInboundCapacity() {
+    public Double getInboundCapacity() {
         return inboundCapacity;
     }
 
-    public void setInboundCapacity(Float inboundCapacity) {
+    public void setInboundCapacity(Double inboundCapacity) {
         this.inboundCapacity = inboundCapacity;
     }
 
-    public Float getOutboundCapacity() {
+    public Double getOutboundCapacity() {
         return outboundCapacity;
     }
 
-    public void setOutboundCapacity(Float outboundCapacity) {
+    public void setOutboundCapacity(Double outboundCapacity) {
         this.outboundCapacity = outboundCapacity;
     }
 
-    public int getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -119,7 +119,7 @@ public class Node {
         this.transactions = transactions;
     }
 
-    public void sendTransaction(Node to, int amount){
+    public void sendTransaction(Node to, Double amount){
         if (getBalance() > 0 || !getChannels().isEmpty()) {
             transactions.add(new Transaction(to, amount));
             balance -= amount;
