@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class AnalysisToolTests {
 
-	@Test public void ManageInputSimulations() {
+	@Test public void manageInputSimulations() {
 		Load load = null;
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, load);
@@ -46,6 +46,6 @@ public class AnalysisToolTests {
 
 	}
 
-	@Test public void ExportSimulationResults() {
+	@Test public void exportSimulationResults() {
 	}
 }

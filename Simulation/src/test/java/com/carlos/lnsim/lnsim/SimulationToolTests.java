@@ -37,7 +37,7 @@ public class SimulationToolTests {
 	 * Unit test
 	 */
 	@Test
-	public void LoadNetworkSimulation() {
+	public void loadNetworkSimulation() {
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3);
 		System.out.println("Network Map created");
@@ -50,7 +50,7 @@ public class SimulationToolTests {
 	}
 
 	@Test
-	public void DisplayNetwork() {
+	public void displayNetwork() {
 		Load load = null;
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, load);
