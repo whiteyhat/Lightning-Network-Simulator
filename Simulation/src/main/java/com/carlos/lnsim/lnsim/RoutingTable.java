@@ -36,7 +36,7 @@ public class RoutingTable {
 			currentNode = queue.remove();
 			if (currentNode.equals(destinationNode)) {
 				break;
-			} else {
+//			} else {
 //				for (Node nextNode : getChildNodes(currentNode)) {
 //					if (!visitedNodes.contains(nextNode)) {
 //						queue.add(nextNode);
