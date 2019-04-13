@@ -135,7 +135,7 @@ public class Load {
             }
         }
 
-        nodes.add(new Node(alias, Integer.parseInt(id), Integer.parseInt(balance), nodeChannels, transactions));
+        nodes.add(new Node(alias, Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
     }
 
     private  void getChannels(ArrayList<Transaction> transactions, ArrayList<Channel> channels, JSONArray channelsJson, int j) {

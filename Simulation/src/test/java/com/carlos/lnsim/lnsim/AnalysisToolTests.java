@@ -32,7 +32,7 @@ public class AnalysisToolTests {
 		System.out.println("Testing balance inputs from simulation");
 		gui.setBalances(3,3);
 		for (Node n : load.getNodes()) {
-			assertEquals(3, n.getBalance());
+			assertEquals(java.util.Optional.of(3.0), n.getBalance());
 		}
 		System.out.println("Balance inputs tested");
 

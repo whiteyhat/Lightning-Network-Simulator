@@ -17,12 +17,12 @@ import java.util.UUID;
 public class Transaction {
     private String secret;
     private String paymentRequest;
-    private int tokens;
+    private Double tokens;
     private Date createdAt;
     private Date expiredAt;
     private Node to;
 
-    public Transaction(Node to, int tokens) {
+    public Transaction(Node to, Double tokens) {
         this.secret = UUID.randomUUID().toString();
         this.paymentRequest = String.valueOf(secret.hashCode());
         this.tokens = tokens;
@@ -67,11 +67,11 @@ public class Transaction {
         this.paymentRequest = paymentRequest;
     }
 
-    public int getTokens() {
+    public Double getTokens() {
         return tokens;
     }
 
-    public void setTokens(int tokens) {
+    public void setTokens(Double tokens) {
         this.tokens = tokens;
     }
 

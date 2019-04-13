@@ -579,7 +579,7 @@ public class GUI extends JFrame {
 
 
 				if (node.getBalance() < 0){
-					node.setBalance(0);
+					node.setBalance(0.0);
 				}
 				transactionLabel.setText(String.valueOf(transactions));
 				updateGUI();
@@ -641,7 +641,7 @@ public class GUI extends JFrame {
 
 
 				if (node.getBalance() < 0){
-					node.setBalance(0);
+					node.setBalance(0.0);
 				}
 
 				networkMapGenerator.setSimulationCompleted(true);
@@ -663,7 +663,7 @@ public class GUI extends JFrame {
 
 	public void setBalances(int i, int j) {
 		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
-			node.setBalance(ThreadLocalRandom.current().nextInt(i, j + 1));
+			node.setBalance(ThreadLocalRandom.current().nextDouble(i, j + 1));
 		}
 		New = false;
 		updateGraph();
