@@ -57,7 +57,6 @@ public class GUI extends JFrame {
 
 	public GUI(Load load) {
 		super("Lightning Network Simulator");
-
 		this.load = load;
 		load = new Load();
 		New = true;
@@ -602,7 +601,7 @@ public class GUI extends JFrame {
 					currentChannel = channel;
 					fee = channel.getFee();
 					feeCounter += channel.getFee();
-					feesLabel.setText(String.valueOf(feeCounter));
+					//feesLabel.setText(String.valueOf(feeCounter));
 					transactions++;
 
 					if (load.getRoutingTable().get(node).getId() == to.getId()){
@@ -611,7 +610,7 @@ public class GUI extends JFrame {
 					}else{
 						hops++;
 						System.out.println("Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
-						hopsLabel.setText(String.valueOf(hops));
+						//hopsLabel.setText(String.valueOf(hops));
 						load.setHops(hops);
 					}
 
@@ -629,7 +628,7 @@ public class GUI extends JFrame {
 					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 					if (currentChannel.getCapacity()< 1){
 						congestion++;
-						congestedChannels.setText(String.valueOf(congestion));
+						//congestedChannels.setText(String.valueOf(congestion));
 						load.setCongestedChannels(congestion);
 					}
 				} else {
@@ -643,7 +642,7 @@ public class GUI extends JFrame {
 
 				networkMapGenerator.setSimulationCompleted(true);
 				networkMapGenerator.createNetwork();
-				transactionLabel.setText(String.valueOf(transactions));
+				//transactionLabel.setText(String.valueOf(transactions));
 				updateGUI();
 			}
 		}
