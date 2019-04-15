@@ -10,6 +10,7 @@
 
 package com.carlos.lnsim.lnsim;
 
+import javax.swing.Timer;
 import java.util.*;
 
 public class TrafficGenerator {
@@ -18,9 +19,14 @@ public class TrafficGenerator {
 	private HashMap<Node, Node> routingtable;
 
 	public TrafficGenerator(HashMap routingtable) {
-		transactions =new LinkedList<Transaction>() {
+		transactions = new LinkedList<Transaction>() {
 		};
 		this.routingtable = routingtable;
+	}
+
+	public TrafficGenerator() {
+		transactions = new LinkedList<Transaction>() {};
+		routingtable = new HashMap<>();
 	}
 
 	public void setRoutingtable(HashMap<Node, Node> routingtable) {
@@ -35,29 +41,29 @@ public class TrafficGenerator {
 		return routingtable;
 	}
 
-	public void addLink(Node from, Node to) {
-	routingtable.put(from, to);
+	protected void addLink(Node from, Node to) {
+		routingtable.put(from, to);
 	}
 
-	public void addTransaction(Transaction transaction) {
+	protected void addTransaction(Transaction transaction) {
 		transactions.add(transaction);
 	}
 
-	public Transaction pushTransaction() {
+	protected Transaction pushTransaction() {
 		return transactions.peek();
 	}
-	
+
 	public void start(ArrayList<Channel> channels, Transaction transaction, Node node) {
 		for (Channel channel : channels) {
 			//check the availability of the channel + balance
-		if ((channel.getCapacity() <= transaction.getTokens()) && (node.getBalance()>= transaction.getTokens())){
+			if ((channel.getCapacity() <= transaction.getTokens()) && (node.getBalance() >= transaction.getTokens())) {
 				// generate transaction an remove it from the queue
 				node.newTransaction(pushTransaction());
 			}
 		}
 	}
 
-	public int trafficSize() {
+	protected int trafficSize() {
 		return transactions.size();
 	}
 
@@ -69,71 +75,104 @@ public class TrafficGenerator {
 		return "TrafficGenerator{" + "transactions=" + transactions + '}';
 	}
 
-//	public void init(Load load, NetworkMapGenerator networkMapGenerator, int recipient, Timer[] timer) {
-//		double feeCounter = 0;
-//		int hops = 0;
-//		int transactions = 0;
-//		int congestion = 0;
-//		Random rand = new Random();
-//
-//		for (Node node : load.getNodes()) {
-//			Node to = new Node();
-//			Channel currentChannel = null;
-//			double fee = 0;
-//			if (!node.getChannels().isEmpty()){
-//				for (Channel channel : node.getChannels()) {
-//					to = to.findNode(to, rand.nextInt(load.getNodes().size()), load.getNodes());
-//					currentChannel = channel;
-//					fee = channel.getFee();
-//					feeCounter += channel.getFee();
-//					//feesLabel.setText(String.valueOf(feeCounter));
-//					transactions++;
-//
-//					if (load.getRoutingTable().get(node).getId() == to.getId()){
-//						System.out.println("Direct Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
-//
-//					}else{
-//						hops++;
-//						System.out.println("Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
-//						//hopsLabel.setText(String.valueOf(hops));
-//						load.setHops(hops);
-//					}
-//
-//				}
-//
-//
-//				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-//					do {
-//						node.setBalance((node.getBalance() - recipient) - (int)fee);
-//						to.setBalance(to.getBalance() + recipient);
-//						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
-//						transactions++;
-//						load.getTrafficGenerator().addTransaction(new Transaction(to, (double) recipient));
-//
-//					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-//					if (currentChannel.getCapacity()< 1){
-//						congestion++;
-//						//congestedChannels.setText(String.valueOf(congestion));
-//						load.setCongestedChannels(congestion);
-//					}
-//				} else {
-//					timer[0].stop();
-//				}
-//
-//
-//				if (node.getBalance() < 0){
-//					node.setBalance(0.0);
-//				}
-//
-//				networkMapGenerator.setSimulationCompleted(true);
-//				networkMapGenerator.createNetwork();
-//				//transactionLabel.setText(String.valueOf(transactions));
-//				updateGUI();
-//			}
-//		}
-//	}
+	protected void routingMechanism(Node to, Node node, Channel currentChannel, int r, Load l, Timer t[]) {
+		// declare variables to store results
+		int feeCounter = 0;
+		int hops = 0;
+		int congestion = 0;
+		double fee = 0.0;
+		boolean coincidence = false;
 
-	private void updateGUI() {
+		// declare randomizer
+		Random rand = new Random();
 
+		// for each channel a node has
+		for (Channel channel : node.getChannels()) {
+			// select the destination node
+			to = to.findNode(to, rand.nextInt(l.getNodes().size()), l.getNodes());
+			System.out.println("destination node: " + to.getId());
+
+			// make the current channel the one used
+			currentChannel = channel;
+
+			// select the fee from the channel
+			fee = channel.getFee();
+
+			// keep track of the global fee amount
+			feeCounter += channel.getFee();
+
+
+			// if theer is direct channel. No need for routinh
+			if (l.getRoutingTable().get(node).getId() == to.getId()){
+				System.out.println("Direct Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
+				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+					do {
+						// EMIT TRANSACTION
+						sendTransaction(to, node, currentChannel, r, l, fee);
+
+					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+				}
+			}else{
+				// add 1 to the hop counter
+				hops++;
+
+//				System.out.println("Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
+
+				do {
+					System.out.println("Searching paths");
+					System.out.println();
+					for(Map.Entry<Node, Node> entry : l.getRoutingTable().entrySet()) {
+						Node from = entry.getKey();
+						Node destino = entry.getValue();
+						System.out.println("node " + from.getId());
+						System.out.println();
+						if (from.getId() == to.getId()) {
+							coincidence = true;
+							System.out.println("Node " + from.getId() + " has a channel with destionation");
+						}
+					}
+				}while (!coincidence);
+
+				// set hop number
+				l.setHops(hops);
+			}
+
+		}
+
+		// Sanity check. if emitter node has enough balance and channel capacity is not dried out.
+		if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+			do {
+				// EMIT TRANSACTION
+				sendTransaction(to, node, currentChannel, r, l, fee);
+
+			}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+
+
+			if (currentChannel.getCapacity()< 1){
+
+				// congestion counter +1
+				congestion++;
+				l.setCongestedChannels(congestion);
+			}
+		} else {
+			t[0].stop();
+		}
+
+
+		if (node.getBalance() < 0){
+			node.setBalance(0.0);
+		}
+	}
+
+	private void sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {
+		// Set node balance
+		node.setBalance((node.getBalance() - r) - fee);
+		to.setBalance(to.getBalance() + r);
+
+		// Set channel capacity
+		currentChannel.setCapacity(currentChannel.getCapacity() - r);
+
+		// add transaction to the traffic buffer
+		l.getTrafficGenerator().addTransaction(new Transaction(to, (double) r));
 	}
 }
