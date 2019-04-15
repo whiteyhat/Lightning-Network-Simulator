@@ -89,14 +89,8 @@ public class Channel {
         this.transactions = transactions;
     }
 
-
-    @Override
-    public String toString() {
-        return "Channel{" +
-                "id=" + id +
-                ", capacity=" + capacity +
-                ", fee=" + fee +
-                ", transactions=" + transactions +
-                '}';
+    @Override public String toString() {
+        return "Channel{" + "id=" + id + ", capacity=" + capacity + ", fee=" + fee + ", transactions=" + transactions
+                + ", from=" + from + ", to=" + to + '}';
     }
 }

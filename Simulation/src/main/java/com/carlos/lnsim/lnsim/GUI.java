@@ -41,13 +41,14 @@ public class GUI extends JFrame {
 	private String tx, balance, size, channels;
 	private mxGraphComponent graphComponent;
 	private boolean New;
-	NetworkMapGenerator networkMapGenerator;
+	private TrafficGenerator trafficGenerator;
+	private NetworkMapGenerator networkMapGenerator;
 	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannels;
 
 	public GUI() {
 		super("Lightning Network Simulator");
-
 		load = new Load();
+		trafficGenerator = new TrafficGenerator();
 		networkMapGenerator = new NetworkMapGenerator();
 		New = true;
 		width = new ArrayList<>();
@@ -142,12 +143,13 @@ public class GUI extends JFrame {
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=3");
 				} else if ((channel.getCapacity() >= 30.0)&& (channel.getCapacity() <= 49.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=2");
-				} else if ((channel.getCapacity() >= 20.0)&& (channel.getCapacity() <= 39.9)){
+				} else if ((channel.getCapacity() >= 5.0)&& (channel.getCapacity() <= 39.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
 				}
-
+				System.out.println(channel);
 
 			}
+//			System.out.println(load.getChannels());
 		}
 		finally
 		{
@@ -445,6 +447,8 @@ public class GUI extends JFrame {
 
 			private void chargeSimulation(mxGraphComponent graphComponent) {
 				graphComponent = drawSimulation(load);
+				System.out.println(load.getChannels());
+
 			}
 		});
 
@@ -596,50 +600,8 @@ public class GUI extends JFrame {
 			Channel currentChannel = null;
 			double fee = 0;
 			if (!node.getChannels().isEmpty()){
-				for (Channel channel : node.getChannels()) {
-					to = to.findNode(to, rand.nextInt(load.getNodes().size()), load.getNodes());
-					currentChannel = channel;
-					fee = channel.getFee();
-					feeCounter += channel.getFee();
-					//feesLabel.setText(String.valueOf(feeCounter));
-					transactions++;
 
-					if (load.getRoutingTable().get(node).getId() == to.getId()){
-						System.out.println("Direct Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
-
-					}else{
-						hops++;
-						System.out.println("Link: Node " + node.getId() + " - Node " + load.getRoutingTable().get(node).getId());
-						//hopsLabel.setText(String.valueOf(hops));
-						load.setHops(hops);
-					}
-
-				}
-
-
-				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-					do {
-						node.setBalance((node.getBalance() - recipient) - (int)fee);
-						to.setBalance(to.getBalance() + recipient);
-						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
-						transactions++;
-						load.getTrafficGenerator().addTransaction(new Transaction(to, (double) recipient));
-
-					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-					if (currentChannel.getCapacity()< 1){
-						congestion++;
-						//congestedChannels.setText(String.valueOf(congestion));
-						load.setCongestedChannels(congestion);
-					}
-				} else {
-					timer[0].stop();
-				}
-
-
-				if (node.getBalance() < 0){
-					node.setBalance(0.0);
-				}
-
+				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, load, timer );
 				networkMapGenerator.setSimulationCompleted(true);
 				networkMapGenerator.createNetwork();
 				//transactionLabel.setText(String.valueOf(transactions));

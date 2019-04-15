@@ -79,23 +79,27 @@ public class NetworkMapGenerator {
 	private void init(int nodeSize, int channelsPerNode, int tx, Load load) throws IOException {
 		JSONObject json = new JSONObject();
 		JSONArray config = new JSONArray();
-		for (int i = 0; i < nodeSize; i++) {
+		int id = 0;
+		int channelId = 0;
+		for (int i = 1; i < nodeSize+1; i++) {
+			id++;
 			JSONObject nodes = new JSONObject();
 			JSONArray channelsArray = new JSONArray();
 			Random rand = new Random();
-			nodes.put("id",String.valueOf(i));
+			nodes.put("id",String.valueOf(id));
 			nodes.put("alias",("Node" + (i)));
 			nodes.put("balance" , String.valueOf(rand.nextInt(1000)));
 			for (int j = 0; j < channelsPerNode; j++) {
+				channelId++;
 				JSONObject channels = new JSONObject();
 				JSONArray transactionArray = new JSONArray();
 				Random random = new Random();
-				channels.put("id",String.valueOf(j));
-				channels.put("from",String.valueOf(i));
+				channels.put("id",String.valueOf(channelId));
+				channels.put("from",String.valueOf(id));
 				int randomNumber = random.nextInt(nodeSize);
 				boolean valid = false;
 				do {
-					if (randomNumber == i){
+					if (randomNumber == i || randomNumber == 0){
 						randomNumber = random.nextInt(nodeSize);
 					} else {
 						valid = true;
