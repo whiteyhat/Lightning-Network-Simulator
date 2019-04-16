@@ -17,14 +17,20 @@ public class TrafficGenerator {
 
 	private Queue<Transaction> transactions;
 	private HashMap<Node, Node> routingtable;
+	private boolean ocurrence, skip;
+	private ArrayList<Node> checkedNodes;
 
 	public TrafficGenerator(HashMap routingtable) {
 		transactions = new LinkedList<Transaction>() {
 		};
 		this.routingtable = routingtable;
+		checkedNodes = new ArrayList<>();
+		ocurrence = false;
 	}
 
 	public TrafficGenerator() {
+		ocurrence = false;
+		checkedNodes = new ArrayList<>();
 		transactions = new LinkedList<Transaction>() {};
 		routingtable = new HashMap<>();
 	}
@@ -82,6 +88,7 @@ public class TrafficGenerator {
 		int congestion = 0;
 		double fee = 0.0;
 		boolean coincidence = false;
+		Node destination = new Node();
 
 		// declare randomizer
 		Random rand = new Random();
@@ -90,6 +97,8 @@ public class TrafficGenerator {
 		for (Channel channel : node.getChannels()) {
 			// select the destination node
 			to = to.findNode(to, rand.nextInt(l.getNodes().size()), l.getNodes());
+			System.err.println("FIRST TRANSACTION");
+			System.out.println("sender node" + node.getId());
 			System.out.println("destination node: " + to.getId());
 
 			// make the current channel the one used
@@ -102,7 +111,7 @@ public class TrafficGenerator {
 			feeCounter += channel.getFee();
 
 
-			// if theer is direct channel. No need for routinh
+			// if there is direct channel. No need for routinh
 			if (l.getRoutingTable().get(node).getId() == to.getId()){
 				System.out.println("Direct Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
 				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
@@ -116,21 +125,26 @@ public class TrafficGenerator {
 				// add 1 to the hop counter
 				hops++;
 
-//				System.out.println("Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
+				System.out.println("Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
+
+				destination = searchPath(node, to, l, destination);
 
 				do {
-					System.out.println("Searching paths");
-					System.out.println();
-					for(Map.Entry<Node, Node> entry : l.getRoutingTable().entrySet()) {
-						Node from = entry.getKey();
-						Node destino = entry.getValue();
-						System.out.println("node " + from.getId());
-						System.out.println();
-						if (from.getId() == to.getId()) {
-							coincidence = true;
-							System.out.println("Node " + from.getId() + " has a channel with destionation");
-						}
-					}
+
+//					System.out.println("Searching paths");
+//					System.out.println();
+//					for(Map.Entry<Node, Node> entry : l.getRoutingTable().entrySet()) {
+//						Node from = entry.getKey();
+//						Node destino = entry.getValue();
+//						System.out.println("node " + from.getId());
+//						System.out.println();
+//						if (from.getId() == to.getId()) {
+//							coincidence = true;
+//							System.out.println("Node " + from.getId() + " has a channel with destionation");
+//						}
+//					}
+
+
 				}while (!coincidence);
 
 				// set hop number
@@ -162,6 +176,32 @@ public class TrafficGenerator {
 		if (node.getBalance() < 0){
 			node.setBalance(0.0);
 		}
+	}
+
+	private Node searchPath(Node node, Node to, Load l, Node destination) {
+		destination = destination.findNode(destination, l.getRoutingTable().get(node).getId(), l.getNodes());
+
+		if (checkedNodes.contains(destination)){
+			skip = true;
+		}else {
+			checkedNodes.add(destination);
+		}
+
+		if (!skip){
+
+			System.out.println("Link: Node " + destination.getId() + " - Node " + l.getRoutingTable().get(destination).getId());
+
+			if (destination.getId() == to.getId()) {
+				ocurrence = true;
+				return destination;
+			}else {
+				if (!ocurrence){
+					searchPath(destination, to, l, destination);
+				}
+			}
+		}
+		return destination;
+
 	}
 
 	private void sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {

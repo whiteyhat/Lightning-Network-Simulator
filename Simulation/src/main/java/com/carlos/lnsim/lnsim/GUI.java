@@ -146,10 +146,9 @@ public class GUI extends JFrame {
 				} else if ((channel.getCapacity() >= 5.0)&& (channel.getCapacity() <= 39.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
 				}
-				System.out.println(channel);
+				//System.out.println(channel);
 
 			}
-//			System.out.println(load.getChannels());
 		}
 		finally
 		{
@@ -447,8 +446,7 @@ public class GUI extends JFrame {
 
 			private void chargeSimulation(mxGraphComponent graphComponent) {
 				graphComponent = drawSimulation(load);
-				System.out.println(load.getChannels());
-
+				System.out.println();
 			}
 		});
 
