@@ -1,4 +1,3 @@
-![travis](https://travis-ci.com/whiteyhat/Lightning-Network-Simulator.svg?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7b58c19296bc44c1b714f246228a4930)](https://app.codacy.com/app/carlosroldan26396/Lightning-Network-Simulator?utm_source=github.com&utm_medium=referral&utm_content=whiteyhat/Lightning-Network-Simulator&utm_campaign=Badge_Grade_Settings)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Lightning Network Simulation #
