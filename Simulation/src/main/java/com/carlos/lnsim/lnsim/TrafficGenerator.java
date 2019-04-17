@@ -178,29 +178,29 @@ public class TrafficGenerator {
 		}
 	}
 
-	private Node searchPath(Node node, Node to, Load l, Node destination) {
-		destination = destination.findNode(destination, l.getRoutingTable().get(node).getId(), l.getNodes());
+	private Node searchPath(Node node, Node to, Load l, Node iterativeNode) {
+		iterativeNode = iterativeNode.findNode(iterativeNode, l.getRoutingTable().get(node).getId(), l.getNodes());
 
-		if (checkedNodes.contains(destination)){
+		if (checkedNodes.contains(iterativeNode)){
 			skip = true;
 		}else {
-			checkedNodes.add(destination);
+			checkedNodes.add(iterativeNode);
 		}
 
 		if (!skip){
 
-			System.out.println("Link: Node " + destination.getId() + " - Node " + l.getRoutingTable().get(destination).getId());
+			System.out.println("Link: Node " + iterativeNode.getId() + " - Node " + l.getRoutingTable().get(iterativeNode).getId());
 
-			if (destination.getId() == to.getId()) {
+			if (iterativeNode.getId() == to.getId()) {
 				ocurrence = true;
-				return destination;
+				return iterativeNode;
 			}else {
 				if (!ocurrence){
-					searchPath(destination, to, l, destination);
+					searchPath(iterativeNode, to, l, iterativeNode);
 				}
 			}
 		}
-		return destination;
+		return iterativeNode;
 
 	}
 
