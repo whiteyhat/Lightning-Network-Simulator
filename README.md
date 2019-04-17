@@ -1,6 +1,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7b58c19296bc44c1b714f246228a4930)](https://app.codacy.com/app/carlosroldan26396/Lightning-Network-Simulator?utm_source=github.com&utm_medium=referral&utm_content=whiteyhat/Lightning-Network-Simulator&utm_campaign=Badge_Grade_Settings)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Known Vulnerabilities](https://snyk.io/test/github/whiteyhat/Lightning-Network-Simulator/badge.svg?targetFile=Simulation%2Fpom.xml)](https://snyk.io/test/github/whiteyhat/Lightning-Network-Simulator?targetFile=Simulation%2Fpom.xml)# Lightning Network Simulation #
+[![Known Vulnerabilities](https://snyk.io/test/github/whiteyhat/Lightning-Network-Simulator/badge.svg?targetFile=Simulation%2Fpom.xml)](https://snyk.io/test/github/whiteyhat/Lightning-Network-Simulator?targetFile=Simulation%2Fpom.xml)
+# Lightning Network Simulation #
 ![Screenshot](https://github.com/whiteyhat/Lightning-Network-Simulation/blob/master/Simulation/src/main/resources/Screenshots/screenshot.gif)
 
 This repository is a majors dissertation project for Aberystwyth University. The aim of this project is educational.
