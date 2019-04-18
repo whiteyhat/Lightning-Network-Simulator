@@ -17,20 +17,27 @@ public class TrafficGenerator {
 
 	private Queue<Transaction> transactions;
 	private HashMap<Node, Node> routingtable;
-	private boolean ocurrence, skip;
-	private ArrayList<Node> checkedNodes;
+	private ArrayList<Channel> checkedPaths;
+	private ArrayList<Transaction> failedTransactions;
+	private Channel channel;
+	private int hops = 0;
+	private boolean invalidPath = false;
+	private TerminalColors terminalColors;
 
 	public TrafficGenerator(HashMap routingtable) {
-		transactions = new LinkedList<Transaction>() {
-		};
+		terminalColors = new TerminalColors();
+		channel = new Channel();
+		transactions = new LinkedList<Transaction>() {};
+		failedTransactions = new ArrayList<>();
 		this.routingtable = routingtable;
-		checkedNodes = new ArrayList<>();
-		ocurrence = false;
+		checkedPaths = new ArrayList<>();
 	}
 
 	public TrafficGenerator() {
-		ocurrence = false;
-		checkedNodes = new ArrayList<>();
+		terminalColors = new TerminalColors();
+		channel = new Channel();
+		checkedPaths = new ArrayList<>();
+		failedTransactions = new ArrayList<>();
 		transactions = new LinkedList<Transaction>() {};
 		routingtable = new HashMap<>();
 	}
@@ -84,22 +91,42 @@ public class TrafficGenerator {
 	protected void routingMechanism(Node to, Node node, Channel currentChannel, int r, Load l, Timer t[]) {
 		// declare variables to store results
 		int feeCounter = 0;
-		int hops = 0;
 		int congestion = 0;
 		double fee = 0.0;
 		boolean coincidence = false;
+		boolean transactionFailed = false;
 		Node destination = new Node();
+		boolean valid = false;
 
 		// declare randomizer
 		Random rand = new Random();
 
 		// for each channel a node has
 		for (Channel channel : node.getChannels()) {
+
+			// Ensure the receiver node is not the same as the sender
+			int receiver = rand.nextInt(l.getNodes().size());
+
+
+			if (receiver == node.getId() || receiver == 0){
+				do {
+					receiver = rand.nextInt(l.getNodes().size());
+
+					if (receiver != node.getId() && receiver != 0){
+						valid = true;
+					}
+				}while (!valid);
+
+			}
+
 			// select the destination node
-			to = to.findNode(to, rand.nextInt(l.getNodes().size()), l.getNodes());
-			System.err.println("FIRST TRANSACTION");
-			System.out.println("sender node" + node.getId());
-			System.out.println("destination node: " + to.getId());
+			to = to.findNode(to, receiver, l.getNodes());
+			System.out.println();
+			System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() + "***********************************" + terminalColors.getStandard());
+			System.out.println(terminalColors.getBlackBg() + terminalColors.getGreenBg() + "          TRANSACTION              "+ terminalColors.getStandard() );
+			System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() + "***********************************"+ terminalColors.getStandard());
+			System.out.println(terminalColors.getPurple() +"Sender node: " + node.getId()+ terminalColors.getStandard());
+			System.out.println(terminalColors.getYellow() +"Receiver node: " + to.getId()+ terminalColors.getStandard());
 
 			// make the current channel the one used
 			currentChannel = channel;
@@ -113,7 +140,10 @@ public class TrafficGenerator {
 
 			// if there is direct channel. No need for routinh
 			if (l.getRoutingTable().get(node).getId() == to.getId()){
-				System.out.println("Direct Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
+				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
+				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"       Direct Transaction sent     "+ terminalColors.getStandard());
+				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
+				transactions.add(new Transaction(to, Double.valueOf(r)));
 				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
 					do {
 						// EMIT TRANSACTION
@@ -122,28 +152,33 @@ public class TrafficGenerator {
 					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 				}
 			}else{
-				// add 1 to the hop counter
-				hops++;
-
-				System.out.println("Link: Node " + node.getId() + " - Node " + l.getRoutingTable().get(node).getId());
-
-				destination = searchPath(node, to, l, destination);
-
+				int track = failedTransactions.size();
 				do {
+					System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() +"---------- FINDING PATHS ----------"+ terminalColors.getStandard());
+					destination = searchPath(node, to, l, r);
+					invalidPath = false;
+					hops = 0;
 
-//					System.out.println("Searching paths");
-//					System.out.println();
-//					for(Map.Entry<Node, Node> entry : l.getRoutingTable().entrySet()) {
-//						Node from = entry.getKey();
-//						Node destino = entry.getValue();
-//						System.out.println("node " + from.getId());
-//						System.out.println();
-//						if (from.getId() == to.getId()) {
-//							coincidence = true;
-//							System.out.println("Node " + from.getId() + " has a channel with destionation");
-//						}
-//					}
+					if (destination.getId() == to.getId()){
+						sendTransaction(to, node, currentChannel, r, l, fee);
+						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
+						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +" $$$$ Routed Transaction sent $$$$ "+ terminalColors.getStandard());
+						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
+						coincidence = true;
+						if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+							do {
+								// EMIT TRANSACTION
+								sendTransaction(to, node, currentChannel, r, l, fee);
 
+							}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+						}					}
+
+					if (track < failedTransactions.size()){
+						coincidence = true;
+						transactionFailed = true;
+						System.err.println("Transacion Failed");
+					}
+					checkedPaths.clear();
 
 				}while (!coincidence);
 
@@ -153,54 +188,87 @@ public class TrafficGenerator {
 
 		}
 
-		// Sanity check. if emitter node has enough balance and channel capacity is not dried out.
-		if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-			do {
-				// EMIT TRANSACTION
-				sendTransaction(to, node, currentChannel, r, l, fee);
+		if (!transactionFailed){
+			// Sanity check. if emitter node has enough balance and channel capacity is not dried out.
+			if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+				do {
+					// EMIT TRANSACTION
+					sendTransaction(to, node, currentChannel, r, l, fee);
+					System.out.println("TRANSACTION ROUTED");
 
-			}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+				}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 
 
-			if (currentChannel.getCapacity()< 1){
+				if (currentChannel.getCapacity()< 1){
 
-				// congestion counter +1
-				congestion++;
-				l.setCongestedChannels(congestion);
+					// congestion counter +1
+					congestion++;
+					l.setCongestedChannels(congestion);
+				}
+			} else {
+				t[0].stop();
 			}
-		} else {
-			t[0].stop();
 		}
 
 
+		// In case node balances are negative correct values to 0
 		if (node.getBalance() < 0){
 			node.setBalance(0.0);
 		}
 	}
 
-	private Node searchPath(Node node, Node to, Load l, Node iterativeNode) {
-		iterativeNode = iterativeNode.findNode(iterativeNode, l.getRoutingTable().get(node).getId(), l.getNodes());
+	private Node searchPath(Node node, Node to, Load l, int r) {
+		boolean skip = false;
+		boolean ocurrence = false;
+		int secureId = 0;
+		Node temp = new Node();
 
-		if (checkedNodes.contains(iterativeNode)){
-			skip = true;
-		}else {
-			checkedNodes.add(iterativeNode);
-		}
-
-		if (!skip){
-
-			System.out.println("Link: Node " + iterativeNode.getId() + " - Node " + l.getRoutingTable().get(iterativeNode).getId());
-
-			if (iterativeNode.getId() == to.getId()) {
-				ocurrence = true;
-				return iterativeNode;
+		if (hops>0){
+			if (checkedPaths.contains(channel)){
+				skip = true;
+				invalidPath = true;
+				failedTransactions.add(new Transaction(node, Double.valueOf(r)));
 			}else {
-				if (!ocurrence){
-					searchPath(iterativeNode, to, l, iterativeNode);
-				}
+				// add last channel used in the list to no stop infinite recursion
+				checkedPaths.add(channel);
 			}
 		}
-		return iterativeNode;
+
+
+
+
+		if (!invalidPath){
+
+			if (!skip){
+				// for each channel of selected node
+					for (Channel c : node.getChannels()) {
+						// id from sender node
+
+						// receiver node from path route
+						temp = node.findNode(node, c.getTo(), l.getNodes());
+						channel = l.findChannel(channel, node.getId(), temp.getId());
+
+						// print the path
+						System.out.println("PATH: Node " + c.getFrom() + " - Node " + c.getTo());
+
+						// receiver node equal to destination
+						if (c.getTo() == to.getId()) {
+							secureId = c.getTo();
+							node = node.findNode(node, c.getTo(), l.getNodes());
+							ocurrence = true;
+							break;
+						}
+					}
+				}
+			hops++;
+
+			//recursive call
+			if (!ocurrence)
+				node = searchPath(temp, to, l, r);
+			}
+
+		// force the node to be the found node
+		return node;
 
 	}
 
