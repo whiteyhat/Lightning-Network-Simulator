@@ -44,23 +44,13 @@ public class Node {
         return selectedTransaction;
     }
 
-    public Node findNode(Node mynode, int id, ArrayList<Node> nodes) {
+    protected Node findNode(Node mynode, int id, ArrayList<Node> nodes) {
         for(Node node : nodes) {
             if(node.getId() == id) {
                 mynode = node;
             }
         }
         return mynode;
-    }
-
-    Channel findChannel(int id) {
-        Channel selectedChannel = null;
-        for(Channel channel : channels) {
-            if(String.valueOf(channel.getId()).equals(String.valueOf(id))) {
-                selectedChannel = channel;
-            }
-        }
-        return selectedChannel;
     }
 
     public String getAlias() {
