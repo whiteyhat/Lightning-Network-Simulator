@@ -29,7 +29,10 @@ public class Channel {
 
     }
 
-	public Channel(int parseInt, double parseDouble, int parseInt1, int parseInt2) {
+    public Channel() {
+    }
+
+    public Channel(int parseInt, double parseDouble, int parseInt1, int parseInt2) {
 	}
 
 	public int getId() {

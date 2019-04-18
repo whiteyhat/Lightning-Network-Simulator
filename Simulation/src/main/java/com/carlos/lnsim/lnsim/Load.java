@@ -138,6 +138,18 @@ public class Load {
         nodes.add(new Node(alias, Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
     }
 
+    protected Channel findChannel(Channel selectedChannel, int from, int to) {
+        for(Channel channel : channels) {
+            if(String.valueOf(channel.getFrom()).equals(String.valueOf(from)) && String.valueOf(channel.getTo()).equals(String.valueOf(to))) {
+                selectedChannel = channel;
+            }
+        }
+        return selectedChannel;
+
+
+    }
+
+
     private  void getChannels(ArrayList<Transaction> transactions, ArrayList<Channel> channels, JSONArray channelsJson, int j) {
         JSONObject channel = (JSONObject) channelsJson.get(j);
         String channelId = (String) channel.get("id");
