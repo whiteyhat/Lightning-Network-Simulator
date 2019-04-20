@@ -74,6 +74,10 @@ public class Load {
         return routingTable;
     }
 
+    public void setTrafficGenerator(TrafficGenerator trafficGenerator) {
+        this.trafficGenerator = trafficGenerator;
+    }
+
     public TrafficGenerator getTrafficGenerator() {
         return trafficGenerator;
     }
