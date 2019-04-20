@@ -20,7 +20,8 @@ public class TrafficGenerator {
 	private ArrayList<Channel> checkedPaths;
 	private ArrayList<Transaction> failedTransactions;
 	private Channel channel;
-	private int hops = 0;
+	private int hops, staticHops, routedTransactions, directTransactions = 0;
+	private double fee, feeCounter = 0;
 	private boolean invalidPath = false;
 	private TerminalColors terminalColors;
 
@@ -40,6 +41,14 @@ public class TrafficGenerator {
 		failedTransactions = new ArrayList<>();
 		transactions = new LinkedList<Transaction>() {};
 		routingtable = new HashMap<>();
+	}
+
+	public double getFeeCounter() {
+		return feeCounter;
+	}
+
+	public int getStaticHops() {
+		return staticHops;
 	}
 
 	public void setRoutingtable(HashMap<Node, Node> routingtable) {
@@ -90,9 +99,7 @@ public class TrafficGenerator {
 
 	protected void routingMechanism(Node to, Node node, Channel currentChannel, int r, Load l, Timer t[]) {
 		// declare variables to store results
-		int feeCounter = 0;
 		int congestion = 0;
-		double fee = 0.0;
 		boolean coincidence = false;
 		boolean transactionFailed = false;
 		Node destination = new Node();
@@ -135,7 +142,6 @@ public class TrafficGenerator {
 			fee = channel.getFee();
 
 			// keep track of the global fee amount
-			feeCounter += channel.getFee();
 
 
 			// if there is direct channel. No need for routinh
@@ -143,39 +149,29 @@ public class TrafficGenerator {
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"       Direct Transaction sent     "+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
-				transactions.add(new Transaction(to, Double.valueOf(r)));
-				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-					do {
-						// EMIT TRANSACTION
-						sendTransaction(to, node, currentChannel, r, l, fee);
-
-					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-				}
+				transactionPayload(to, node, currentChannel, r, l, t, congestion, false);
 			}else{
 				int track = failedTransactions.size();
 				do {
 					System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() +"---------- FINDING PATHS ----------"+ terminalColors.getStandard());
+					// Crucial path finding
 					destination = searchPath(node, to, l, r);
 					invalidPath = false;
+					staticHops += hops;
 					hops = 0;
+					feeCounter += fee;
 
+					// double check
 					if (destination.getId() == to.getId()){
-						sendTransaction(to, node, currentChannel, r, l, fee);
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +" $$$$ Routed Transaction sent $$$$ "+ terminalColors.getStandard());
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 						coincidence = true;
-						if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-							do {
-								// EMIT TRANSACTION
-								sendTransaction(to, node, currentChannel, r, l, fee);
-
-							}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-						}					}
+						transactionPayload(to, node, currentChannel, r, l, t, congestion, true);
+					}
 
 					if (track < failedTransactions.size()){
 						coincidence = true;
-						transactionFailed = true;
 						System.err.println("Transacion Failed");
 					}
 					checkedPaths.clear();
@@ -188,39 +184,58 @@ public class TrafficGenerator {
 
 		}
 
-		if (!transactionFailed){
-			// Sanity check. if emitter node has enough balance and channel capacity is not dried out.
-			if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-				do {
-					// EMIT TRANSACTION
-					sendTransaction(to, node, currentChannel, r, l, fee);
-					System.out.println("TRANSACTION ROUTED");
-
-				}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-
-
-				if (currentChannel.getCapacity()< 1){
-
-					// congestion counter +1
-					congestion++;
-					l.setCongestedChannels(congestion);
-				}
-			} else {
-				t[0].stop();
-			}
-		}
-
-
 		// In case node balances are negative correct values to 0
 		if (node.getBalance() < 0){
 			node.setBalance(0.0);
 		}
+
+		if (channel.getCapacity() < 0){
+			channel.setCapacity(0.0);
+		}
+	}
+
+	private void transactionPayload(Node to, Node node, Channel currentChannel, int r, Load l, Timer[] t,
+			int congestion, boolean isRouted) {
+		if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+			do {
+				// EMIT TRANSACTION
+				sendTransaction(to, node, currentChannel, r, l, fee);
+
+				if (isRouted){
+					routedTransactions++;
+				}else {
+					directTransactions++;
+				}
+
+			}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+
+
+			if (currentChannel.getCapacity()< 1){
+
+				// congestion counter +1
+				congestion++;
+				l.setCongestedChannels(congestion);
+			}
+		} else {
+			t[0].stop();
+		}
+	}
+
+	public int getRoutedTransactions() {
+		return routedTransactions;
+	}
+
+	public int getDirectTransactions() {
+		return directTransactions;
+	}
+
+	public TrafficGenerator(Queue<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 
 	private Node searchPath(Node node, Node to, Load l, int r) {
 		boolean skip = false;
 		boolean ocurrence = false;
-		int secureId = 0;
 		Node temp = new Node();
 
 		if (hops>0){
@@ -233,9 +248,6 @@ public class TrafficGenerator {
 				checkedPaths.add(channel);
 			}
 		}
-
-
-
 
 		if (!invalidPath){
 
@@ -253,9 +265,9 @@ public class TrafficGenerator {
 
 						// receiver node equal to destination
 						if (c.getTo() == to.getId()) {
-							secureId = c.getTo();
 							node = node.findNode(node, c.getTo(), l.getNodes());
 							ocurrence = true;
+							fee = c.getFee();
 							break;
 						}
 					}
@@ -272,10 +284,16 @@ public class TrafficGenerator {
 
 	}
 
+	public ArrayList<Transaction> getFailedTransactions() {
+		return failedTransactions;
+	}
+
 	private void sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {
 		// Set node balance
 		node.setBalance((node.getBalance() - r) - fee);
 		to.setBalance(to.getBalance() + r);
+		node = node.findNode(node, currentChannel.getFrom(), l.getNodes());
+		node.setBalance(node.getBalance()+fee);
 
 		// Set channel capacity
 		currentChannel.setCapacity(currentChannel.getCapacity() - r);
