@@ -250,11 +250,9 @@ public class TrafficGenerator {
 		}
 
 		if (!invalidPath){
-
 			if (!skip){
 				// for each channel of selected node
 					for (Channel c : node.getChannels()) {
-						// id from sender node
 
 						// receiver node from path route
 						temp = node.findNode(node, c.getTo(), l.getNodes());
@@ -281,7 +279,6 @@ public class TrafficGenerator {
 
 		// force the node to be the found node
 		return node;
-
 	}
 
 	public ArrayList<Transaction> getFailedTransactions() {
