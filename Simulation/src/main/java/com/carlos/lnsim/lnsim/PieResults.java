@@ -21,26 +21,59 @@ import org.jfree.data.general.PieDataset;
 public class PieResults extends JDialog {
 
 
-	private double totalChannels, congestedChannels;
+	private int positiveValue, negativeValue, mediumValue, type, lowchannel;
 
-	public PieResults( String title, double totalChannels, double congestedChannels ) {
-		setTitle(title);
-		this.totalChannels = totalChannels;
-		this.congestedChannels = congestedChannels;
-		setContentPane(createDemoPanel( ));
+	public PieResults( int type, int positiveValue, int negativeValue) {
+		setTitle("Lightning Network Simulator");
+		this.positiveValue = positiveValue;
+		this.negativeValue = negativeValue;
+		this.type = type;
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 	}
 
+	public void setMediumValue(int mediumValue) {
+		this.mediumValue = mediumValue;
+	}
+
+	public void setLowchannel(int lowchannel) {
+		this.lowchannel = lowchannel;
+	}
+
+
 	private PieDataset createDataset() {
 		DefaultPieDataset dataset = new DefaultPieDataset( );
-		dataset.setValue( "Congested Channels" ,  totalChannels-congestedChannels );
-		dataset.setValue( "Active Channels" , congestedChannels );
+		if (type == 1){
+			int result = positiveValue - negativeValue;
+			dataset.setValue( "Congested Channels" , negativeValue);
+			dataset.setValue( "Active Channels" , result);
+			return dataset;
+		}if (type == 2){
+			dataset.setValue( "Low Balance Nodes" , negativeValue);
+			dataset.setValue( "Medium Balance Nodes" , mediumValue);
+			dataset.setValue( "High Balance nodes" , positiveValue);
+			return dataset;
+		}if (type == 3){
+			dataset.setValue( "Failed Transactions" , negativeValue);
+			dataset.setValue( "Successful Transactions" , positiveValue);
+			return dataset;
+		}if (type == 4){
+			dataset.setValue( "Routed Transactions" , negativeValue);
+			dataset.setValue( "Direct Transactions" , positiveValue);
+			return dataset;
+		}if (type == 5){
+			dataset.setValue( "Healthy Channels" , positiveValue);
+
+			dataset.setValue( "Medium Balance Channels" , mediumValue);
+			dataset.setValue( "Low Balance Channels" , lowchannel);
+			dataset.setValue( "Congested Channels" , negativeValue);
+
+		}
 		return dataset;
 	}
 
 	private static JFreeChart createChart( PieDataset dataset ) {
 		JFreeChart chart = ChartFactory.createPieChart(
-				"Channels Analysis",   // chart title
+				"Analysis",   // chart title
 				dataset,          // data
 				true,             // include legend
 				true,
@@ -49,15 +82,11 @@ public class PieResults extends JDialog {
 		return chart;
 	}
 
-	public void setTotalChannels(double totalChannels) {
-		this.totalChannels = totalChannels;
+	protected void init(){
+		setContentPane(createDemoPanel( ));
 	}
 
-	public void setCongestedChannels(double congestedChannels) {
-		this.congestedChannels = congestedChannels;
-	}
-
-	public JPanel createDemoPanel() {
+	private JPanel createDemoPanel() {
 		JFreeChart chart = createChart(createDataset( ) );
 		return new ChartPanel( chart );
 	}
