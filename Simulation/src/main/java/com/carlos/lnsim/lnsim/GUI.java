@@ -43,7 +43,9 @@ public class GUI extends JFrame {
 	private boolean New;
 	private TrafficGenerator trafficGenerator;
 	private NetworkMapGenerator networkMapGenerator;
-	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannels;
+	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannelsLabel;
+	private ArrayList<Channel> congestedChannels;
+	private JMenuItem mi7, mi8, mi9, mi8i;
 
 	public GUI() {
 		super("Lightning Network Simulator");
@@ -51,6 +53,7 @@ public class GUI extends JFrame {
 		trafficGenerator = new TrafficGenerator();
 		networkMapGenerator = new NetworkMapGenerator();
 		New = true;
+		congestedChannels = new ArrayList<>();
 		width = new ArrayList<>();
 		height = new ArrayList<>();
 		init();
@@ -63,12 +66,12 @@ public class GUI extends JFrame {
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
+		congestedChannels = new ArrayList<>();
 		init();
 	}
 
 	private void init() {
 		JMenuBar bar = drawMenuBar(graphComponent);
-
 		JFXPanel jfxPanel = new JFXPanel();
 		getContentPane().add(jfxPanel);
 
@@ -131,19 +134,19 @@ public class GUI extends JFrame {
 				mxCell fromCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getFrom()+1));
 				mxCell toCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getTo()+1));
 
-				if (channel.getCapacity() > 80.0){
+				if (channel.getCapacity() > 100.0){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=7");
-				} else if ((channel.getCapacity() >= 70.0)&& (channel.getCapacity() <= 80.0)){
+				} else if ((channel.getCapacity() >= 80.0)&& (channel.getCapacity() <= 99.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=6");
-				} else if ((channel.getCapacity() >= 60.0)&& (channel.getCapacity() <= 79.9)){
+				} else if ((channel.getCapacity() >= 70.0)&& (channel.getCapacity() <= 79.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=5");
-				} else if ((channel.getCapacity() >= 50.0)&& (channel.getCapacity() <= 69.9)){
+				} else if ((channel.getCapacity() >= 60.0)&& (channel.getCapacity() <= 69.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=4");
 				} else if ((channel.getCapacity() >= 40.0)&& (channel.getCapacity() <= 59.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=3");
-				} else if ((channel.getCapacity() >= 30.0)&& (channel.getCapacity() <= 49.9)){
+				} else if ((channel.getCapacity() >= 20.0)&& (channel.getCapacity() <= 39.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=orange;strokeWidth=2");
-				} else if ((channel.getCapacity() >= 5.0)&& (channel.getCapacity() <= 39.9)){
+				} else if ((channel.getCapacity() >= 5.0)&& (channel.getCapacity() <= 19.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
 				}
 				//System.out.println(channel);
@@ -285,7 +288,6 @@ public class GUI extends JFrame {
 	}
 
 	private JMenuBar drawMenuBar(mxGraphComponent graphComponent) {
-
 		setLayout(new BorderLayout());
 		JMenuBar bar = new JMenuBar();
 		JMenu m1 = new JMenu("File", true);
@@ -326,10 +328,11 @@ public class GUI extends JFrame {
 		editCapacities.add(mediumCapacity);
 		editCapacities.add(highCapacity);
 
-		JMenuItem shortestPath = new JMenuItem("Shortest Path");
+		JCheckBoxMenuItem shortestPath = new JCheckBoxMenuItem("Shortest Path", true);
 		JMenuItem ANT = new JMenuItem("ANT");
+		ANT.setEnabled(false);
 		JMenuItem AMP = new JMenuItem("AMP");
-
+		AMP.setEnabled(false);
 		setRouting.add(shortestPath);
 		setRouting.add(ANT);
 		setRouting.add(AMP);
@@ -380,16 +383,45 @@ public class GUI extends JFrame {
 
 		JMenu m3 = new JMenu("Analyze", true);
 
-		JMenuItem mi7 = new JMenuItem("Channels");
+		mi7 = new JMenuItem("Channels");
 		m3.add(mi7);
-		JMenuItem mi8 = new JMenuItem("Nodes");
+		mi8i = new JMenuItem("Transactions");
+		m3.add(mi8i);
+		mi8 = new JMenuItem("Nodes");
 		m3.add(mi8);
-		JMenuItem mi9 = new JMenuItem("Routes");
+		mi9 = new JMenuItem("Routes");
 		m3.add(mi9);
+		mi7.setEnabled(false);
+		mi8.setEnabled(false);
+		mi8i.setEnabled(false);
+		mi9.setEnabled(false);
 
 		mi7.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				PieResults demo = new PieResults( "Lightning Network Simulator", Double.parseDouble(channels), Double.parseDouble(congestedChannels.getText()));
+				ArrayList<Channel> low = new ArrayList<>();
+				ArrayList<Channel> medium = new ArrayList<>();
+				ArrayList<Channel> high = new ArrayList<>();
+
+				for (Channel c : load.getChannels()) {
+					if ((c.getCapacity() >= 5.0)&& (c.getCapacity() <= 19.9)){
+						low.add(c);
+					} else if ((c.getCapacity() >= 20.0)&& (c.getCapacity() <= 69.9)){
+						medium.add(c);
+					} else  if (c.getCapacity() >= 60.0){
+						high.add(c);
+					}
+				}
+				PieResults demo1 = new PieResults( 5, high.size(), congestedChannels.size());
+				demo1.setMediumValue(medium.size());
+				demo1.setLowchannel(low.size());
+				demo1.init();
+				demo1.setSize( 560 , 367 );
+				demo1.setVisible( true );
+				demo1.setLocation(400, 500);
+
+
+				PieResults demo = new PieResults( 1, load.getChannels().size(), congestedChannels.size());
+				demo.init();
 				demo.setSize( 560 , 367 );
 				RefineryUtilities.centerFrameOnScreen( demo );
 				demo.setVisible( true );
@@ -398,13 +430,41 @@ public class GUI extends JFrame {
 
 		mi8.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				LinearResults chart = new LinearResults(
-						"Lightning Network Simulator" ,
-						"Node Analysis", load.getTrafficGenerator().getTransactions());
+				ArrayList<com.carlos.lnsim.lnsim.Node> medium = new ArrayList<>();
+				ArrayList<com.carlos.lnsim.lnsim.Node> high = new ArrayList<>();
+				ArrayList<com.carlos.lnsim.lnsim.Node> low = new ArrayList<>();
 
-				chart.pack( );
-				RefineryUtilities.centerFrameOnScreen( chart );
-				chart.setVisible( true );
+				for (com.carlos.lnsim.lnsim.Node n : load.getNodes()) {
+					if (n.getBalance() >= 200 && n.getBalance() <= 599){
+						medium.add(n);
+					}else if (n.getBalance() > 600){
+						high.add(n);
+					}else if (n.getBalance() >= 0 && n.getBalance() <= 199){
+						low.add(n);
+					}
+				}
+				PieResults demo = new PieResults( 2, high.size(), low.size());
+				demo.setMediumValue(medium.size());
+				demo.init();
+				demo.setSize( 560 , 367 );
+				RefineryUtilities.centerFrameOnScreen( demo );
+				demo.setVisible( true );
+			}
+		});
+
+		mi8i.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				PieResults demo = new PieResults( 3, load.getTrafficGenerator().getTransactions().size(), load.getFailedTransactions());
+				demo.init();
+				demo.setSize( 560 , 367 );
+				RefineryUtilities.centerFrameOnScreen( demo );
+				demo.setVisible( true );
+
+				PieResults demo1 = new PieResults( 4, trafficGenerator.getRoutedTransactions(), trafficGenerator.getDirectTransactions());
+				demo1.init();
+				demo1.setSize( 560 , 367 );
+				demo1.setVisible( true );
+				demo1.setLocation(400, 500);
 			}
 		});
 
@@ -471,8 +531,7 @@ public class GUI extends JFrame {
 
 		mi13.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-//				showWebsite(
-//						"mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK - Lightning Network Simulator&");
+				showWebsite("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK - Lightning Network Simulator&");
 
 			}
 		});
@@ -511,34 +570,24 @@ public class GUI extends JFrame {
 	}
 
 	private void stressTest(JPanel[] panel1, JProgressBar[] pbar, Timer[] timer) {
-		boolean routing = true;
 		transactionLabel = new JLabel();
 		feesLabel = new JLabel();
 		hopsLabel = new JLabel();
 		failedTransactionLabel = new JLabel();
-		congestedChannels = new JLabel();
+		congestedChannelsLabel = new JLabel();
 		resultsBar(panel1, pbar, transactionLabel, feesLabel);
 		final int[] value = { 0 };
 		int recipient = 1;
-		if (!routing){
-			// Stress test based on 1 hop transaction
-			Thread t = new Thread(new Runnable() {
-				public void run() {
-					shortestPathRoutin1Hop(recipient, timer);
-				}
-			});
 
-			t.start();
-		}else {
 			// Stress test based on multi-hop transactions
 			Thread t = new Thread(new Runnable() {
 				public void run() {
 					shortestPathRouting(recipient, timer);
+
 				}
 			});
 
 			t.start();
-		}
 
 		ActionListener actionListener = new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -550,62 +599,41 @@ public class GUI extends JFrame {
 		timer[0].start();
 	}
 
-	private void shortestPathRoutin1Hop(int recipient, Timer[] timer) {
-		int transactions = 0;
-		double feeCounter = 0;
-		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
-			com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
-			Channel currentChannel = null;
-			double fee = 0;
-			if (!node.getChannels().isEmpty()){
-				for (Channel channel : node.getChannels()) {
-					to = to.findNode(to, channel.getTo(), load.getNodes());
-					currentChannel = channel;
-					fee = channel.getFee();
-					feeCounter += channel.getFee();
-					feesLabel.setText(String.valueOf(feeCounter));
-				}
-				if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
-					do {
-						node.setBalance((node.getBalance() - recipient) - (int)fee);
-						to.setBalance(to.getBalance() + recipient);
-						currentChannel.setCapacity(currentChannel.getCapacity() - recipient);
-
-					}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
-				} else {
-					timer[0].stop();
-				}
-
-
-				if (node.getBalance() < 0){
-					node.setBalance(0.0);
-				}
-				transactionLabel.setText(String.valueOf(transactions));
-				updateGUI();
-			}
-		}
-	}
-
 	private void shortestPathRouting(int recipient, Timer[] timer) {
-		double feeCounter = 0;
-		int hops = 0;
-		int transactions = 0;
-		int congestion = 0;
-		Random rand = new Random();
-
 		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
 			com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
 			Channel currentChannel = null;
-			double fee = 0;
 			if (!node.getChannels().isEmpty()){
 
 				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, load, timer );
+
+				load.setHops(trafficGenerator.getStaticHops());
+				load.setFailedTransactions(trafficGenerator.getFailedTransactions().size());
+				load.setTrafficGenerator(trafficGenerator);
+
+				transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
+				feesLabel.setText(String.valueOf(trafficGenerator.getFeeCounter()));
+				hopsLabel.setText(String.valueOf(load.getHops()));
+				failedTransactionLabel.setText(String.valueOf(load.getFailedTransactions()));
+
 				networkMapGenerator.setSimulationCompleted(true);
 				networkMapGenerator.createNetwork();
 				//transactionLabel.setText(String.valueOf(transactions));
 				updateGUI();
 			}
 		}
+		for (Channel c : load.getChannels()) {
+			if (c.getCapacity() == 0){
+				congestedChannels.add(c);
+			}
+		}
+		load.setCongestedChannels(congestedChannels.size());
+		congestedChannelsLabel.setText(String.valueOf(congestedChannels.size()));
+
+		mi7.setEnabled(true);
+		mi8.setEnabled(true);
+		mi8i.setEnabled(true);
+		mi9.setEnabled(true);
 	}
 
 	public void setCapacities(int i, int j) {
@@ -649,7 +677,7 @@ public class GUI extends JFrame {
 		panel1[0].add(new JLabel(" Channels: ")).setFont(font);
 		panel1[0].add(new JLabel(channels));
 		panel1[0].add(new JLabel(" Congested Channels: ")).setFont(font);
-		panel1[0].add(congestedChannels);
+		panel1[0].add(congestedChannelsLabel);
 		panel1[0].add(new JLabel(" Network Balance: ")).setFont(font);
 		panel1[0].add(new JLabel(balance));
 		panel1[0].add(new JLabel(" Network Size: ")).setFont(font);
