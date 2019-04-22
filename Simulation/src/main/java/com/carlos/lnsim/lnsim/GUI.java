@@ -531,7 +531,7 @@ public class GUI extends JFrame {
 
 		mi13.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				showWebsite("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK - Lightning Network Simulator&");
+				showWebsite("mailto:car23@aber.ac.uk?cc=alg25@aber.ac.uk&subject=FEEDBACK-Lightning%20Network%20Simulator&");
 
 			}
 		});

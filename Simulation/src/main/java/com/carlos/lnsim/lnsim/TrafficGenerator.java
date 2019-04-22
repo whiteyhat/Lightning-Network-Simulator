@@ -97,7 +97,7 @@ public class TrafficGenerator {
 		return "TrafficGenerator{" + "transactions=" + transactions + '}';
 	}
 
-	protected void routingMechanism(Node to, Node node, Channel currentChannel, int r, Load l, Timer t[]) {
+	protected void routingMechanism(Node to, Node from, Channel currentChannel, int r, Load l, Timer t[]) {
 		// declare variables to store results
 		int congestion = 0;
 		boolean coincidence = false;
@@ -108,32 +108,32 @@ public class TrafficGenerator {
 		// declare randomizer
 		Random rand = new Random();
 
-		// for each channel a node has
-		for (Channel channel : node.getChannels()) {
+		// for each channel a from has
+		for (Channel channel : from.getChannels()) {
 
-			// Ensure the receiver node is not the same as the sender
+			// Ensure the receiver from is not the same as the sender
 			int receiver = rand.nextInt(l.getNodes().size());
 
 
-			if (receiver == node.getId() || receiver == 0){
+			if (receiver == from.getId() || receiver == 0){
 				do {
 					receiver = rand.nextInt(l.getNodes().size());
 
-					if (receiver != node.getId() && receiver != 0){
+					if (receiver != from.getId() && receiver != 0){
 						valid = true;
 					}
 				}while (!valid);
 
 			}
 
-			// select the destination node
+			// select the destination from
 			to = to.findNode(to, receiver, l.getNodes());
 			System.out.println();
 			System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() + "***********************************" + terminalColors.getStandard());
 			System.out.println(terminalColors.getBlackBg() + terminalColors.getGreenBg() + "          TRANSACTION              "+ terminalColors.getStandard() );
 			System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() + "***********************************"+ terminalColors.getStandard());
-			System.out.println(terminalColors.getPurple() +"Sender node: " + node.getId()+ terminalColors.getStandard());
-			System.out.println(terminalColors.getYellow() +"Receiver node: " + to.getId()+ terminalColors.getStandard());
+			System.out.println(terminalColors.getPurple() +"Sender from: " + from.getId()+ terminalColors.getStandard());
+			System.out.println(terminalColors.getYellow() +"Receiver from: " + to.getId()+ terminalColors.getStandard());
 
 			// make the current channel the one used
 			currentChannel = channel;
@@ -145,17 +145,17 @@ public class TrafficGenerator {
 
 
 			// if there is direct channel. No need for routinh
-			if (l.getRoutingTable().get(node).getId() == to.getId()){
+			if (l.getRoutingTable().get(from).getId() == to.getId()){
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"       Direct Transaction sent     "+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
-				transactionPayload(to, node, currentChannel, r, l, t, congestion, false);
+				transactionPayload(to, from, currentChannel, r, l, t, congestion, false);
 			}else{
 				int track = failedTransactions.size();
 				do {
 					System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() +"---------- FINDING PATHS ----------"+ terminalColors.getStandard());
 					// Crucial path finding
-					destination = searchPath(node, to, l, r);
+					destination = searchPath(from, to, l, r);
 					invalidPath = false;
 					staticHops += hops;
 					hops = 0;
@@ -167,7 +167,7 @@ public class TrafficGenerator {
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +" $$$$ Routed Transaction sent $$$$ "+ terminalColors.getStandard());
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 						coincidence = true;
-						transactionPayload(to, node, currentChannel, r, l, t, congestion, true);
+						transactionPayload(to, from, currentChannel, r, l, t, congestion, true);
 					}
 
 					if (track < failedTransactions.size()){
@@ -184,9 +184,9 @@ public class TrafficGenerator {
 
 		}
 
-		// In case node balances are negative correct values to 0
-		if (node.getBalance() < 0){
-			node.setBalance(0.0);
+		// In case from balances are negative correct values to 0
+		if (from.getBalance() < 0){
+			from.setBalance(0.0);
 		}
 
 		if (channel.getCapacity() < 0){
