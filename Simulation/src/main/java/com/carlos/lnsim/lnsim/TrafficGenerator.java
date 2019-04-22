@@ -18,9 +18,9 @@ public class TrafficGenerator {
 	private Queue<Transaction> transactions;
 	private HashMap<Node, Node> routingtable;
 	private ArrayList<Channel> checkedPaths;
-	private ArrayList<Transaction> failedTransactions;
+	private ArrayList<Transaction> failedTransactions, directTransactions, routedTransactions;
 	private Channel channel;
-	private int hops, staticHops, routedTransactions, directTransactions = 0;
+	private int hops, staticHops = 0;
 	private double fee, feeCounter = 0;
 	private boolean invalidPath = false;
 	private TerminalColors terminalColors;
@@ -32,6 +32,8 @@ public class TrafficGenerator {
 		failedTransactions = new ArrayList<>();
 		this.routingtable = routingtable;
 		checkedPaths = new ArrayList<>();
+		directTransactions = new ArrayList<>();
+		routedTransactions = new ArrayList<>();
 	}
 
 	public TrafficGenerator() {
@@ -41,6 +43,8 @@ public class TrafficGenerator {
 		failedTransactions = new ArrayList<>();
 		transactions = new LinkedList<Transaction>() {};
 		routingtable = new HashMap<>();
+		directTransactions = new ArrayList<>();
+		routedTransactions = new ArrayList<>();
 	}
 
 	public double getFeeCounter() {
@@ -51,16 +55,8 @@ public class TrafficGenerator {
 		return staticHops;
 	}
 
-	public void setRoutingtable(HashMap<Node, Node> routingtable) {
-		this.routingtable = routingtable;
-	}
-
 	public void setTransactions(Queue<Transaction> transactions) {
 		this.transactions = transactions;
-	}
-
-	public HashMap<Node, Node> getRoutingtable() {
-		return routingtable;
 	}
 
 	protected void addLink(Node from, Node to) {
@@ -71,26 +67,20 @@ public class TrafficGenerator {
 		transactions.add(transaction);
 	}
 
-	protected Transaction pushTransaction() {
-		return transactions.peek();
-	}
-
-	public void start(ArrayList<Channel> channels, Transaction transaction, Node node) {
-		for (Channel channel : channels) {
-			//check the availability of the channel + balance
-			if ((channel.getCapacity() <= transaction.getTokens()) && (node.getBalance() >= transaction.getTokens())) {
-				// generate transaction an remove it from the queue
-				node.newTransaction(pushTransaction());
-			}
-		}
-	}
-
 	protected int trafficSize() {
 		return transactions.size();
 	}
 
 	public Queue<Transaction> getTransactions() {
 		return transactions;
+	}
+
+	public ArrayList<Transaction> getDirectTransactions() {
+		return directTransactions;
+	}
+
+	public ArrayList<Transaction> getRoutedTransactions() {
+		return routedTransactions;
 	}
 
 	@Override public String toString() {
@@ -199,12 +189,12 @@ public class TrafficGenerator {
 		if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
 			do {
 				// EMIT TRANSACTION
-				sendTransaction(to, node, currentChannel, r, l, fee);
+				Transaction tx = sendTransaction(to, node, currentChannel, r, l, fee);
 
 				if (isRouted){
-					routedTransactions++;
+					routedTransactions.add(tx);
 				}else {
-					directTransactions++;
+					directTransactions.add(tx);
 				}
 
 			}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
@@ -219,18 +209,6 @@ public class TrafficGenerator {
 		} else {
 			t[0].stop();
 		}
-	}
-
-	public int getRoutedTransactions() {
-		return routedTransactions;
-	}
-
-	public int getDirectTransactions() {
-		return directTransactions;
-	}
-
-	public TrafficGenerator(Queue<Transaction> transactions) {
-		this.transactions = transactions;
 	}
 
 	private Node searchPath(Node node, Node to, Load l, int r) {
@@ -285,7 +263,7 @@ public class TrafficGenerator {
 		return failedTransactions;
 	}
 
-	private void sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {
+	private Transaction sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {
 		// Set node balance
 		node.setBalance((node.getBalance() - r) - fee);
 		to.setBalance(to.getBalance() + r);
@@ -295,7 +273,9 @@ public class TrafficGenerator {
 		// Set channel capacity
 		currentChannel.setCapacity(currentChannel.getCapacity() - r);
 
+		Transaction t = new Transaction(to, (double) r);
 		// add transaction to the traffic buffer
-		l.getTrafficGenerator().addTransaction(new Transaction(to, (double) r));
+		l.getTrafficGenerator().addTransaction(t);
+		return t;
 	}
 }
