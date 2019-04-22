@@ -18,11 +18,19 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
+/**
+ * Class to create an object entity to assist the creation of interactive charts for the analysis tool
+ */
 public class PieResults extends JDialog {
-
 
 	private int positiveValue, negativeValue, mediumValue, type, lowchannel;
 
+	/**
+	 * Constructor to create a Pie Results object entity with all the required parameters and methods.
+	 * @param type Analysis type
+	 * @param positiveValue Main first value to compare
+	 * @param negativeValue Main second value to compare
+	 */
 	public PieResults( int type, int positiveValue, int negativeValue) {
 		setTitle("Lightning Network Simulator");
 		this.positiveValue = positiveValue;
@@ -31,15 +39,26 @@ public class PieResults extends JDialog {
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 	}
 
+	/**
+	 * Method to set an alternative value to compare
+	 * @param mediumValue Extra value to compare
+	 */
 	public void setMediumValue(int mediumValue) {
 		this.mediumValue = mediumValue;
 	}
 
+	/**
+	 * Method to set an alternative value to compare
+	 * @param lowchannel Extra value to compare
+	 */
 	public void setLowchannel(int lowchannel) {
 		this.lowchannel = lowchannel;
 	}
 
-
+	/**
+	 * Method to create an interactive Pie Chart data set
+	 * @return the dataset created
+	 */
 	private PieDataset createDataset() {
 		DefaultPieDataset dataset = new DefaultPieDataset( );
 		if (type == 1){
@@ -71,6 +90,11 @@ public class PieResults extends JDialog {
 		return dataset;
 	}
 
+	/**
+	 * Method to create the chart using the dataset
+	 * @param dataset Dataset containing the information to represent in the chart
+	 * @return the chart to be displayed
+	 */
 	private static JFreeChart createChart( PieDataset dataset ) {
 		JFreeChart chart = ChartFactory.createPieChart(
 				"Analysis",   // chart title
@@ -82,10 +106,17 @@ public class PieResults extends JDialog {
 		return chart;
 	}
 
+	/**
+	 * Method to initialize the chart container
+	 */
 	protected void init(){
 		setContentPane(createDemoPanel( ));
 	}
 
+	/**
+	 * Method to get the frame container that contains the interactive Pie Chart
+	 * @return the frame container
+	 */
 	private JPanel createDemoPanel() {
 		JFreeChart chart = createChart(createDataset( ) );
 		return new ChartPanel( chart );

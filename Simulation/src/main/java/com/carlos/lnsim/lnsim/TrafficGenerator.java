@@ -75,16 +75,6 @@ public class TrafficGenerator {
 		return transactions.peek();
 	}
 
-	public void start(ArrayList<Channel> channels, Transaction transaction, Node node) {
-		for (Channel channel : channels) {
-			//check the availability of the channel + balance
-			if ((channel.getCapacity() <= transaction.getTokens()) && (node.getBalance() >= transaction.getTokens())) {
-				// generate transaction an remove it from the queue
-				node.newTransaction(pushTransaction());
-			}
-		}
-	}
-
 	protected int trafficSize() {
 		return transactions.size();
 	}
@@ -189,8 +179,8 @@ public class TrafficGenerator {
 			from.setBalance(0.0);
 		}
 
-		if (channel.getCapacity() < 0){
-			channel.setCapacity(0.0);
+		if (currentChannel.getCapacity() < 0){
+			currentChannel.setCapacity(0.0);
 		}
 	}
 

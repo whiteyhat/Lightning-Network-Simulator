@@ -13,37 +13,42 @@ package com.carlos.lnsim.lnsim;
 
 import java.util.ArrayList;
 
+/**
+ * Class to create object entities essential for the network component transaction
+ */
 public class Node {
-    private String alias;
     private int id;
-    private Double inboundCapacity;
-    private Double outboundCapacity;
     private Double balance;
     private ArrayList<Channel> channels;
     private ArrayList<Transaction> transactions;
 
-    public Node(String alias, int id, Double balance, ArrayList<Channel> channels, ArrayList<Transaction> transactions) {
-        this.alias = alias;
+    /**
+     * Constructor to create a Node object entity with all the required parameters and variables
+     * @param id Number to identify the node
+     * @param balance Balance to send transactions
+     * @param channels Group of node channels
+     * @param transactions Group of node transactions
+     */
+    public Node(int id, Double balance, ArrayList<Channel> channels, ArrayList<Transaction> transactions) {
         this.id = id;
         this.balance = balance;
         this.channels = channels;
         this.transactions = transactions;
     }
 
+    /**
+     * Constructor to create a Node object entity without parameters
+     */
     public Node() {
-
     }
 
-    Transaction findTransaction(int paymentRequest) {
-        Transaction selectedTransaction = null;
-        for(Transaction transaction : transactions) {
-            if(String.valueOf(transaction.getPaymentRequest()).equals(String.valueOf(paymentRequest))) {
-                selectedTransaction = transaction;
-            }
-        }
-        return selectedTransaction;
-    }
-
+    /**
+     * Method to find a node by using its id
+     * @param mynode Node to be found
+     * @param id Identification key to find the node
+     * @param nodes Array list of nodes to search the node
+     * @return The searched node
+     */
     protected Node findNode(Node mynode, int id, ArrayList<Node> nodes) {
         for(Node node : nodes) {
             if(node.getId() == id) {
@@ -53,84 +58,79 @@ public class Node {
         return mynode;
     }
 
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
+    /**
+     * Method to get the node id
+     * @return The node id
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Method to set the node id
+     * @param id Number to set the new node id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
-    public Double getInboundCapacity() {
-        return inboundCapacity;
-    }
-
-    public void setInboundCapacity(Double inboundCapacity) {
-        this.inboundCapacity = inboundCapacity;
-    }
-
-    public Double getOutboundCapacity() {
-        return outboundCapacity;
-    }
-
-    public void setOutboundCapacity(Double outboundCapacity) {
-        this.outboundCapacity = outboundCapacity;
-    }
-
+    /**
+     * Method to get the node balance
+     * @return The node balance
+     */
     public Double getBalance() {
         return balance;
     }
 
+    /**
+     * Method to set the node balance
+     * @param balance Amount of the balance node id
+     */
     public void setBalance(Double balance) {
         this.balance = balance;
     }
 
+    /**
+     * Method to get the node channels
+     * @return The list of node channels
+     */
     public ArrayList<Channel> getChannels() {
         return channels;
     }
 
+    /**
+     * Method to get the set the node channels
+     * @param channels List of the new node channels
+     */
     public void setChannels(ArrayList<Channel> channels) {
         this.channels = channels;
     }
 
+    /**
+     * Method to get the node transactions
+     * @return The list of the node transactions
+     */
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
+    /**
+     * Method to set the node transactions
+     * @param transactions list of the new node transactions
+     */
     public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
 
-    public void sendTransaction(Node to, Double amount){
-        if (getBalance() > 0 || !getChannels().isEmpty()) {
-            transactions.add(new Transaction(to, amount));
-            balance -= amount;
-            to.setBalance(to.getBalance()+amount);
-
-        }
-    }
-
+    /**
+     * Method to get a string containing the node object entities
+     * @return The variables from the node object
+     */
     @Override
     public String toString() {
         return  "Node ID: " + id + "\n" +
-                "Node Alias: " + alias + "\n" +
                 "Balance: " + balance + "\n" +
                 "Channels: " + channels + "\n" +
                 "Transactions: " + transactions;
-    }
-
-    public void newTransaction(Transaction transaction) {
-        if (getBalance() > 0 || !getChannels().isEmpty()) {
-            transactions.add(transaction);
-            balance -= transaction.getTokens();
-        }
     }
 }

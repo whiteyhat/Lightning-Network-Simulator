@@ -14,6 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Class to create object entities essential for the network component transaction
+ */
 public class Transaction {
     private String secret;
     private String paymentRequest;
@@ -22,6 +25,13 @@ public class Transaction {
     private Date expiredAt;
     private Node to;
 
+    /**
+     * Constructor to create a Transaction object entity with all the required parameters and variables.
+     * It includes accurate dates from the moment to where a transaction is created to when it is expired.
+     * A transaction expires in 1 hour by default.
+     * @param to Receiver node ID
+     * @param tokens Transaction recipient
+     */
     public Transaction(Node to, Double tokens) {
         this.secret = UUID.randomUUID().toString();
         this.paymentRequest = String.valueOf(secret.hashCode());
@@ -37,10 +47,66 @@ public class Transaction {
         this.to = to;
     }
 
+    /**
+     * Method to get the node receiver
+     * @return The receiver node ID
+     */
     public Node getTo() {
         return to;
     }
 
+    /**
+     * Method to get the transaction recipient
+     * @return The transaction recipient
+     */
+    public Double getTokens() {
+        return tokens;
+    }
+
+    /**
+     * Method to set the transaction recipient
+     * @param tokens Recipient amount
+     */
+    public void setTokens(Double tokens) {
+        this.tokens = tokens;
+    }
+
+    /**
+     * Method to get the transaction secret
+     * @return Transaction secret
+     */
+    public String getSecret() {
+        return secret;
+    }
+
+    /**
+     * Method to get the transaction payment request
+     * @return The transaction payment request
+     */
+    public String getPaymentRequest() {
+        return paymentRequest;
+    }
+
+    /**
+     * Method to get the transaction creation date
+     * @return The transaction creation date
+     */
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    /**
+     * Method to get the transaction expiration date
+     * @return The transaction expiration date
+     */
+    public Date getExpiredAt() {
+        return expiredAt;
+    }
+
+    /**
+     * Method to get a string containing the transaction object entities
+     * @return The variables from the transaction object
+     */
     @Override
     public String toString() {
         return "Transaction{" +
@@ -50,45 +116,6 @@ public class Transaction {
                 ", createdAt=" + createdAt +
                 ", expiredAt=" + expiredAt +
                 '}';
-    }
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public String getPaymentRequest() {
-        return paymentRequest;
-    }
-
-    public void setPaymentRequest(String paymentRequest) {
-        this.paymentRequest = paymentRequest;
-    }
-
-    public Double getTokens() {
-        return tokens;
-    }
-
-    public void setTokens(Double tokens) {
-        this.tokens = tokens;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getExpiredAt() {
-        return expiredAt;
-    }
-
-    public void setExpiredAt(Date expiredAt) {
-        this.expiredAt = expiredAt;
     }
 }
 

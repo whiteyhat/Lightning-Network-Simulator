@@ -82,16 +82,8 @@ public class Load {
         return trafficGenerator;
     }
 
-    public String getPath() {
-        return path;
-    }
-
     public void setPath(String path) {
         this.path = path;
-    }
-
-    public boolean isReadyToLoad() {
-        return readyToLoad;
     }
 
     public void setReadyToLoad(boolean readyToLoad) {
@@ -120,7 +112,6 @@ public class Load {
     private  void getNodes(JSONArray nodesJson, ArrayList<Transaction> transactions, ArrayList<Channel> channels, ArrayList<Node> nodes, int i) {
         JSONObject node = (JSONObject) nodesJson.get(i);
 
-        String alias = (String) node.get("alias");
         String id = (String) node.get("id");
         String balance = (String) node.get("balance");
 
@@ -139,7 +130,7 @@ public class Load {
             }
         }
 
-        nodes.add(new Node(alias, Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
+        nodes.add(new Node(Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
     }
 
     protected Channel findChannel(Channel selectedChannel, int from, int to) {
@@ -149,10 +140,7 @@ public class Load {
             }
         }
         return selectedChannel;
-
-
     }
-
 
     private  void getChannels(ArrayList<Transaction> transactions, ArrayList<Channel> channels, JSONArray channelsJson, int j) {
         JSONObject channel = (JSONObject) channelsJson.get(j);

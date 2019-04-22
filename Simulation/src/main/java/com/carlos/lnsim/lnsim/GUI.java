@@ -497,10 +497,10 @@ public class GUI extends JFrame {
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chargeSimulation(graphComponent);
-				networkMapGenerator.setNodeSize(Integer.parseInt(nodesSize[0].getText()));
+				networkMapGenerator.setNetworkSize(Integer.parseInt(nodesSize[0].getText()));
 				networkMapGenerator.setChannelsPerNode(Integer.parseInt(channelsSize[0].getText()));
 				networkMapGenerator.setLoad(load);
-				networkMapGenerator.createNetwork();
+				networkMapGenerator.createNetworkMap();
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 
@@ -617,7 +617,7 @@ public class GUI extends JFrame {
 				failedTransactionLabel.setText(String.valueOf(load.getFailedTransactions()));
 
 				networkMapGenerator.setSimulationCompleted(true);
-				networkMapGenerator.createNetwork();
+				networkMapGenerator.createNetworkMap();
 				//transactionLabel.setText(String.valueOf(transactions));
 				updateGUI();
 			}
