@@ -23,9 +23,9 @@ All the defualt networks have nodes well-connected. However, you can create a ne
 - Number of Nodes
 - Number of channels per node
 
-When a network is loaded. You can start the simulation by clicking Edit>Start and random nodes start to generate transactions along the network.
+When a network is loaded. You can start the simulation by clicking **Edit>Start** and random nodes start to generate transactions along the network.
 
-## How to get started: ##
+## Set up: ##
 
 * Get the source code.
 * Make sure you have JDK SE 8.
