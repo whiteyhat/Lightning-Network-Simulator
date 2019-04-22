@@ -33,17 +33,6 @@ public class Node {
     public Node() {
 
     }
-
-    Transaction findTransaction(int paymentRequest) {
-        Transaction selectedTransaction = null;
-        for(Transaction transaction : transactions) {
-            if(String.valueOf(transaction.getPaymentRequest()).equals(String.valueOf(paymentRequest))) {
-                selectedTransaction = transaction;
-            }
-        }
-        return selectedTransaction;
-    }
-
     protected Node findNode(Node mynode, int id, ArrayList<Node> nodes) {
         for(Node node : nodes) {
             if(node.getId() == id) {
@@ -69,21 +58,6 @@ public class Node {
         this.id = id;
     }
 
-    public Double getInboundCapacity() {
-        return inboundCapacity;
-    }
-
-    public void setInboundCapacity(Double inboundCapacity) {
-        this.inboundCapacity = inboundCapacity;
-    }
-
-    public Double getOutboundCapacity() {
-        return outboundCapacity;
-    }
-
-    public void setOutboundCapacity(Double outboundCapacity) {
-        this.outboundCapacity = outboundCapacity;
-    }
 
     public Double getBalance() {
         return balance;
@@ -109,15 +83,6 @@ public class Node {
         this.transactions = transactions;
     }
 
-    public void sendTransaction(Node to, Double amount){
-        if (getBalance() > 0 || !getChannels().isEmpty()) {
-            transactions.add(new Transaction(to, amount));
-            balance -= amount;
-            to.setBalance(to.getBalance()+amount);
-
-        }
-    }
-
     @Override
     public String toString() {
         return  "Node ID: " + id + "\n" +
@@ -125,12 +90,5 @@ public class Node {
                 "Balance: " + balance + "\n" +
                 "Channels: " + channels + "\n" +
                 "Transactions: " + transactions;
-    }
-
-    public void newTransaction(Transaction transaction) {
-        if (getBalance() > 0 || !getChannels().isEmpty()) {
-            transactions.add(transaction);
-            balance -= transaction.getTokens();
-        }
     }
 }
