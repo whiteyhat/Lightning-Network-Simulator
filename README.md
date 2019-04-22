@@ -9,7 +9,7 @@ Please, read the [Wiki](https://github.com/whiteyhat/Lightning-Network-Simulatio
 
 ## Current status
 * Simulation tool: Stable ✅
-* Analysis tool: In development
+* Analysis tool: Stable ✅
 
 ## How it works: ##
 
