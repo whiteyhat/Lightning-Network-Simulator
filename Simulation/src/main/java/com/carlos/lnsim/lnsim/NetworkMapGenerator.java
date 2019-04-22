@@ -45,10 +45,6 @@ public class NetworkMapGenerator {
 		this.channelsPerNode = channelsPerNode;
 	}
 
-	public boolean isSimulationCompleted() {
-		return simulationCompleted;
-	}
-
 	public void setSimulationCompleted(boolean simulationCompleted) {
 		this.simulationCompleted = simulationCompleted;
 	}
@@ -58,7 +54,7 @@ public class NetworkMapGenerator {
 		rand.setSeed(System.currentTimeMillis());
 //		TODO NetworkMapGenerator seed in config file to replicate scenario
 		try {
-			init(nodeSize, channelsPerNode, 2, load);
+			init(nodeSize, channelsPerNode, load.getTrafficGenerator().getTransactions().size(), load);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -108,16 +104,19 @@ public class NetworkMapGenerator {
 				channels.put("to",String.valueOf(randomNumber));
 				channels.put("capacity",String.valueOf(random.nextInt(100)));
 				channels.put("fee", String.valueOf(random.nextInt(7)));
-				for (int k = 0; k < tx ; k++) {
+
+				for (Transaction n : load.getTrafficGenerator().getTransactions()) {
 					JSONObject transaction = new JSONObject();
-					transaction.put("secret", "");
-					transaction.put("paymentRequest", "");
-					transaction.put("tokens", String.valueOf(random.nextInt(10000)));
-					transaction.put("createdAt", "");
-					transaction.put("expiredAt", "");
+					transaction.put("secret", n.getSecret());
+					transaction.put("paymentRequest", n.getPaymentRequest());
+					transaction.put("tokens", String.valueOf(n.getTokens()));
+					transaction.put("createdAt", String.valueOf(n.getCreatedAt()));
+					transaction.put("expiredAt", String.valueOf(n.getExpiredAt()));
 					transactionArray.add(transaction);
+
 				}
-				channels.put("transactions" ,transactionArray);
+					channels.put("transactions" ,transactionArray);
+
 				channelsArray.add(channels);
 			}
 			nodes.put("channels", channelsArray);

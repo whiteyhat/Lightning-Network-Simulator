@@ -38,7 +38,7 @@ public class GUI extends JFrame {
 	private static final long serialVersionUID = -708317745824467773L;
 	private Load load;
 	private ArrayList<Double> width, height;
-	private String tx, balance, size, channels;
+	private String balance, size, channels;
 	private mxGraphComponent graphComponent;
 	private boolean New;
 	private TrafficGenerator trafficGenerator;
@@ -460,7 +460,7 @@ public class GUI extends JFrame {
 				RefineryUtilities.centerFrameOnScreen( demo );
 				demo.setVisible( true );
 
-				PieResults demo1 = new PieResults( 4, trafficGenerator.getRoutedTransactions(), trafficGenerator.getDirectTransactions());
+				PieResults demo1 = new PieResults( 4, trafficGenerator.getRoutedTransactions().size(), trafficGenerator.getRoutedTransactions().size());
 				demo1.init();
 				demo1.setSize( 560 , 367 );
 				demo1.setVisible( true );
@@ -583,7 +583,6 @@ public class GUI extends JFrame {
 			Thread t = new Thread(new Runnable() {
 				public void run() {
 					shortestPathRouting(recipient, timer);
-
 				}
 			});
 
@@ -658,7 +657,6 @@ public class GUI extends JFrame {
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
 		channels = String.valueOf(load.getChannels().size());
 		size = String.valueOf(load.getNodes().size());
-		tx = String.valueOf(load.getTransactions().size());
 		Double amount = 0.00;
 		for (com.carlos.lnsim.lnsim.Node node: load.getNodes()) {
 			amount += node.getBalance();
