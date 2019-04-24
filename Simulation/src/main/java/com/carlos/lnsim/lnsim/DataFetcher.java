@@ -20,7 +20,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Load {
+/**
+ * Class to create object entities essential for the network simulation.
+ * This class is used to create data fetcher objects to load and fetch local data
+ */
+public class DataFetcher {
     private ArrayList<Transaction> transactions;
     private ArrayList<Channel> channels;
     private ArrayList<Node> nodes;
@@ -30,21 +34,29 @@ public class Load {
     private HashMap<Node, Node> routingTable;
     private int hops, congestedChannels, failedTransactions;
 
-    public Load() {
+    /**
+     * Constructor to create a data fetcher object entity with the required methods.
+     */
+    public DataFetcher() {
         try {
-            start();
-
+            Load();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void start() throws IOException, ParseException {
-        transactions = new ArrayList<Transaction>();
+    /**
+     * Method to fetch and load data from the network map into the system. By default the method searches for a
+     * JSON file named "custom.json" to fetch the local data from the network map.
+     * @throws IOException If the custom.json file is not found
+     * @throws ParseException If there is a JSON syntax issue when parsing data from the network map to the system
+     */
+    public void Load() throws IOException, ParseException {
+        transactions = new ArrayList<>();
         routingTable = new HashMap<>();
         trafficGenerator = new TrafficGenerator(routingTable);
-        channels = new ArrayList<Channel>();
-        nodes = new ArrayList<Node>();
+        channels = new ArrayList<>();
+        nodes = new ArrayList<>();
         JSONParser parser = new JSONParser();
         JSONArray nodesJson = null;
         if (readyToLoad){
@@ -70,46 +82,78 @@ public class Load {
         }
     }
 
+    /**
+     * Method to get the routing table containing all direct paths between nodes
+     * @return the routing tables
+     */
     public HashMap<Node, Node> getRoutingTable() {
         return routingTable;
     }
 
+    /**
+     * Method to set the TrafficGenerator entity object
+     * @param trafficGenerator New TrafficGenerator entity object to bet set
+     */
     public void setTrafficGenerator(TrafficGenerator trafficGenerator) {
         this.trafficGenerator = trafficGenerator;
     }
 
+    /**
+     * Method to get the TrafficGenerator entity object
+     * @return The TrafficGenerator entity object
+     */
     public TrafficGenerator getTrafficGenerator() {
         return trafficGenerator;
     }
 
-    public String getPath() {
-        return path;
-    }
-
+    /**
+     * Method to set the file path to fetch data from the network map
+     * @param path New path of the network map
+     */
     public void setPath(String path) {
         this.path = path;
     }
 
-    public boolean isReadyToLoad() {
-        return readyToLoad;
-    }
-
+    /**
+     * Method to set if the fetching data process is ready to load
+     * @param readyToLoad boolean of the loading status
+     */
     public void setReadyToLoad(boolean readyToLoad) {
         this.readyToLoad = readyToLoad;
     }
 
+    /**
+     * Method to get the transaction list
+     * @return The transaction list
+     */
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
+    /**
+     * Method to get the channel list
+     * @return The channel list
+     */
     public ArrayList<Channel> getChannels() {
         return channels;
     }
 
+    /**
+     * Method to return the node list
+     * @return The node list
+     */
     public ArrayList<Node> getNodes() {
         return nodes;
     }
 
+    /**
+     * Method to get the network map file path
+     * @param parser JSON Parser to parse the network map into the system
+     * @param path Network map file path
+     * @return The list of nodes to load them into the network simulator
+     * @throws IOException If the path is not found
+     * @throws ParseException If there is a JSON syntax issue when parsing data from the network map to the system
+     */
     private  JSONArray getJsonFile(JSONParser parser, String path) throws IOException, ParseException {
         Object obj = parser.parse(new FileReader(path));
 
@@ -117,10 +161,17 @@ public class Load {
         return (JSONArray) json.get("Nodes");
     }
 
+    /**
+     * Method to create nodes in the lightning network simulator from the network map
+     * @param nodesJson List of nodes parsed from the network map
+     * @param transactions List of transactions created in the lightning network simulator
+     * @param channels List of channels created in the lightning network simulator
+     * @param nodes List of nodes created in the lightning network simulator
+     * @param i Number to keep track of each selection
+     */
     private  void getNodes(JSONArray nodesJson, ArrayList<Transaction> transactions, ArrayList<Channel> channels, ArrayList<Node> nodes, int i) {
         JSONObject node = (JSONObject) nodesJson.get(i);
 
-        String alias = (String) node.get("alias");
         String id = (String) node.get("id");
         String balance = (String) node.get("balance");
 
@@ -139,9 +190,16 @@ public class Load {
             }
         }
 
-        nodes.add(new Node(alias, Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
+        nodes.add(new Node(Integer.parseInt(id), Double.parseDouble(balance), nodeChannels, transactions));
     }
 
+    /**
+     * Method to find a channel by using its id
+     * @param selectedChannel Channel to be found
+     * @param from Start point from the channel
+     * @param to End point from the channel
+     * @return The found channel
+     */
     protected Channel findChannel(Channel selectedChannel, int from, int to) {
         for(Channel channel : channels) {
             if(String.valueOf(channel.getFrom()).equals(String.valueOf(from)) && String.valueOf(channel.getTo()).equals(String.valueOf(to))) {
@@ -149,11 +207,15 @@ public class Load {
             }
         }
         return selectedChannel;
-
-
     }
 
-
+    /**
+     * Method to create channels in the lightning network simulator from the network map
+     * @param transactions List of transactions created in the lightning network simulator
+     * @param channels List of channels created in the lightning network simulator
+     * @param channelsJson List of channels parsed from the network map
+     * @param j Number to keep track of each selection
+     */
     private  void getChannels(ArrayList<Transaction> transactions, ArrayList<Channel> channels, JSONArray channelsJson, int j) {
         JSONObject channel = (JSONObject) channelsJson.get(j);
         String channelId = (String) channel.get("id");
@@ -181,6 +243,12 @@ public class Load {
         ));
     }
 
+    /**
+     * Method to create transactions in the lightning network simulator from the network map
+     * @param transactions List of transactions created in the lightning network simulator
+     * @param transactionsJson List of transactions parsed from the network map
+     * @param k Number to keep track of each selection
+     */
     private  void getTransactions(ArrayList<Transaction> transactions, JSONArray transactionsJson, int k) {
         JSONObject transaction = (JSONObject) transactionsJson.get(k);
 
@@ -188,26 +256,50 @@ public class Load {
 
     }
 
+    /**
+     * Method to get the amount of hops done in a routed transaction
+     * @return The number of hops
+     */
     public int getHops() {
         return hops;
     }
 
+    /**
+     * Method to get the amount of hops done in a routed transaction
+     * @param hops the new number of hops
+     */
     public void setHops(int hops) {
         this.hops = hops;
     }
 
+    /**
+     * Method to the get the number of congested channels
+     * @return The number of congested channels
+     */
     public int getCongestedChannels() {
         return congestedChannels;
     }
 
+    /**
+     * Method to set the number of congested channels
+     * @param congestedChannels the new number of congested channels
+     */
     public void setCongestedChannels(int congestedChannels) {
         this.congestedChannels = congestedChannels;
     }
 
+    /**
+     * Method to get the number of failed transactions
+     * @return The number of failed transactions
+     */
     public int getFailedTransactions() {
         return failedTransactions;
     }
 
+    /**
+     * Method to set the number of failed transactions
+     * @param failedTransactions The number of new failed transactions
+     */
     public void setFailedTransactions(int failedTransactions) {
         this.failedTransactions = failedTransactions;
     }

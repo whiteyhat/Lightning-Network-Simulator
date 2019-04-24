@@ -17,21 +17,21 @@ import static org.junit.Assert.*;
 public class AnalysisToolTests {
 
 	@Test public void manageInputSimulations() {
-		Load load = null;
+		DataFetcher dataFetcher = null;
 		System.out.println("Creating network map using the network data model syntax");
-		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, load);
+		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, dataFetcher);
 		System.out.println("Network Map created");
-		network.createNetwork();
+		network.createNetworkMap();
 		System.out.println("Loading network map into the simulation");
-		load = new Load();
+		dataFetcher = new DataFetcher();
 		System.out.println("Network loaded into the simulation");
 
 		System.out.println("Displaying simulation");
-		GUI gui = new GUI(load);
+		GUI gui = new GUI(dataFetcher);
 
 		System.out.println("Testing balance inputs from simulation");
 		gui.setBalances(3,3);
-		for (Node n : load.getNodes()) {
+		for (Node n : dataFetcher.getNodes()) {
 			assertEquals(java.util.Optional.of(3.0), n.getBalance());
 		}
 		System.out.println("Balance inputs tested");
@@ -39,7 +39,7 @@ public class AnalysisToolTests {
 		System.out.println("Testing capacity inputs from simulation");
 		gui.setCapacities(5,5);
 		Double test = 5.0;
-		for (Channel c : load.getChannels()) {
+		for (Channel c : dataFetcher.getChannels()) {
 			assertEquals(test, c.getCapacity());
 		}
 		System.out.println("Capacity inputs tested");

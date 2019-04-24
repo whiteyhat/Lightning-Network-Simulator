@@ -21,9 +21,16 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+/**
+ * Class to create an object entity to assist the creation of interactive charts for the analysis tool
+ */
 public class PlotResults extends JDialog {
 	private static final long serialVersionUID = 6294689542092367723L;
 
+	/**
+	 * Constructor to create a PlotResults object entity with all the required parameters.
+	 * @param title
+	 */
 	public PlotResults(String title) {
 		setTitle(title);
 
@@ -43,6 +50,10 @@ public class PlotResults extends JDialog {
 		setContentPane(panel);
 	}
 
+	/**
+	 * Method to create the data set from the Scatter Plot chart
+	 * @return the data set
+	 */
 	private XYDataset createDataset() {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 
@@ -77,15 +88,5 @@ public class PlotResults extends JDialog {
 		dataset.addSeries(series2);
 
 		return dataset;
-	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-			PlotResults example = new PlotResults("Scatter Chart Example");
-			example.setSize(800, 400);
-			example.setLocationRelativeTo(null);
-			example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-			example.setVisible(true);
-		});
 	}
 }

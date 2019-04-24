@@ -7,11 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/GUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/GUI.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/Load.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/Load.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/NetworkMapGenerator.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/NetworkMapGenerator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/index-files/index-10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/index-files/index-15.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/serialized-form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/DataFetcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/custom.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -51,125 +65,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="518">
+              <caret line="846" column="47" selection-start-line="846" selection-start-column="47" selection-end-line="846" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2462#2774#0" />
+                <element signature="e#2777#3050#0" />
+                <element signature="e#3053#3571#0" />
+                <element signature="e#4066#7592#0" />
+                <element signature="e#7707#8735#0" />
+                <element signature="e#7998#9993#0" />
+                <element signature="e#8575#8576#0" expanded="true" />
+                <element signature="e#8619#8620#0" expanded="true" />
+                <element signature="e#9996#10361#0" />
+                <element signature="e#11388#20188#0" />
+                <element signature="e#13389#13390#0" expanded="true" />
+                <element signature="e#13419#13420#0" expanded="true" />
+                <element signature="e#13851#13852#0" expanded="true" />
+                <element signature="e#13882#13883#0" expanded="true" />
+                <element signature="e#14005#14006#0" expanded="true" />
+                <element signature="e#14037#14038#0" expanded="true" />
+                <element signature="e#14158#14159#0" expanded="true" />
+                <element signature="e#14191#14192#0" expanded="true" />
+                <element signature="e#20267#20268#0" expanded="true" />
+                <element signature="e#20309#20310#0" expanded="true" />
+                <element signature="e#19102#19962#0" />
+                <element signature="e#19965#21388#0" />
+                <element signature="e#21391#21607#0" />
+                <element signature="e#21610#21840#0" />
+                <element signature="e#23769#25410#0" />
+                <element signature="e#23450#23602#0" />
+                <element signature="e#23605#24195#0" />
+                <element signature="e#24198#24627#0" />
+                <element signature="e#24630#24940#0" />
+                <element signature="e#24943#25356#0" />
+                <element signature="e#25359#25587#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
+            <state relative-caret-position="554">
+              <caret line="366" column="42" lean-forward="true" selection-start-line="366" selection-start-column="16" selection-end-line="366" selection-end-column="42" />
               <folding>
-                <element signature="method#TrafficGenerator#0;class#TrafficGenerator#0" />
-                <element signature="method#TrafficGenerator#1;class#TrafficGenerator#0" />
+                <element signature="e#2868#2869#0" expanded="true" />
+                <element signature="e#2907#2908#0" expanded="true" />
+                <element signature="e#3064#3065#0" expanded="true" />
+                <element signature="e#3103#3104#0" expanded="true" />
+                <element signature="e#3152#3153#0" expanded="true" />
+                <element signature="e#3178#3179#0" expanded="true" />
+                <element signature="e#3225#3226#0" expanded="true" />
+                <element signature="e#3258#3259#0" expanded="true" />
+                <element signature="e#3317#3318#0" expanded="true" />
+                <element signature="e#3353#3354#0" expanded="true" />
+                <element signature="e#3386#3387#0" expanded="true" />
+                <element signature="e#3419#3420#0" expanded="true" />
+                <element signature="e#3467#3468#0" expanded="true" />
+                <element signature="e#3493#3494#0" expanded="true" />
+                <element signature="e#4142#4143#0" expanded="true" />
+                <element signature="e#4214#4215#0" expanded="true" />
+                <element signature="method#routingMechanism#0;class#TrafficGenerator#0" />
+                <element signature="method#transactionPayload#0;class#TrafficGenerator#0" />
+                <element signature="e#9284#9285#0" expanded="true" />
+                <element signature="e#9316#9317#0" expanded="true" />
+                <element signature="e#9355#9356#0" expanded="true" />
+                <element signature="e#9387#9388#0" expanded="true" />
                 <element signature="method#searchPath#0;class#TrafficGenerator#0" />
+                <element signature="e#11255#11256#0" expanded="true" />
+                <element signature="e#11287#11288#0" expanded="true" />
+                <element signature="method#sendTransaction#0;class#TrafficGenerator#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
-              <folding>
-                <element signature="method#findNode#0;class#Node#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="107" selection-start-line="107" selection-end-line="107" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#NetworkMapGenerator#0;class#NetworkMapGenerator#0" />
-                <element signature="method#NetworkMapGenerator#1;class#NetworkMapGenerator#0" />
-                <element signature="method#NetworkMapGenerator#2;class#NetworkMapGenerator#0" />
-                <element signature="e#2109#2110#0" expanded="true" />
-                <element signature="e#2162#2163#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="24" column="45" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="617" column="36" selection-start-line="617" selection-start-column="36" selection-end-line="617" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2448#2746#0" />
-                <element signature="e#2749#2980#0" />
-                <element signature="e#2983#3501#0" />
-                <element signature="e#3504#6929#0" />
-                <element signature="e#6932#7890#0" />
-                <element signature="e#7893#9888#0" />
-                <element signature="e#9891#10249#0" />
-                <element signature="e#10252#18911#0" />
-                <element signature="e#19402#19403#0" expanded="true" />
-                <element signature="e#19452#19453#0" expanded="true" />
-                <element signature="e#21137#21346#0" />
-                <element signature="e#21349#21572#0" />
-                <element signature="e#21575#23151#0" />
-                <element signature="e#23154#23306#0" />
-                <element signature="e#23309#23892#0" />
-                <element signature="e#23895#24297#0" />
-                <element signature="e#24300#24610#0" />
-                <element signature="e#24613#25026#0" />
-                <element signature="e#25029#25257#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/custom.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13380" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="170" column="27" selection-start-line="170" selection-start-column="12" selection-end-line="170" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3157#3158#0" expanded="true" />
-                <element signature="e#3192#3193#0" expanded="true" />
-                <element signature="e#3266#3267#0" expanded="true" />
-                <element signature="e#3322#3323#0" expanded="true" />
-                <element signature="method#getJsonFile#0;class#Load#0" />
-                <element signature="method#getTransactions#1;class#Load#0" />
-              </folding>
+            <state relative-caret-position="1592">
+              <caret line="146" column="19" selection-start-line="146" selection-end-line="147" />
             </state>
           </provider>
         </entry>
@@ -186,8 +166,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>networkMapGenerator</find>
-      <find>setCapacities</find>
       <find>NetworkMapGenerator</find>
       <find>mi10.add</find>
       <find>trafficGenerator</find>
@@ -216,6 +194,8 @@
       <find>congestedCHannels</find>
       <find>Active CHa</find>
       <find>congestion</find>
+      <find>mi4</find>
+      <find>mi2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -236,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/config/custom.json" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TransactionParameters.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/AsyncTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Menu.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Results.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/FunctionalTests.java" />
@@ -248,20 +227,22 @@
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Browser.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator 2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/DataFetcher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" />
       </list>
     </option>
   </component>
@@ -296,6 +277,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -349,7 +331,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -551,7 +532,7 @@
       <workItem from="1555782321577" duration="73000" />
       <workItem from="1555794711544" duration="15000" />
       <workItem from="1555927201298" duration="2637000" />
-      <workItem from="1555961628734" duration="3401000" />
+      <workItem from="1556097511084" duration="4578000" />
     </task>
     <task id="LOCAL-00001" summary="Link to GitHub repo on Getting Started Bar Menu item">
       <created>1552934386814</created>
@@ -596,7 +577,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191247000" />
+    <option name="totallyTimeSpent" value="198015000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -611,7 +592,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4969605" visible="true" weight="0.25030527" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4969605" visible="true" weight="0.25335777" />
       <window_info id="Structure" order="1" sideWeight="0.50303954" side_tool="true" weight="0.2753358" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -620,7 +601,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5031056" side_tool="true" weight="0.2722833" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.25306123" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.25306123" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44693878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -724,7 +705,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../javafx-d3/main/java/com/carlos/lnsim/plotly/Plotly.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/HelloJGraphT.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/d3/demo/CaliforniaJson.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/plotly/PlotlyPieDemo.java" />
@@ -766,17 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="78" column="1" lean-forward="true" selection-start-line="17" selection-end-line="78" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#2670#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/FunctionalTestsTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/FunctionalTests.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/tiny.json">
@@ -787,30 +756,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/javafxd3.png" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/custom.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Browser.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="233" column="12" selection-start-line="233" selection-start-column="12" selection-end-line="233" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
-          <folding>
-            <element signature="e#1314#1326#0" expanded="true" />
-            <element signature="e#1410#1416#0" expanded="true" />
-            <element signature="e#1694#1700#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -879,69 +832,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
-          <folding>
-            <element signature="e#1870#1871#0" expanded="true" />
-            <element signature="e#1899#1900#0" expanded="true" />
-            <element signature="e#1918#1919#0" expanded="true" />
-            <element signature="e#1945#1946#0" expanded="true" />
-            <element signature="e#1962#1963#0" expanded="true" />
-            <element signature="e#1991#1992#0" expanded="true" />
-            <element signature="e#2010#2011#0" expanded="true" />
-            <element signature="e#2040#2041#0" expanded="true" />
-            <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#2088#2089#0" expanded="true" />
-            <element signature="e#2106#2107#0" expanded="true" />
-            <element signature="e#2136#2137#0" expanded="true" />
-            <element signature="e#2156#2157#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
-            <element signature="e#2235#2236#0" expanded="true" />
-            <element signature="e#2256#2257#0" expanded="true" />
-            <element signature="e#2285#2286#0" expanded="true" />
-            <element signature="e#2304#2305#0" expanded="true" />
-            <element signature="e#2335#2336#0" expanded="true" />
-            <element signature="e#2356#2357#0" expanded="true" />
-            <element signature="e#2388#2389#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
-            <element signature="e#2440#2441#0" expanded="true" />
-            <element signature="e#2460#2461#0" expanded="true" />
-            <element signature="e#2492#2493#0" expanded="true" />
-            <element signature="e#2514#2515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-          <folding>
-            <element signature="e#1879#1880#0" expanded="true" />
-            <element signature="e#1910#1911#0" expanded="true" />
-            <element signature="e#2462#2463#0" expanded="true" />
-            <element signature="e#2487#2488#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/src.zip!/javax/swing/JMenuBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,14 +876,14 @@
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/src.zip!/java/net/URI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12180">
+        <state relative-caret-position="234">
           <caret line="851" column="18" selection-start-line="851" selection-start-column="18" selection-end-line="851" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="-348">
           <caret line="39" column="37" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -997,26 +891,126 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="170" column="27" selection-start-line="170" selection-start-column="12" selection-end-line="170" selection-end-column="27" />
+        <state relative-caret-position="89">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3157#3158#0" expanded="true" />
-            <element signature="e#3192#3193#0" expanded="true" />
-            <element signature="e#3266#3267#0" expanded="true" />
-            <element signature="e#3322#3323#0" expanded="true" />
-            <element signature="method#getJsonFile#0;class#Load#0" />
-            <element signature="method#getTransactions#1;class#Load#0" />
+            <element signature="method#NetworkMapGenerator#0;class#NetworkMapGenerator#0" />
+            <element signature="method#NetworkMapGenerator#1;class#NetworkMapGenerator#0" />
+            <element signature="method#NetworkMapGenerator#2;class#NetworkMapGenerator#0" />
+            <element signature="method#writeSimulationResults#0;class#NetworkMapGenerator#0" />
+            <element signature="method#writeChannels#0;class#NetworkMapGenerator#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="46" column="37" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PieResults.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="65" column="12" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
+        <state relative-caret-position="195">
+          <caret line="21" column="10" selection-start-line="21" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/carlos/lnsim/lnsim/RoutingTable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#1314#1326#0" expanded="true" />
+            <element signature="e#1410#1416#0" expanded="true" />
+            <element signature="e#1694#1700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="30" column="11" selection-start-line="30" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="17" column="102" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="102" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/DataFetcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3841#3842#0" expanded="true" />
+            <element signature="e#3876#3877#0" expanded="true" />
+            <element signature="e#4097#4098#0" expanded="true" />
+            <element signature="e#4153#4154#0" expanded="true" />
+            <element signature="e#4206#4207#0" expanded="true" />
+            <element signature="e#4245#4246#0" expanded="true" />
+            <element signature="e#4544#4545#0" expanded="true" />
+            <element signature="e#4576#4577#0" expanded="true" />
+            <element signature="e#4631#4632#0" expanded="true" />
+            <element signature="e#4677#4678#0" expanded="true" />
+            <element signature="e#5000#5001#0" expanded="true" />
+            <element signature="e#5035#5036#0" expanded="true" />
+            <element signature="e#5176#5177#0" expanded="true" />
+            <element signature="e#5207#5208#0" expanded="true" />
+            <element signature="e#5334#5335#0" expanded="true" />
+            <element signature="e#5362#5363#0" expanded="true" />
+            <element signature="method#getJsonFile#0;class#Load#0" />
+            <element signature="method#getNodes#1;class#Load#0" />
+            <element signature="docComment;method#findChannel#0;class#DataFetcher#0" />
+            <element signature="method#findChannel#0;class#DataFetcher#0" />
+            <element signature="method#getChannels#1;class#Load#0" />
+            <element signature="docComment;method#getTransactions#1;class#DataFetcher#0" />
+            <element signature="method#getTransactions#1;class#DataFetcher#0" />
+            <element signature="e#9889#9890#0" expanded="true" />
+            <element signature="e#9916#9917#0" expanded="true" />
+            <element signature="e#10357#10358#0" expanded="true" />
+            <element signature="e#10389#10390#0" expanded="true" />
+            <element signature="e#10430#10431#0" expanded="true" />
+            <element signature="e#10470#10471#0" expanded="true" />
+            <element signature="e#10533#10534#0" expanded="true" />
+            <element signature="e#10591#10592#0" expanded="true" />
+            <element signature="e#10633#10634#0" expanded="true" />
+            <element signature="e#10674#10675#0" expanded="true" />
+            <element signature="e#10739#10740#0" expanded="true" />
+            <element signature="e#10799#10800#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1025,81 +1019,117 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="24" column="45" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="45" />
+        <state relative-caret-position="667">
+          <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#toString#0;class#Transaction#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Node.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="78" column="11" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="11" />
+        <state relative-caret-position="1110">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="30" />
           <folding>
-            <element signature="method#findNode#0;class#Node#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="617" column="36" selection-start-line="617" selection-start-column="36" selection-end-line="617" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2448#2746#0" />
-            <element signature="e#2749#2980#0" />
-            <element signature="e#2983#3501#0" />
-            <element signature="e#3504#6929#0" />
-            <element signature="e#6932#7890#0" />
-            <element signature="e#7893#9888#0" />
-            <element signature="e#9891#10249#0" />
-            <element signature="e#10252#18911#0" />
-            <element signature="e#19402#19403#0" expanded="true" />
-            <element signature="e#19452#19453#0" expanded="true" />
-            <element signature="e#21137#21346#0" />
-            <element signature="e#21349#21572#0" />
-            <element signature="e#21575#23151#0" />
-            <element signature="e#23154#23306#0" />
-            <element signature="e#23309#23892#0" />
-            <element signature="e#23895#24297#0" />
-            <element signature="e#24300#24610#0" />
-            <element signature="e#24613#25026#0" />
-            <element signature="e#25029#25257#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/config/custom.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13380" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
-          <folding>
-            <element signature="method#TrafficGenerator#0;class#TrafficGenerator#0" />
-            <element signature="method#TrafficGenerator#1;class#TrafficGenerator#0" />
-            <element signature="method#searchPath#0;class#TrafficGenerator#0" />
+            <element signature="e#1720#1721#0" expanded="true" />
+            <element signature="e#1742#1743#0" expanded="true" />
+            <element signature="e#1771#1772#0" expanded="true" />
+            <element signature="e#1790#1791#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1841#1842#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1892#1893#0" expanded="true" />
+            <element signature="e#1921#1922#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#1992#1993#0" expanded="true" />
+            <element signature="e#2025#2026#0" expanded="true" />
+            <element signature="e#2046#2047#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="554">
+          <caret line="366" column="42" lean-forward="true" selection-start-line="366" selection-start-column="16" selection-end-line="366" selection-end-column="42" />
+          <folding>
+            <element signature="e#2868#2869#0" expanded="true" />
+            <element signature="e#2907#2908#0" expanded="true" />
+            <element signature="e#3064#3065#0" expanded="true" />
+            <element signature="e#3103#3104#0" expanded="true" />
+            <element signature="e#3152#3153#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
+            <element signature="e#3225#3226#0" expanded="true" />
+            <element signature="e#3258#3259#0" expanded="true" />
+            <element signature="e#3317#3318#0" expanded="true" />
+            <element signature="e#3353#3354#0" expanded="true" />
+            <element signature="e#3386#3387#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
+            <element signature="e#3467#3468#0" expanded="true" />
+            <element signature="e#3493#3494#0" expanded="true" />
+            <element signature="e#4142#4143#0" expanded="true" />
+            <element signature="e#4214#4215#0" expanded="true" />
+            <element signature="method#routingMechanism#0;class#TrafficGenerator#0" />
+            <element signature="method#transactionPayload#0;class#TrafficGenerator#0" />
+            <element signature="e#9284#9285#0" expanded="true" />
+            <element signature="e#9316#9317#0" expanded="true" />
+            <element signature="e#9355#9356#0" expanded="true" />
+            <element signature="e#9387#9388#0" expanded="true" />
+            <element signature="method#searchPath#0;class#TrafficGenerator#0" />
+            <element signature="e#11255#11256#0" expanded="true" />
+            <element signature="e#11287#11288#0" expanded="true" />
+            <element signature="method#sendTransaction#0;class#TrafficGenerator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1592">
+          <caret line="146" column="19" selection-start-line="146" selection-end-line="147" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="846" column="47" selection-start-line="846" selection-start-column="47" selection-end-line="846" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#NetworkMapGenerator#0;class#NetworkMapGenerator#0" />
-            <element signature="method#NetworkMapGenerator#1;class#NetworkMapGenerator#0" />
-            <element signature="method#NetworkMapGenerator#2;class#NetworkMapGenerator#0" />
-            <element signature="e#2109#2110#0" expanded="true" />
-            <element signature="e#2162#2163#0" expanded="true" />
+            <element signature="e#2462#2774#0" />
+            <element signature="e#2777#3050#0" />
+            <element signature="e#3053#3571#0" />
+            <element signature="e#4066#7592#0" />
+            <element signature="e#7707#8735#0" />
+            <element signature="e#7998#9993#0" />
+            <element signature="e#8575#8576#0" expanded="true" />
+            <element signature="e#8619#8620#0" expanded="true" />
+            <element signature="e#9996#10361#0" />
+            <element signature="e#11388#20188#0" />
+            <element signature="e#13389#13390#0" expanded="true" />
+            <element signature="e#13419#13420#0" expanded="true" />
+            <element signature="e#13851#13852#0" expanded="true" />
+            <element signature="e#13882#13883#0" expanded="true" />
+            <element signature="e#14005#14006#0" expanded="true" />
+            <element signature="e#14037#14038#0" expanded="true" />
+            <element signature="e#14158#14159#0" expanded="true" />
+            <element signature="e#14191#14192#0" expanded="true" />
+            <element signature="e#20267#20268#0" expanded="true" />
+            <element signature="e#20309#20310#0" expanded="true" />
+            <element signature="e#19102#19962#0" />
+            <element signature="e#19965#21388#0" />
+            <element signature="e#21391#21607#0" />
+            <element signature="e#21610#21840#0" />
+            <element signature="e#23769#25410#0" />
+            <element signature="e#23450#23602#0" />
+            <element signature="e#23605#24195#0" />
+            <element signature="e#24198#24627#0" />
+            <element signature="e#24630#24940#0" />
+            <element signature="e#24943#25356#0" />
+            <element signature="e#25359#25587#0" />
           </folding>
         </state>
       </provider>

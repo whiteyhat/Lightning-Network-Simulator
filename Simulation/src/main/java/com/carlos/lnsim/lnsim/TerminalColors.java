@@ -10,80 +10,79 @@
 
 package com.carlos.lnsim.lnsim;
 
+/**
+ * Class to create an object entity to provide colorful messages in the terminal.
+ */
 public class TerminalColors {
 
 	private final String standard = "\u001B[0m";
 	private final String black = "\u001B[30m";
-	private final String red = "\u001B[31m";
-	private final String green = "\u001B[32m";
 	private final String yellow = "\u001B[33m";
-	private final String blue = "\u001B[34m";
 	private final String purple = "\u001B[35m";
 	private final String white = "\u001B[37m";
 
 	private final String blackBg = "\u001B[40m";
-	private final String redBg = "\u001B[41m";
 	private final String greenBg = "\u001B[42m";
-	private final String yellowBg = "\u001B[43m";
-	private final String blueBg = "\u001B[44m";
-	private final String purpleBg = "\u001B[45m";
 
+	/**
+	 *Constructor to create a TerminalColors object entity.
+	 */
 	public TerminalColors() {
 	}
 
+	/**
+	 * Method to get the standard color
+	 * @return The standard color
+	 */
 	public String getStandard() {
 		return standard;
 	}
 
+	/**
+	 * Method to get the black color
+	 * @return The black color
+	 */
 	public String getBlack() {
 		return black;
 	}
 
-	public String getRed() {
-		return red;
-	}
-
-	public String getGreen() {
-		return green;
-	}
-
+	/**
+	 * Method to get the yellow color
+	 * @return The yellow color
+	 */
 	public String getYellow() {
 		return yellow;
 	}
 
-	public String getBlue() {
-		return blue;
-	}
-
+	/**
+	 * Method to get the purple color
+	 * @return The purple color
+	 */
 	public String getPurple() {
 		return purple;
 	}
 
+	/**
+	 * Method to get the white color
+	 * @return The white color
+	 */
 	public String getWhite() {
 		return white;
 	}
 
+	/**
+	 * Method to get the black color background
+	 * @return The black color background
+	 */
 	public String getBlackBg() {
 		return blackBg;
 	}
 
-	public String getRedBg() {
-		return redBg;
-	}
-
+	/**
+	 * Method to get the black green background
+	 * @return The black color background
+	 */
 	public String getGreenBg() {
 		return greenBg;
-	}
-
-	public String getYellowBg() {
-		return yellowBg;
-	}
-
-	public String getBlueBg() {
-		return blueBg;
-	}
-
-	public String getPurpleBg() {
-		return purpleBg;
 	}
 }

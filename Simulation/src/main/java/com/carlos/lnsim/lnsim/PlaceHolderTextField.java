@@ -14,23 +14,26 @@ import javax.swing.*;
 import javax.swing.text.Document;
 import java.awt.*;
 
+/**
+ * Class to create an object entity to assist the creation of interactive charts for the analysis tool
+ */
 @SuppressWarnings("serial")
 public class PlaceHolderTextField extends JTextField {
 
-	public static void main(final String[] args) {
-		final PlaceHolderTextField tf = new PlaceHolderTextField("");
-		tf.setColumns(20);
-		tf.setPlaceholder("All your base are belong to us!");
-		final Font f = tf.getFont();
-		tf.setFont(new Font(f.getName(), f.getStyle(), 30));
-		JOptionPane.showMessageDialog(null, tf);
-	}
-
 	private String placeholder;
 
+	/**
+	 * Constructor to create a placeholder object entity without parameters.
+	 */
 	public PlaceHolderTextField() {
 	}
 
+	/**
+	 * Constructor to create a placeholder object entity with all the required parameters.
+	 * @param pDoc Document from the JTextfield
+	 * @param pText Text from the JTextfield
+	 * @param pColumns Number of columns for the JTextfield
+	 */
 	public PlaceHolderTextField(
 			final Document pDoc,
 			final String pText,
@@ -39,22 +42,35 @@ public class PlaceHolderTextField extends JTextField {
 		super(pDoc, pText, pColumns);
 	}
 
+	/**
+	 * Method to set the number of columns
+	 * @param pColumns Number of new columns
+	 */
 	public PlaceHolderTextField(final int pColumns) {
 		super(pColumns);
 	}
 
+	/**
+	 * Method to set the JTextfield text
+	 * @param pText New JTextfield text
+	 */
 	public PlaceHolderTextField(final String pText) {
 		super(pText);
 	}
 
+	/**
+	 * Method to create the place holder text field
+	 * @param pText Placeholder text to create the object entity
+	 * @param pColumns Number of columns to create the object entity
+	 */
 	public PlaceHolderTextField(final String pText, final int pColumns) {
 		super(pText, pColumns);
 	}
 
-	public String getPlaceholder() {
-		return placeholder;
-	}
-
+	/**
+	 * Method to draw and initialize the UI component. It renders the text within the text field as a hint.
+	 * @param pG Graphics object entity to set up to the JTextfield
+	 */
 	@Override
 	protected void paintComponent(final Graphics pG) {
 		super.paintComponent(pG);
@@ -72,6 +88,10 @@ public class PlaceHolderTextField extends JTextField {
 				.getMaxAscent() + getInsets().top);
 	}
 
+	/**
+	 * Method to set the placeholder text
+	 * @param s New string to replace the placeholder text
+	 */
 	public void setPlaceholder(final String s) {
 		placeholder = s;
 	}
