@@ -34,12 +34,14 @@ import com.mxgraph.util.mxDomUtils;
 import com.mxgraph.view.mxGraph;
 import org.w3c.dom.Node;
 
+/**
+ * Main Class to create the GUI object to run the Lightning Network Simulator
+ */
 public class GUI extends JFrame {
 	private static final long serialVersionUID = -708317745824467773L;
-	private Load load;
+	private DataFetcher dataFetcher;
 	private ArrayList<Double> width, height;
-	private String tx, balance, size, channels;
-	private mxGraphComponent graphComponent;
+	private String balance, size, channels;
 	private boolean New;
 	private TrafficGenerator trafficGenerator;
 	private NetworkMapGenerator networkMapGenerator;
@@ -47,9 +49,12 @@ public class GUI extends JFrame {
 	private ArrayList<Channel> congestedChannels;
 	private JMenuItem mi7, mi8, mi9, mi8i;
 
+	/**
+	 * Constructor to create a GUI object entity with all the required variables and initialization methods.
+	 */
 	public GUI() {
 		super("Lightning Network Simulator");
-		load = new Load();
+		dataFetcher = new DataFetcher();
 		trafficGenerator = new TrafficGenerator();
 		networkMapGenerator = new NetworkMapGenerator();
 		New = true;
@@ -59,10 +64,15 @@ public class GUI extends JFrame {
 		init();
 	}
 
-	public GUI(Load load) {
+	/**
+	 * Constructor to create a GUI object entity with an alternative parameter, all the required variables
+	 * abnd initialization methods.
+	 * @param dataFetcher Data fetcher object entity
+	 */
+	public GUI(DataFetcher dataFetcher) {
 		super("Lightning Network Simulator");
-		this.load = load;
-		load = new Load();
+		this.dataFetcher = dataFetcher;
+		dataFetcher = new DataFetcher();
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
@@ -70,8 +80,12 @@ public class GUI extends JFrame {
 		init();
 	}
 
+	/**
+	 * Method to initialise the GUI, the essential object entities and JavaFX resources.
+	 */
 	private void init() {
-		JMenuBar bar = drawMenuBar(graphComponent);
+		mxGraphComponent graphComponent = null;
+		JMenuBar bar = toolbarOptions(graphComponent);
 		JFXPanel jfxPanel = new JFXPanel();
 		getContentPane().add(jfxPanel);
 
@@ -87,7 +101,12 @@ public class GUI extends JFrame {
 		getContentPane().add(bar, BorderLayout.NORTH);
 	}
 
-	private mxGraphComponent drawSimulation(Load load) {
+	/**
+	 * Method to draw the network in the simulation tool
+	 * @param dataFetcher Data fetcher object entity
+	 * @return The MxGraphComponent that contains the network
+	 */
+	private mxGraphComponent drawNetwork(DataFetcher dataFetcher) {
 		Document doc = mxDomUtils.createDocument();
 
 		mxGraph graph = createGraph();
@@ -98,7 +117,7 @@ public class GUI extends JFrame {
 		try {
 
 			int i = -1;
-			for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
+			for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
 				i++;
 				if (New){
 					width.add(i, Double.valueOf(ThreadLocalRandom.current().nextInt(2, 1500 + 1)));
@@ -123,8 +142,8 @@ public class GUI extends JFrame {
 
 			}
 
-			int j = load.getNodes().size();
-			for (Channel channel: load.getChannels()) {
+			int j = dataFetcher.getNodes().size();
+			for (Channel channel: dataFetcher.getChannels()) {
 				j++;
 				Element relation = doc.createElement("Channel");
 				relation.setAttribute("capacity", String.valueOf(channel.getCapacity()));
@@ -158,10 +177,15 @@ public class GUI extends JFrame {
 			graph.getModel().endUpdate();
 		}
 
-		return editValue(graph);
+		return drawNetworkInputs(graph);
 	}
 
-	private mxGraphComponent editValue(mxGraph graph) {
+	/**
+	 * Method to draw the simulation inputs into the graph
+	 * @param graph network component where the simulation is
+	 * @return The MxGraphComponent that contains the network
+	 */
+	private mxGraphComponent drawNetworkInputs(mxGraph graph) {
 		// Overrides method to create the editing value
 		mxGraphComponent graphComponent = new mxGraphComponent(graph)
 		{
@@ -198,6 +222,10 @@ public class GUI extends JFrame {
 		return graphComponent;
 	}
 
+	/**
+	 * Method to create the graph component which contains the network
+	 * @return The network graph
+	 */
 	private mxGraph createGraph() {
 		return new mxGraph()
 			{
@@ -276,9 +304,12 @@ public class GUI extends JFrame {
 			};
 	}
 
+	/**
+	 * Method to update the simulation tool
+	 */
 	private void updateGraph() {
-		mxGraphComponent graphComponent = drawSimulation(load);
-		JMenuBar bar = drawMenuBar(graphComponent);
+		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
+		JMenuBar bar = toolbarOptions(graphComponent);
 
 		getContentPane().removeAll();
 		getContentPane().add(graphComponent, BorderLayout.CENTER);
@@ -287,7 +318,12 @@ public class GUI extends JFrame {
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
 	}
 
-	private JMenuBar drawMenuBar(mxGraphComponent graphComponent) {
+	/**
+	 * Method that draw the toolbar options and create the event listeners/
+	 * @param graphComponent MxGraphComponent that contains the network
+	 * @return The JMenubar that contains the toolbar options
+	 */
+	private JMenuBar toolbarOptions(mxGraphComponent graphComponent) {
 		setLayout(new BorderLayout());
 		JMenuBar bar = new JMenuBar();
 		JMenu m1 = new JMenu("File", true);
@@ -402,7 +438,7 @@ public class GUI extends JFrame {
 				ArrayList<Channel> medium = new ArrayList<>();
 				ArrayList<Channel> high = new ArrayList<>();
 
-				for (Channel c : load.getChannels()) {
+				for (Channel c : dataFetcher.getChannels()) {
 					if ((c.getCapacity() >= 5.0)&& (c.getCapacity() <= 19.9)){
 						low.add(c);
 					} else if ((c.getCapacity() >= 20.0)&& (c.getCapacity() <= 69.9)){
@@ -420,7 +456,7 @@ public class GUI extends JFrame {
 				demo1.setLocation(400, 500);
 
 
-				PieResults demo = new PieResults( 1, load.getChannels().size(), congestedChannels.size());
+				PieResults demo = new PieResults( 1, dataFetcher.getChannels().size(), congestedChannels.size());
 				demo.init();
 				demo.setSize( 560 , 367 );
 				RefineryUtilities.centerFrameOnScreen( demo );
@@ -434,7 +470,7 @@ public class GUI extends JFrame {
 				ArrayList<com.carlos.lnsim.lnsim.Node> high = new ArrayList<>();
 				ArrayList<com.carlos.lnsim.lnsim.Node> low = new ArrayList<>();
 
-				for (com.carlos.lnsim.lnsim.Node n : load.getNodes()) {
+				for (com.carlos.lnsim.lnsim.Node n : dataFetcher.getNodes()) {
 					if (n.getBalance() >= 200 && n.getBalance() <= 599){
 						medium.add(n);
 					}else if (n.getBalance() > 600){
@@ -454,7 +490,8 @@ public class GUI extends JFrame {
 
 		mi8i.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-				PieResults demo = new PieResults( 3, load.getTrafficGenerator().getTransactions().size(), load.getFailedTransactions());
+				PieResults demo = new PieResults( 3, dataFetcher.getTrafficGenerator().getTransactions().size(), dataFetcher
+						.getFailedTransactions());
 				demo.init();
 				demo.setSize( 560 , 367 );
 				RefineryUtilities.centerFrameOnScreen( demo );
@@ -499,13 +536,13 @@ public class GUI extends JFrame {
 				chargeSimulation(graphComponent);
 				networkMapGenerator.setNetworkSize(Integer.parseInt(nodesSize[0].getText()));
 				networkMapGenerator.setChannelsPerNode(Integer.parseInt(channelsSize[0].getText()));
-				networkMapGenerator.setLoad(load);
+				networkMapGenerator.setDataFetcher(dataFetcher);
 				networkMapGenerator.createNetworkMap();
 				restartSim(mi4, "src/main/resources/config/custom.json");
 			}
 
 			private void chargeSimulation(mxGraphComponent graphComponent) {
-				graphComponent = drawSimulation(load);
+				graphComponent = drawNetwork(dataFetcher);
 				System.out.println();
 			}
 		});
@@ -569,13 +606,19 @@ public class GUI extends JFrame {
 		return bar;
 	}
 
+	/**
+	 * Method to generate a simulates transaction stress test
+	 * @param panel1 GUI panel where the simulation results are displayed
+	 * @param pbar Progress bar that shows the progress of the simulation
+	 * @param timer Timer that counts the simulation time
+	 */
 	private void stressTest(JPanel[] panel1, JProgressBar[] pbar, Timer[] timer) {
 		transactionLabel = new JLabel();
 		feesLabel = new JLabel();
 		hopsLabel = new JLabel();
 		failedTransactionLabel = new JLabel();
 		congestedChannelsLabel = new JLabel();
-		resultsBar(panel1, pbar, transactionLabel, feesLabel);
+		drawSimulationResults(panel1, pbar, transactionLabel, feesLabel);
 		final int[] value = { 0 };
 		int recipient = 1;
 
@@ -599,22 +642,27 @@ public class GUI extends JFrame {
 		timer[0].start();
 	}
 
+	/**
+	 * Method to find the shortest path to create the transactions in the simulation
+	 * @param recipient transaction recipient
+	 * @param timer Timer that counts the simulation time
+	 */
 	private void shortestPathRouting(int recipient, Timer[] timer) {
-		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
+		for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
 			com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
 			Channel currentChannel = null;
 			if (!node.getChannels().isEmpty()){
 
-				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, load, timer );
+				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, dataFetcher, timer );
 
-				load.setHops(trafficGenerator.getStaticHops());
-				load.setFailedTransactions(trafficGenerator.getFailedTransactions().size());
-				load.setTrafficGenerator(trafficGenerator);
+				dataFetcher.setHops(trafficGenerator.getStaticHops());
+				dataFetcher.setFailedTransactions(trafficGenerator.getFailedTransactions().size());
+				dataFetcher.setTrafficGenerator(trafficGenerator);
 
 				transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
 				feesLabel.setText(String.valueOf(trafficGenerator.getFeeCounter()));
-				hopsLabel.setText(String.valueOf(load.getHops()));
-				failedTransactionLabel.setText(String.valueOf(load.getFailedTransactions()));
+				hopsLabel.setText(String.valueOf(dataFetcher.getHops()));
+				failedTransactionLabel.setText(String.valueOf(dataFetcher.getFailedTransactions()));
 
 				networkMapGenerator.setSimulationCompleted(true);
 				networkMapGenerator.createNetworkMap();
@@ -622,12 +670,12 @@ public class GUI extends JFrame {
 				updateGUI();
 			}
 		}
-		for (Channel c : load.getChannels()) {
+		for (Channel c : dataFetcher.getChannels()) {
 			if (c.getCapacity() == 0){
 				congestedChannels.add(c);
 			}
 		}
-		load.setCongestedChannels(congestedChannels.size());
+		dataFetcher.setCongestedChannels(congestedChannels.size());
 		congestedChannelsLabel.setText(String.valueOf(congestedChannels.size()));
 
 		mi7.setEnabled(true);
@@ -636,8 +684,13 @@ public class GUI extends JFrame {
 		mi9.setEnabled(true);
 	}
 
+	/**
+	 * Method to set the channel capacities
+	 * @param i start minimum range
+	 * @param j end minimum range
+	 */
 	public void setCapacities(int i, int j) {
-		for (Channel c : load.getChannels()) {
+		for (Channel c : dataFetcher.getChannels()) {
 			c.setCapacity((double) ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
 		New = false;
@@ -645,8 +698,13 @@ public class GUI extends JFrame {
 		New = true;
 	}
 
+	/**
+	 * Method to set the channel capacities
+	 * @param i start minimum range
+	 * @param j end minimum range
+	 */
 	public void setBalances(int i, int j) {
-		for (com.carlos.lnsim.lnsim.Node node : load.getNodes()) {
+		for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
 			node.setBalance(ThreadLocalRandom.current().nextDouble(i, j + 1));
 		}
 		New = false;
@@ -654,13 +712,19 @@ public class GUI extends JFrame {
 		New = true;
 	}
 
-	private void resultsBar(JPanel[] panel1, JProgressBar[] pbar, JLabel transactionLabel, JLabel feesLabel) {
+	/**
+	 * Method to draw the simulation results in the GUI
+	 * @param panel1 GUI panel where the simulation results are displayed
+	 * @param pbar Progress bar that shows the progress of the simulation
+	 * @param transactionLabel Transaction label where contains the text of the emitted transactions
+	 * @param feesLabel Transaction label where contains the text of the simulation fees
+	 */
+	private void drawSimulationResults(JPanel[] panel1, JProgressBar[] pbar, JLabel transactionLabel, JLabel feesLabel) {
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
-		channels = String.valueOf(load.getChannels().size());
-		size = String.valueOf(load.getNodes().size());
-		tx = String.valueOf(load.getTransactions().size());
+		channels = String.valueOf(dataFetcher.getChannels().size());
+		size = String.valueOf(dataFetcher.getNodes().size());
 		Double amount = 0.00;
-		for (com.carlos.lnsim.lnsim.Node node: load.getNodes()) {
+		for (com.carlos.lnsim.lnsim.Node node: dataFetcher.getNodes()) {
 			amount += node.getBalance();
 		}
 		balance = String.valueOf(amount);
@@ -691,6 +755,10 @@ public class GUI extends JFrame {
 		getContentPane().add(pbar[0], BorderLayout.SOUTH);
 	}
 
+	/**
+	 * Method to open the default web browser with a specific URL
+	 * @param s String that contains the desired URL to open in the default website
+	 */
 	private void showWebsite(String s) {
 		try {
 			Desktop.getDesktop().browse(URI.create(s));
@@ -699,11 +767,14 @@ public class GUI extends JFrame {
 		}
 	}
 
+	/**
+	 * Method to update the entire GUI
+	 */
 	public void updateGUI() {
 		// some code
 		New = false;
-		mxGraphComponent graphComponent = drawSimulation(load);
-		JMenuBar bar = drawMenuBar(graphComponent);
+		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
+		JMenuBar bar = toolbarOptions(graphComponent);
 
 		getContentPane().removeAll();
 		getContentPane().add(graphComponent, BorderLayout.CENTER);
@@ -715,26 +786,36 @@ public class GUI extends JFrame {
 
 		final JProgressBar[] pbar = { null };
 		final JPanel[] panel1 = new JPanel[1];
-		resultsBar(panel1, pbar, transactionLabel, feesLabel);
+		drawSimulationResults(panel1, pbar, transactionLabel, feesLabel);
 	}
 
+	/**
+	 * Method to restart the simulation
+	 * @param mi4 start button
+	 * @param s network map file path
+	 */
 	public void restartSim(JMenuItem mi4, String s) {
-		load.setReadyToLoad(true);
-		load.setPath(s);
+		dataFetcher.setReadyToLoad(true);
+		dataFetcher.setPath(s);
 		try {
-			load.start();
+			dataFetcher.Load();
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} catch (ParseException ex) {
 			ex.printStackTrace();
 		}
 
-		mxGraphComponent graphComponent = drawSimulation(load);
-		JMenuBar bar = drawMenuBar(graphComponent);
+		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
+		JMenuBar bar = toolbarOptions(graphComponent);
 		startSim(graphComponent, bar);
 		mi4.setEnabled(true);
 	}
 
+	/**
+	 * Method to start the simulation
+	 * @param graphComponent MxGraphComponent that contains the network
+	 * @param bar Simulation toolbar options
+	 */
 	private void startSim(mxGraphComponent graphComponent, JMenuBar bar) {
 		// add graph
 		getContentPane().removeAll();
@@ -744,6 +825,11 @@ public class GUI extends JFrame {
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
 	}
 
+	/**
+	 * Method to assist the loading process. It opens a native file chooser to allow the selection of a network map.
+	 * @param mi2 Load button
+	 * @param mi4 Start button
+	 */
 	private void chooseFile(JMenuItem mi2, JMenuItem mi4) {
 		JFileChooser chooser = new JFileChooser("src/main/resources/config");
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -756,6 +842,10 @@ public class GUI extends JFrame {
 		}
 	}
 
+	/**
+	 * Execution method that runs the Lightning Network simulator tool
+	 * @param args args to run in the execution
+	 */
 	public static void main(String[] args){
 		GUI frame = new GUI();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
