@@ -134,7 +134,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>private <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#load">load</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#dataFetcher">dataFetcher</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>private int</code></td>
@@ -172,7 +172,7 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#NetworkMapGenerator-int-int-com.carlos.lnsim.lnsim.Load-">NetworkMapGenerator</a></span>(int&nbsp;networkSize,
                    int&nbsp;channelsPerNode,
-                   <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)</code>
+                   <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)</code>
 <div class="block">Constructor to create a Network Map Generator object entity with all the required parameters.</div>
 </td>
 </tr>
@@ -214,7 +214,7 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#init-int-int-int-com.carlos.lnsim.lnsim.Load-">init</a></span>(int&nbsp;nodeSize,
     int&nbsp;channelsPerNode,
     int&nbsp;transactionSize,
-    <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)</code>
+    <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)</code>
 <div class="block">Method to write start the Network data model writing into the JSON Network Map.</div>
 </td>
 </tr>
@@ -226,8 +226,8 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#setLoad-com.carlos.lnsim.lnsim.Load-">setLoad</a></span>(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)</code>
-<div class="block">Method to set the load entity object for fetching local data from the simulation</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#setLoad-com.carlos.lnsim.lnsim.Load-">setLoad</a></span>(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)</code>
+<div class="block">Method to set the dataFetcher entity object for fetching local data from the simulation</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -255,7 +255,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>private void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#writeSimulationResults-com.carlos.lnsim.lnsim.Load-org.json.simple.JSONObject-">writeSimulationResults</a></span>(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/carlos/lnsim/lnsim/NetworkMapGenerator.html#writeSimulationResults-com.carlos.lnsim.lnsim.Load-org.json.simple.JSONObject-">writeSimulationResults</a></span>(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher,
                       org.json.simple.JSONObject&nbsp;json)</code>
 <div class="block">Method to assist the writing process of the simulation results at the end of the simulation.</div>
 </td>
@@ -316,13 +316,13 @@ extends java.lang.Object</pre>
 <pre>private&nbsp;boolean simulationCompleted</pre>
 </li>
 </ul>
-<a name="load">
+<a name="dataFetcher">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>load</h4>
-<pre>private&nbsp;<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a> load</pre>
+<h4>dataFetcher</h4>
+<pre>private&nbsp;<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a> dataFetcher</pre>
 </li>
 </ul>
 </li>
@@ -341,13 +341,13 @@ extends java.lang.Object</pre>
 <h4>NetworkMapGenerator</h4>
 <pre>public&nbsp;NetworkMapGenerator(int&nbsp;networkSize,
                            int&nbsp;channelsPerNode,
-                           <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)</pre>
+                           <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)</pre>
 <div class="block">Constructor to create a Network Map Generator object entity with all the required parameters.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>networkSize</code> - Number of nodes to generate the network map</dd>
 <dd><code>channelsPerNode</code> - Number of channels per node to generate the network map</dd>
-<dd><code>load</code> - Load object to fetch local data from the simulation</dd>
+<dd><code>dataFetcher</code> - Load object to fetch local data from the simulation</dd>
 </dl>
 </li>
 </ul>
@@ -443,11 +443,11 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setLoad</h4>
-<pre>public&nbsp;void&nbsp;setLoad(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)</pre>
-<div class="block">Method to set the load entity object for fetching local data from the simulation</div>
+<pre>public&nbsp;void&nbsp;setLoad(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)</pre>
+<div class="block">Method to set the dataFetcher entity object for fetching local data from the simulation</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>load</code> - Entity object to set the new load object</dd>
+<dd><code>dataFetcher</code> - Entity object to set the new dataFetcher object</dd>
 </dl>
 </li>
 </ul>
@@ -488,7 +488,7 @@ extends java.lang.Object</pre>
 <pre>private&nbsp;void&nbsp;init(int&nbsp;nodeSize,
                   int&nbsp;channelsPerNode,
                   int&nbsp;transactionSize,
-                  <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load)
+                  <a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher)
            throws java.io.IOException</pre>
 <div class="block">Method to write start the Network data model writing into the JSON Network Map.</div>
 <dl>
@@ -496,7 +496,7 @@ extends java.lang.Object</pre>
 <dd><code>nodeSize</code> - Number of nodes to write into the network map</dd>
 <dd><code>channelsPerNode</code> - Number of channels per node to write into the network map</dd>
 <dd><code>transactionSize</code> - Number of transactions to write into the network map</dd>
-<dd><code>load</code> - Load object to fetch local data from the simulation</dd>
+<dd><code>dataFetcher</code> - Load object to fetch local data from the simulation</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.io.IOException</code> - If the file to write the network map is not found</dd>
 </dl>
@@ -508,12 +508,12 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>writeSimulationResults</h4>
-<pre>private&nbsp;void&nbsp;writeSimulationResults(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;load,
+<pre>private&nbsp;void&nbsp;writeSimulationResults(<a href="../../../../com/carlos/lnsim/lnsim/Load.html" title="class in com.carlos.lnsim.lnsim">Load</a>&nbsp;dataFetcher,
                                     org.json.simple.JSONObject&nbsp;json)</pre>
 <div class="block">Method to assist the writing process of the simulation results at the end of the simulation.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>load</code> - Load object to fetch local data from the simulation</dd>
+<dd><code>dataFetcher</code> - Load object to fetch local data from the simulation</dd>
 <dd><code>json</code> - JSON object to write the data</dd>
 </dl>
 </li>
