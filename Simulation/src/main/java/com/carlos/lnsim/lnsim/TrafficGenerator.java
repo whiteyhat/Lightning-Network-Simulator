@@ -21,9 +21,9 @@ public class TrafficGenerator {
 	private Queue<Transaction> transactions;
 	private HashMap<Node, Node> routingtable;
 	private ArrayList<Channel> checkedPaths;
-	private ArrayList<Transaction> failedTransactions;
+	private ArrayList<Transaction> failedTransactions, directTransactions, routedTransactions;
 	private Channel channel;
-	private int hops, staticHops, routedTransactions, directTransactions = 0;
+	private int hops, staticHops = 0;
 	private double fee, feeCounter = 0;
 	private boolean invalidPath = false;
 	private TerminalColors terminalColors;
@@ -39,6 +39,8 @@ public class TrafficGenerator {
 		failedTransactions = new ArrayList<>();
 		this.routingtable = routingtable;
 		checkedPaths = new ArrayList<>();
+		directTransactions = new ArrayList<>();
+		routedTransactions = new ArrayList<>();
 	}
 
 	/**
@@ -51,6 +53,8 @@ public class TrafficGenerator {
 		failedTransactions = new ArrayList<>();
 		transactions = new LinkedList<Transaction>() {};
 		routingtable = new HashMap<>();
+		directTransactions = new ArrayList<>();
+		routedTransactions = new ArrayList<>();
 	}
 
 	/**
@@ -259,9 +263,9 @@ public class TrafficGenerator {
 				sendTransaction(to, from, currentChannel, r, l, fee);
 
 				if (isRouted){
-					routedTransactions++;
+					routedTransactions.add(tx);
 				}else {
-					directTransactions++;
+					directTransactions.add(tx);
 				}
 
 			}while ((from.getBalance() > 0) || (currentChannel.getCapacity() > 0));
@@ -377,7 +381,9 @@ public class TrafficGenerator {
 		// Set channel capacity
 		currentChannel.setCapacity(currentChannel.getCapacity() - r);
 
+		Transaction t = new Transaction(to, (double) r);
 		// add transaction to the traffic buffer
-		l.getTrafficGenerator().addTransaction(new Transaction(to, (double) r));
+		l.getTrafficGenerator().addTransaction(t);
+		return t;
 	}
 }
