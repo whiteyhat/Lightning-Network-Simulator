@@ -13,6 +13,9 @@ package com.carlos.lnsim.lnsim;
 import javax.swing.Timer;
 import java.util.*;
 
+/**
+ * Class to create object entities essential for the network component channel
+ */
 public class TrafficGenerator {
 
 	private Queue<Transaction> transactions;
@@ -25,6 +28,10 @@ public class TrafficGenerator {
 	private boolean invalidPath = false;
 	private TerminalColors terminalColors;
 
+	/**
+	 * Constructor to create a TrafficGenerator object entity with an alternative parameter and required variables.
+	 * @param routingtable
+	 */
 	public TrafficGenerator(HashMap routingtable) {
 		terminalColors = new TerminalColors();
 		channel = new Channel();
@@ -34,6 +41,9 @@ public class TrafficGenerator {
 		checkedPaths = new ArrayList<>();
 	}
 
+	/**
+	 * Constructor to create a TrafficGenerator object entity with all the required variables.
+	 */
 	public TrafficGenerator() {
 		terminalColors = new TerminalColors();
 		channel = new Channel();
@@ -43,51 +53,97 @@ public class TrafficGenerator {
 		routingtable = new HashMap<>();
 	}
 
+	/**
+	 * Method to get the fee counter
+	 * @return The number of fees
+	 */
 	public double getFeeCounter() {
 		return feeCounter;
 	}
 
+	/**
+	 * Method to the get the static number of hops
+	 * @return The number of hops
+	 */
 	public int getStaticHops() {
 		return staticHops;
 	}
 
+	/**
+	 * Method to set the routing table
+	 * @param routingtable New routing table
+	 */
 	public void setRoutingtable(HashMap<Node, Node> routingtable) {
 		this.routingtable = routingtable;
 	}
 
+	/**
+	 * Method to set the transactions
+	 * @param transactions New transaction queue
+	 */
 	public void setTransactions(Queue<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
+	/**
+	 * Method to get the routing tables
+	 * @return The routing tables
+	 */
 	public HashMap<Node, Node> getRoutingtable() {
 		return routingtable;
 	}
 
+	/**
+	 * Method to add a path in the routing tables
+	 * @param from Start point of the route
+	 * @param to End point of the route
+	 */
 	protected void addLink(Node from, Node to) {
 		routingtable.put(from, to);
 	}
 
+	/**
+	 * Method to add a transaction to the transaction queue
+	 * @param transaction New transaction to add to the queue
+	 */
 	protected void addTransaction(Transaction transaction) {
 		transactions.add(transaction);
 	}
 
-	protected Transaction pushTransaction() {
-		return transactions.peek();
-	}
-
+	/**
+	 * Method to get the traffic size of the network
+	 * @return the number of the network size
+	 */
 	protected int trafficSize() {
 		return transactions.size();
 	}
 
+	/**
+	 * Method to get the transaction queue
+	 * @return the transaction queue
+	 */
 	public Queue<Transaction> getTransactions() {
 		return transactions;
 	}
 
+	/**
+	 * Method to get a string containing the TrafficGenerator object entities
+	 * @return the TrafficGenerator object entities
+	 */
 	@Override public String toString() {
 		return "TrafficGenerator{" + "transactions=" + transactions + '}';
 	}
 
-	protected void routingMechanism(Node to, Node from, Channel currentChannel, int r, Load l, Timer t[]) {
+	/**
+	 * Fitness function. Method to route transactions
+	 * @param to Receiver node
+	 * @param from Sender node
+	 * @param currentChannel Current channel used
+	 * @param r Amount of the transaction recipient
+	 * @param l Data fetcher object entity
+	 * @param t Timer to update the GUI
+	 */
+	protected void routingMechanism(Node to, Node from, Channel currentChannel, int r, DataFetcher l, Timer t[]) {
 		// declare variables to store results
 		int congestion = 0;
 		boolean coincidence = false;
@@ -184,12 +240,23 @@ public class TrafficGenerator {
 		}
 	}
 
-	private void transactionPayload(Node to, Node node, Channel currentChannel, int r, Load l, Timer[] t,
+	/**
+	 * Method to send the transaction Payload. It contains sanity check to node balances an channel capacities.
+	 * @param to Receiver node
+	 * @param from Sender node
+	 * @param currentChannel Current channel used
+	 * @param r Amount of the transaction recipient
+	 * @param l Data fetcher object entity
+	 * @param t Timer to update the GUI
+	 * @param congestion Amount of congested channel
+	 * @param isRouted Boolean to check the transaction is routed or direct
+	 */
+	private void transactionPayload(Node to, Node from, Channel currentChannel, int r, DataFetcher l, Timer[] t,
 			int congestion, boolean isRouted) {
-		if ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
+		if ((from.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
 			do {
 				// EMIT TRANSACTION
-				sendTransaction(to, node, currentChannel, r, l, fee);
+				sendTransaction(to, from, currentChannel, r, l, fee);
 
 				if (isRouted){
 					routedTransactions++;
@@ -197,7 +264,7 @@ public class TrafficGenerator {
 					directTransactions++;
 				}
 
-			}while ((node.getBalance() > 0) || (currentChannel.getCapacity() > 0));
+			}while ((from.getBalance() > 0) || (currentChannel.getCapacity() > 0));
 
 
 			if (currentChannel.getCapacity()< 1){
@@ -211,19 +278,31 @@ public class TrafficGenerator {
 		}
 	}
 
+	/**
+	 * Method to get the routed transactions
+	 * @return The list of routed transactions
+	 */
 	public int getRoutedTransactions() {
 		return routedTransactions;
 	}
 
+	/**
+	 * Method to get the direct transactions
+	 * @return The list of direct transactions
+	 */
 	public int getDirectTransactions() {
 		return directTransactions;
 	}
 
-	public TrafficGenerator(Queue<Transaction> transactions) {
-		this.transactions = transactions;
-	}
-
-	private Node searchPath(Node node, Node to, Load l, int r) {
+	/**
+	 * Recursive method to search the path for a destination node. If a path is found it returns the destination node.
+	 * @param from Sender node
+	 * @param to Receiver node
+	 * @param l Data fetcher object entity
+	 * @param r Amount of the transaction recipient
+	 * @return The destination node
+	 */
+	private Node searchPath(Node from, Node to, DataFetcher l, int r) {
 		boolean skip = false;
 		boolean ocurrence = false;
 		Node temp = new Node();
@@ -232,7 +311,7 @@ public class TrafficGenerator {
 			if (checkedPaths.contains(channel)){
 				skip = true;
 				invalidPath = true;
-				failedTransactions.add(new Transaction(node, Double.valueOf(r)));
+				failedTransactions.add(new Transaction(from, Double.valueOf(r)));
 			}else {
 				// add last channel used in the list to no stop infinite recursion
 				checkedPaths.add(channel);
@@ -242,18 +321,18 @@ public class TrafficGenerator {
 		if (!invalidPath){
 			if (!skip){
 				// for each channel of selected node
-					for (Channel c : node.getChannels()) {
+					for (Channel c : from.getChannels()) {
 
 						// receiver node from path route
-						temp = node.findNode(node, c.getTo(), l.getNodes());
-						channel = l.findChannel(channel, node.getId(), temp.getId());
+						temp = from.findNode(from, c.getTo(), l.getNodes());
+						channel = l.findChannel(channel, from.getId(), temp.getId());
 
 						// print the path
 						System.out.println("PATH: Node " + c.getFrom() + " - Node " + c.getTo());
 
 						// receiver node equal to destination
 						if (c.getTo() == to.getId()) {
-							node = node.findNode(node, c.getTo(), l.getNodes());
+							from = from.findNode(from, c.getTo(), l.getNodes());
 							ocurrence = true;
 							fee = c.getFee();
 							break;
@@ -264,23 +343,36 @@ public class TrafficGenerator {
 
 			//recursive call
 			if (!ocurrence)
-				node = searchPath(temp, to, l, r);
+				from = searchPath(temp, to, l, r);
 			}
 
 		// force the node to be the found node
-		return node;
+		return from;
 	}
 
+	/**
+	 * Method to get the list of failed transactions
+	 * @return The list of failed transactions
+	 */
 	public ArrayList<Transaction> getFailedTransactions() {
 		return failedTransactions;
 	}
 
-	private void sendTransaction(Node to, Node node, Channel currentChannel, int r, Load l, double fee) {
+	/**
+	 * Method to send a transaction and update receiver node balance, sender node balance and channel capacity
+	 * @param to Receiver node
+	 * @param from Sender node
+	 * @param currentChannel Current channel used
+	 * @param r Amount of the transaction recipient
+	 * @param l Data fetcher object entity
+	 * @param fee Chanenl fee
+	 */
+	private void sendTransaction(Node to, Node from, Channel currentChannel, int r, DataFetcher l, double fee) {
 		// Set node balance
-		node.setBalance((node.getBalance() - r) - fee);
+		from.setBalance((from.getBalance() - r) - fee);
 		to.setBalance(to.getBalance() + r);
-		node = node.findNode(node, currentChannel.getFrom(), l.getNodes());
-		node.setBalance(node.getBalance()+fee);
+		from = from.findNode(from, currentChannel.getFrom(), l.getNodes());
+		from.setBalance(from.getBalance()+fee);
 
 		// Set channel capacity
 		currentChannel.setCapacity(currentChannel.getCapacity() - r);
