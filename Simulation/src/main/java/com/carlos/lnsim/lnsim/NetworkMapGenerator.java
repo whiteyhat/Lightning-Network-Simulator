@@ -22,18 +22,18 @@ import java.io.IOException;
 public class NetworkMapGenerator {
 	private int networkSize, channelsPerNode;
 	private boolean simulationCompleted;
-	private Load load;
+	private DataFetcher dataFetcher;
 
 	/**
 	 * Constructor to create a Network Map Generator object entity with all the required parameters.
 	 * @param networkSize Number of nodes to generate the network map
 	 * @param channelsPerNode Number of channels per node to generate the network map
-	 * @param load Load object to fetch local data from the simulation
+	 * @param dataFetcher DataFetcher object to fetch local data from the simulation
 	 */
-	public NetworkMapGenerator(int networkSize, int channelsPerNode, Load load) {
+	public NetworkMapGenerator(int networkSize, int channelsPerNode, DataFetcher dataFetcher) {
 		this.networkSize = networkSize;
 		this.channelsPerNode = channelsPerNode;
-		this.load = load;
+		this.dataFetcher = dataFetcher;
 		createNetworkMap();
 	}
 
@@ -86,18 +86,18 @@ public class NetworkMapGenerator {
 		rand.setSeed(System.currentTimeMillis());
 //		TODO NetworkMapGenerator seed in config file to replicate scenario
 		try {
-			init(networkSize, channelsPerNode, 2, load);
+			init(networkSize, channelsPerNode, 2, dataFetcher);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Method to set the load entity object for fetching local data from the simulation
-	 * @param load Entity object to set the new load object
+	 * Method to set the dataFetcher entity object for fetching local data from the simulation
+	 * @param dataFetcher Entity object to set the new dataFetcher object
 	 */
-	public void setLoad(Load load) {
-		this.load = load;
+	public void setDataFetcher(DataFetcher dataFetcher) {
+		this.dataFetcher = dataFetcher;
 	}
 
 	/**
@@ -117,14 +117,14 @@ public class NetworkMapGenerator {
 	}
 
 	/**
-	 * Method to write start the Network data model writing into the JSON Network Map.
+	 * Method to write Load the Network data model writing into the JSON Network Map.
 	 * @param nodeSize Number of nodes to write into the network map
 	 * @param channelsPerNode Number of channels per node to write into the network map
 	 * @param transactionSize Number of transactions to write into the network map
-	 * @param load Load object to fetch local data from the simulation
+	 * @param dataFetcher DataFetcher object to fetch local data from the simulation
 	 * @throws IOException If the file to write the network map is not found
 	 */
-	private void init(int nodeSize, int channelsPerNode, int transactionSize, Load load) throws IOException {
+	private void init(int nodeSize, int channelsPerNode, int transactionSize, DataFetcher dataFetcher) throws IOException {
 		JSONObject json = new JSONObject();
 		JSONArray config = new JSONArray();
 		int id = 0;
@@ -148,7 +148,7 @@ public class NetworkMapGenerator {
 
 
 		if (simulationCompleted){
-			writeSimulationResults(load, json);
+			writeSimulationResults(dataFetcher, json);
 		}
 		// try-with-resources statement based on post comment below :)
 		try (FileWriter file = new FileWriter("src/main/resources/config/custom.json")) {
@@ -158,30 +158,30 @@ public class NetworkMapGenerator {
 
 	/**
 	 * Method to assist the writing process of the simulation results at the end of the simulation.
-	 * @param load Load object to fetch local data from the simulation
+	 * @param dataFetcher DataFetcher object to fetch local data from the simulation
 	 * @param json JSON object to write the data
 	 */
-	private void writeSimulationResults(Load load, JSONObject json) {
+	private void writeSimulationResults(DataFetcher dataFetcher, JSONObject json) {
 		int networkBalance = 0;
 		int fees = 0;
-		for (Node n : load.getNodes()) {
+		for (Node n : dataFetcher.getNodes()) {
 			networkBalance += n.getBalance();
 		}
 
-		for (Channel c : load.getChannels()) {
+		for (Channel c : dataFetcher.getChannels()) {
 			fees += c.getFee();
 		}
 
 		JSONObject results = new JSONObject();
 		JSONArray resultValues = new JSONArray();
-		results.put("Transactions", String.valueOf(load.getTrafficGenerator().trafficSize()));
+		results.put("Transactions", String.valueOf(dataFetcher.getTrafficGenerator().trafficSize()));
 		results.put("Failed Transactions", "");
-		results.put("Hops", String.valueOf(load.getHops()));
+		results.put("Hops", String.valueOf(dataFetcher.getHops()));
 		results.put("Fees", String.valueOf(fees));
-		results.put("Channels", String.valueOf(load.getChannels().size()));
-		results.put("Congested Channels", load.getCongestedChannels());
+		results.put("Channels", String.valueOf(dataFetcher.getChannels().size()));
+		results.put("Congested Channels", dataFetcher.getCongestedChannels());
 		results.put("Network Balance", String.valueOf(networkBalance));
-		results.put("Network Size", String.valueOf(load.getNodes().size()));
+		results.put("Network Size", String.valueOf(dataFetcher.getNodes().size()));
 
 		resultValues.add(results);
 
@@ -221,7 +221,7 @@ public class NetworkMapGenerator {
 		for (int k = 0; k < transactionSize ; k++) {
 		}
 
-		for (Transaction t : load.getTrafficGenerator().getTransactions()) {
+		for (Transaction t : dataFetcher.getTrafficGenerator().getTransactions()) {
 			writeTransactions(transactionArray, t);
 
 		}
