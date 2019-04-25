@@ -53,7 +53,9 @@ public class GUI extends JFrame {
 	 * Constructor to create a GUI object entity with all the required variables and initialization methods.
 	 */
 	public GUI() {
+		// Edit frame title
 		super("Lightning Network Simulator");
+		// Essential object creations
 		dataFetcher = new DataFetcher();
 		trafficGenerator = new TrafficGenerator();
 		networkMapGenerator = new NetworkMapGenerator();
@@ -61,6 +63,8 @@ public class GUI extends JFrame {
 		congestedChannels = new ArrayList<>();
 		width = new ArrayList<>();
 		height = new ArrayList<>();
+
+		// Initialization method
 		init();
 	}
 
@@ -70,13 +74,18 @@ public class GUI extends JFrame {
 	 * @param dataFetcher Data fetcher object entity
 	 */
 	public GUI(DataFetcher dataFetcher) {
+		// Edit frame title
 		super("Lightning Network Simulator");
 		this.dataFetcher = dataFetcher;
+
+		// Essential object creations
 		dataFetcher = new DataFetcher();
 		New = true;
 		width = new ArrayList<>();
 		height = new ArrayList<>();
 		congestedChannels = new ArrayList<>();
+
+		// Initialization method
 		init();
 	}
 
@@ -84,7 +93,10 @@ public class GUI extends JFrame {
 	 * Method to initialise the GUI, the essential object entities and JavaFX resources.
 	 */
 	private void init() {
+		// Initialize the graph component object
 		mxGraphComponent graphComponent = null;
+
+		// Initialize the toolbar options adn event handlers
 		JMenuBar bar = toolbarOptions(graphComponent);
 		JFXPanel jfxPanel = new JFXPanel();
 		getContentPane().add(jfxPanel);
@@ -97,7 +109,7 @@ public class GUI extends JFrame {
 			webView.getEngine().load("https://github.com/whiteyhat/Lightning-Network-Simulation/wiki");
 		});
 
-
+		// Add the bar to top side of the screen
 		getContentPane().add(bar, BorderLayout.NORTH);
 	}
 
@@ -107,28 +119,41 @@ public class GUI extends JFrame {
 	 * @return The MxGraphComponent that contains the network
 	 */
 	private mxGraphComponent drawNetwork(DataFetcher dataFetcher) {
+		// create a document object as an utils helper
 		Document doc = mxDomUtils.createDocument();
 
+		// create the graph to display the network
 		mxGraph graph = createGraph();
 
+		// crete an parent object form the graph
 		Object parent = graph.getDefaultParent();
 
+		// Update the model graph
 		graph.getModel().beginUpdate();
 		try {
 
+			// Keep track of the creation starting in -1 to iterate at 0 from start
 			int i = -1;
+
+			// For each nodes in the network map draw them in the graph
 			for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
 				i++;
+
+				// If the simulation is new display the location of the network components randomly
 				if (New){
 					width.add(i, Double.valueOf(ThreadLocalRandom.current().nextInt(2, 1500 + 1)));
 					height.add(i, Double.valueOf(ThreadLocalRandom.current().nextInt(2, 780 + 1)));
 				}
 
+				// Create elements to assist node inputs visualization from the document utils helper
 				Element element = doc.createElement("Node");
+
+				// Set attributes to display them in the graph
 				element.setAttribute("ID", String.valueOf(node.getId()));
 				element.setAttribute("balance", String.valueOf(node.getBalance()));
 
-
+				// Insert nodes as graph vertexes and with the required colors based on node balances according
+				// to the design spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
 				if (node.getBalance() > 600) {
 					graph.insertVertex(parent, String.valueOf(node.getId()), element, width.get(i), height.get(i), 80, 30,
 							"ROUNDED;strokeColor=green;fillColor=green;fontColor=white");
@@ -142,17 +167,25 @@ public class GUI extends JFrame {
 
 			}
 
+
+			// Keep track of the size of the nodes
 			int j = dataFetcher.getNodes().size();
+
+			// for each channel in the fetched network map
 			for (Channel channel: dataFetcher.getChannels()) {
 				j++;
+
+				// Create elements to assist node inputs visualization from the document utils helper
 				Element relation = doc.createElement("Channel");
 				relation.setAttribute("capacity", String.valueOf(channel.getCapacity()));
 				relation.setAttribute("fee", String.valueOf(channel.getFee()));
 
-
+				// get cell(vertex) location from the graph using the nodes id
 				mxCell fromCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getFrom()+1));
 				mxCell toCell = (mxCell) ((mxGraphModel)graph.getModel()).getCell(String.valueOf(channel.getTo()+1));
 
+				// Insert channel as graph edges and with the required colors and widths based on channel capacities
+				// according to the design spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
 				if (channel.getCapacity() > 100.0){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=green;strokeWidth=7");
 				} else if ((channel.getCapacity() >= 80.0)&& (channel.getCapacity() <= 99.9)){
@@ -168,15 +201,15 @@ public class GUI extends JFrame {
 				} else if ((channel.getCapacity() >= 5.0)&& (channel.getCapacity() <= 19.9)){
 					graph.insertEdge(parent, String.valueOf(j), relation, fromCell, toCell, "ROUNDED;strokeColor=red;strokeWidth=1");
 				}
-				//System.out.println(channel);
-
 			}
 		}
 		finally
 		{
+			// Update the graph with the latest additions
 			graph.getModel().endUpdate();
 		}
 
+		// Return the graph
 		return drawNetworkInputs(graph);
 	}
 
