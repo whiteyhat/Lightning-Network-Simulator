@@ -269,7 +269,7 @@ public class TrafficGenerator {
 		if ((from.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
 			do {
 				// EMIT TRANSACTION
-				sendTransaction(to, from, currentChannel, r, l, fee);
+				Transaction tx = sendTransaction(to, from, currentChannel, r, l, fee);
 
 				if (isRouted){
 					routedTransactions.add(tx);
@@ -295,7 +295,7 @@ public class TrafficGenerator {
 	 * Method to get the routed transactions
 	 * @return The list of routed transactions
 	 */
-	public int getRoutedTransactions() {
+	public ArrayList<Transaction> getRoutedTransactions() {
 		return routedTransactions;
 	}
 
@@ -303,7 +303,7 @@ public class TrafficGenerator {
 	 * Method to get the direct transactions
 	 * @return The list of direct transactions
 	 */
-	public int getDirectTransactions() {
+	public ArrayList<Transaction> getDirectTransactions() {
 		return directTransactions;
 	}
 
@@ -390,7 +390,7 @@ public class TrafficGenerator {
 	 * @param l Data fetcher object entity
 	 * @param fee Chanenl fee
 	 */
-	private void sendTransaction(Node to, Node from, Channel currentChannel, int r, DataFetcher l, double fee) {
+	private Transaction sendTransaction(Node to, Node from, Channel currentChannel, int r, DataFetcher l, double fee) {
 		// Set node balance
 		from.setBalance((from.getBalance() - r) - fee);
 		to.setBalance(to.getBalance() + r);

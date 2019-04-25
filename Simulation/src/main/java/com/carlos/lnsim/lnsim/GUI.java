@@ -226,16 +226,20 @@ public class GUI extends JFrame {
 
 			public String getEditingValue(Object cell, EventObject trigger)
 			{
+				// for each UI component in the simulation
 				if (cell instanceof mxCell)
 				{
 					Object value = ((mxCell) cell).getValue();
 
+					// if the cell has an element value
 					if (value instanceof Element)
 					{
 						Element elt = (Element) value;
 
+						// if the element value is a node
 						if (elt.getTagName().equalsIgnoreCase("Node"))
 						{
+							// display the node ID and balance
 							String firstName = elt.getAttribute("ID");
 							String lastName = elt.getAttribute("balance");
 
@@ -244,6 +248,7 @@ public class GUI extends JFrame {
 					}
 				}
 
+				// edits the cell
 				return super.getEditingValue(cell, trigger);
 			};
 
@@ -271,24 +276,29 @@ public class GUI extends JFrame {
 				// Overrides method to provide a cell label in the display
 				public String convertValueToString(Object cell)
 				{
+					// for each UI component in the simulation
 					if (cell instanceof mxCell)
 					{
 						Object value = ((mxCell) cell).getValue();
 
+						// if the cell has an element value
 						if (value instanceof Element)
 						{
 							Element elt = (Element) value;
 
+							// if the element value is a node
 							if (elt.getTagName().equalsIgnoreCase("Node"))
 							{
+								// return the node ID and balance
 								String firstName = elt.getAttribute("ID");
 								String lastName = elt.getAttribute("balance");
 
-
 								return "ID: " + firstName + "\n Balance: " + lastName;
 							}
+							// if the element value is a channel
 							else if (elt.getTagName().equalsIgnoreCase("Channel"))
 							{
+								// return the channel capacity and fee
 								return " Capacity: "
 										+ elt.getAttribute("capacity") + " \nFee: " + elt.getAttribute("fee");
 							}
@@ -296,6 +306,7 @@ public class GUI extends JFrame {
 						}
 					}
 
+					// convert the value to the string to be able to display it in the graph
 					return super.convertValueToString(cell);
 				}
 
@@ -341,12 +352,19 @@ public class GUI extends JFrame {
 	 * Method to update the simulation tool
 	 */
 	private void updateGraph() {
+		// get the graph component when the network is drawn
 		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
+
+		// get the toolbar options
 		JMenuBar bar = toolbarOptions(graphComponent);
 
+		// Remove all of  the UI components from the frame
 		getContentPane().removeAll();
+
+		// Add the graph component and the toolbar options
 		getContentPane().add(graphComponent, BorderLayout.CENTER);
 		getContentPane().add(bar,BorderLayout.NORTH);
+
 		// refresh the GUI
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
 	}
@@ -357,59 +375,143 @@ public class GUI extends JFrame {
 	 * @return The JMenubar that contains the toolbar options
 	 */
 	private JMenuBar toolbarOptions(mxGraphComponent graphComponent) {
+		// Set up the layout
 		setLayout(new BorderLayout());
+
+		// Create thee toolbar opetions
 		JMenuBar bar = new JMenuBar();
+
+		// Create the 1st level menu
 		JMenu m1 = new JMenu("File", true);
+
+		// create menu items
 		JMenuItem mi1 = new JMenuItem("New");
 
 		JMenuItem mi2 = new JMenuItem("Load");
+
+		// add menu items to 1st menu level
 		m1.add(mi1);
 		m1.add(mi2);
-		// add 4 items to menu 2
+
+		// Create the 2nd level menu
 		JMenu m2 = new JMenu("Edit", true);
+
+		// Create the 3rd level menu
 		JMenu editBalances = new JMenu("Set Balances", true);
 		JMenu editCapacities = new JMenu("Set Capacities", true);
 		JMenu setRouting = new JMenu("Set Routing", true);
 
+		// create menu items
 		JMenuItem mi4 = new JMenuItem("Start");
-		mi4.setEnabled(true);
+
+		// add menu items to 2nd menu level
 		m2.add(mi4);
+
+		// Create the 3rd level menu
+		JMenuItem lowBalances = new JMenuItem("Low");
+		JMenuItem mediumBalances = new JMenuItem("Medium");
+		JMenuItem highBalances = new JMenuItem("High");
+
+		// add menu items to 3rd menu level
+		editBalances.add(lowBalances);
+		editBalances.add(mediumBalances);
+		editBalances.add(highBalances);
+
+		// Create the 3rd level menu
+		JMenuItem lowCapacity = new JMenuItem("Low");
+		JMenuItem mediumCapacity = new JMenuItem("Medium");
+		JMenuItem highCapacity = new JMenuItem("High");
+
+		// add menu items to 3rd menu level
+		editCapacities.add(lowCapacity);
+		editCapacities.add(mediumCapacity);
+		editCapacities.add(highCapacity);
+
+		// Create the 3rd level menu
+		JCheckBoxMenuItem shortestPath = new JCheckBoxMenuItem("Shortest Path", true);
+
+		// create menu items
+		JMenuItem ANT = new JMenuItem("ANT");
+		JMenuItem AMP = new JMenuItem("AMP");
+		ANT.setEnabled(false);
+		AMP.setEnabled(false);
+
+		// add menu items to 3rd menu level
+		setRouting.add(shortestPath);
+		setRouting.add(ANT);
+		setRouting.add(AMP);
+
+		// Add toolbar separator
+		m2.addSeparator();
+
+		// add menu items to 2nd menu level
+		m2.add(editBalances);
+		m2.add(editCapacities);
+		m2.add(setRouting);
+
+		// Create the 1st level menu
+		JMenu m3 = new JMenu("Analyze", true);
+
+		// create menu items
+		mi7 = new JMenuItem("Channels");
+		mi8i = new JMenuItem("Transactions");
+		mi8 = new JMenuItem("Nodes");
+		mi9 = new JMenuItem("Routes");
+		mi7.setEnabled(false);
+		mi8.setEnabled(false);
+		mi8i.setEnabled(false);
+		mi9.setEnabled(false);
+
+		// add menu items to 1st menu level
+		m3.add(mi9);
+		m3.add(mi7);
+		m3.add(mi8i);
+		m3.add(mi8);
+
+		// Create the 1st level menu
+		JMenu m4 = new JMenu("Help", true);
+
+		// create menu items
+		JMenuItem mi10 = new JMenuItem("Getting Started");
+		JMenuItem mi11 = new JMenuItem("What's Lightning Network");
+		JMenuItem mi12 = new JMenuItem("Submit a bug report");
+		JMenuItem mi13 = new JMenuItem("Submit feedback");
+
+		// add menu items to 1st menu level
+		m4.add(mi10);
+		m4.add(mi11);
+		m4.add(mi12);
+		m4.add(mi13);
+
+
+		// add two menus to bar
+		bar.add(m1);
+		bar.add(m2);
+		bar.add(m3);
+		bar.add(m4);
+
+		// Create runneable variables for the start event handler
+
+		final Timer[] timer = { null };
+		final JProgressBar[] pbar = { null };
+		final JPanel[] panel1 = new JPanel[1];
+		final JPanel[] panel = new JPanel[1];
+
+		final PlaceHolderTextField[] nodesSize = new PlaceHolderTextField[1];
+		final PlaceHolderTextField[] channelsSize = new PlaceHolderTextField[1];
+
+		JButton start = new JButton("Start");
+
+		//*********************************************************************
+		//                     E V E N T      H A N D L E R S
+		//*********************************************************************
+
 		mi2.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chooseFile(mi2, mi4);
 				mi4.setEnabled(true);
 			}
 		});
-
-		JMenuItem lowBalances = new JMenuItem("Low");
-		JMenuItem mediumBalances = new JMenuItem("Medium");
-		JMenuItem highBalances = new JMenuItem("High");
-
-		editBalances.add(lowBalances);
-		editBalances.add(mediumBalances);
-		editBalances.add(highBalances);
-
-		JMenuItem lowCapacity = new JMenuItem("Low");
-		JMenuItem mediumCapacity = new JMenuItem("Medium");
-		JMenuItem highCapacity = new JMenuItem("High");
-
-		editCapacities.add(lowCapacity);
-		editCapacities.add(mediumCapacity);
-		editCapacities.add(highCapacity);
-
-		JCheckBoxMenuItem shortestPath = new JCheckBoxMenuItem("Shortest Path", true);
-		JMenuItem ANT = new JMenuItem("ANT");
-		ANT.setEnabled(false);
-		JMenuItem AMP = new JMenuItem("AMP");
-		AMP.setEnabled(false);
-		setRouting.add(shortestPath);
-		setRouting.add(ANT);
-		setRouting.add(AMP);
-
-		m2.addSeparator();
-		m2.add(editBalances);
-		m2.add(editCapacities);
-		m2.add(setRouting);
 
 		lowBalances.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -449,21 +551,6 @@ public class GUI extends JFrame {
 				setCapacities(69, 500);
 			}
 		});
-
-		JMenu m3 = new JMenu("Analyze", true);
-
-		mi7 = new JMenuItem("Channels");
-		m3.add(mi7);
-		mi8i = new JMenuItem("Transactions");
-		m3.add(mi8i);
-		mi8 = new JMenuItem("Nodes");
-		m3.add(mi8);
-		mi9 = new JMenuItem("Routes");
-		m3.add(mi9);
-		mi7.setEnabled(false);
-		mi8.setEnabled(false);
-		mi8i.setEnabled(false);
-		mi9.setEnabled(false);
 
 		mi7.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -538,32 +625,6 @@ public class GUI extends JFrame {
 			}
 		});
 
-		JMenu m4 = new JMenu("Help", true);
-
-		JMenuItem mi10 = new JMenuItem("Getting Started");
-		m4.add(mi10);
-		JMenuItem mi11 = new JMenuItem("What's Lightning Network");
-		m4.add(mi11);
-		JMenuItem mi12 = new JMenuItem("Submit a bug report");
-		m4.add(mi12);
-		JMenuItem mi13 = new JMenuItem("Submit feedback");
-		m4.add(mi13);
-
-		// add two menus to bar
-		bar.add(m1);
-		bar.add(m2);
-		bar.add(m3);
-		bar.add(m4);
-
-		final Timer[] timer = { null };
-		final JProgressBar[] pbar = { null };
-		final JPanel[] panel1 = new JPanel[1];
-		final JPanel[] panel = new JPanel[1];
-
-		final PlaceHolderTextField[] nodesSize = new PlaceHolderTextField[1];
-		final PlaceHolderTextField[] channelsSize = new PlaceHolderTextField[1];
-
-		JButton start = new JButton("Start");
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
 				chargeSimulation(graphComponent);
@@ -579,7 +640,6 @@ public class GUI extends JFrame {
 				System.out.println();
 			}
 		});
-
 
 		mi10.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -611,21 +671,7 @@ public class GUI extends JFrame {
 				getContentPane().add(bar,BorderLayout.NORTH);
 				// refresh the GUI
 
-				panel[0] = new JPanel();
-
-				panel[0].add(new JLabel("Amount of Nodes: "));
-				nodesSize[0] = new PlaceHolderTextField();
-				nodesSize[0].setPlaceholder("40");
-				panel[0].add(nodesSize[0]);
-
-				panel[0].add(new JLabel("Amount of Channels per Node: "));
-				channelsSize[0] = new PlaceHolderTextField();
-				channelsSize[0].setPlaceholder("3");
-				panel[0].add(channelsSize[0]);
-				panel[0].setLayout(new GridLayout(15,2));
-				getContentPane().add(start, BorderLayout.SOUTH);
-				getContentPane().add(panel[0], BorderLayout.CENTER);
-				SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
+				createNetworkUI(panel, nodesSize, channelsSize, start);
 
 			}
 		});
@@ -636,7 +682,34 @@ public class GUI extends JFrame {
 			}
 		});
 
+		// Returns the UI toolbar options with the menus and event handlers
 		return bar;
+	}
+
+	/**
+	 * Method to initialize the UI frame to create a network
+	 * @param panel UI panel frame containing the UI components
+	 * @param nodesSize Text view with placeholder for the network size
+	 * @param channelsSize Text view with placeholder for the network size
+	 * @param start Button to trigger the network creation
+	 */
+	private void createNetworkUI(JPanel[] panel, PlaceHolderTextField[] nodesSize, PlaceHolderTextField[] channelsSize,
+			JButton start) {
+		panel[0] = new JPanel();
+
+		panel[0].add(new JLabel("Amount of Nodes: "));
+		nodesSize[0] = new PlaceHolderTextField();
+		nodesSize[0].setPlaceholder("40");
+		panel[0].add(nodesSize[0]);
+
+		panel[0].add(new JLabel("Amount of Channels per Node: "));
+		channelsSize[0] = new PlaceHolderTextField();
+		channelsSize[0].setPlaceholder("3");
+		panel[0].add(channelsSize[0]);
+		panel[0].setLayout(new GridLayout(15,2));
+		getContentPane().add(start, BorderLayout.SOUTH);
+		getContentPane().add(panel[0], BorderLayout.CENTER);
+		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
 	}
 
 	/**
@@ -646,13 +719,20 @@ public class GUI extends JFrame {
 	 * @param timer Timer that counts the simulation time
 	 */
 	private void stressTest(JPanel[] panel1, JProgressBar[] pbar, Timer[] timer) {
+		// Initialize the UI components to store the simulatino results after the simulation
 		transactionLabel = new JLabel();
 		feesLabel = new JLabel();
 		hopsLabel = new JLabel();
 		failedTransactionLabel = new JLabel();
 		congestedChannelsLabel = new JLabel();
+
+		// Draw the the simulation panel in the right side of the frame
 		drawSimulationResults(panel1, pbar, transactionLabel, feesLabel);
+
+		// Instantiate an int to increase the progress bar
 		final int[] value = { 0 };
+
+		// set the transaction recipient
 		int recipient = 1;
 
 			// Stress test based on multi-hop transactions
@@ -662,15 +742,20 @@ public class GUI extends JFrame {
 				}
 			});
 
+			// Start the thread
 			t.start();
 
+			// Increase the progress bar value
 		ActionListener actionListener = new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
-//								transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
 				pbar[0].setValue(value[0]++);
 			}
 		};
+
+		// Timer to increase the progress bar every 100 millis
 		timer[0] = new Timer(100, actionListener);
+
+		// Start the timer
 		timer[0].start();
 	}
 
@@ -680,36 +765,59 @@ public class GUI extends JFrame {
 	 * @param timer Timer that counts the simulation time
 	 */
 	private void shortestPathRouting(int recipient, Timer[] timer) {
+
+		// For each node in the fetched network map
 		for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
+
+			// Create a receiver node
 			com.carlos.lnsim.lnsim.Node to = new com.carlos.lnsim.lnsim.Node();
+
+			// Instantiate the current channel
 			Channel currentChannel = null;
+
+			// If the node has any active channel
 			if (!node.getChannels().isEmpty()){
 
+				// Start the routing mechanisms to perform the simulated transaction stress test
 				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, dataFetcher, timer );
 
+				// Once the simulation has completed, set the simulation results in the data fetcher object
+				// to export the simulation results in the network map
 				dataFetcher.setHops(trafficGenerator.getStaticHops());
 				dataFetcher.setFailedTransactions(trafficGenerator.getFailedTransactions().size());
 				dataFetcher.setTrafficGenerator(trafficGenerator);
 
+				// Once the simulations have been loaded into the data fetcher object, set the values of the UI labels
+				// to display the simulation results
 				transactionLabel.setText(String.valueOf(trafficGenerator.trafficSize()));
 				feesLabel.setText(String.valueOf(trafficGenerator.getFeeCounter()));
 				hopsLabel.setText(String.valueOf(dataFetcher.getHops()));
 				failedTransactionLabel.setText(String.valueOf(dataFetcher.getFailedTransactions()));
 
+				// When the simulation outputs are successfully ready to be displayed, finish the simulation and
+				// update the network map with the simulation results
 				networkMapGenerator.setSimulationCompleted(true);
 				networkMapGenerator.createNetworkMap();
-				//transactionLabel.setText(String.valueOf(transactions));
+
+				// When the simulation results are exported into the network map, update the GUI with the results
 				updateGUI();
 			}
 		}
+
+		// For each channel in the network with a capacity equal to 0, mark that channel as a congested channel
 		for (Channel c : dataFetcher.getChannels()) {
 			if (c.getCapacity() == 0){
 				congestedChannels.add(c);
 			}
 		}
+
+		// Set the congested channels in the data fetcher object
 		dataFetcher.setCongestedChannels(congestedChannels.size());
+
+		// Set the Congested Channel UI label value
 		congestedChannelsLabel.setText(String.valueOf(congestedChannels.size()));
 
+		// Enable the analysis options from the toolbar
 		mi7.setEnabled(true);
 		mi8.setEnabled(true);
 		mi8i.setEnabled(true);
@@ -752,14 +860,17 @@ public class GUI extends JFrame {
 	 * @param feesLabel Transaction label where contains the text of the simulation fees
 	 */
 	private void drawSimulationResults(JPanel[] panel1, JProgressBar[] pbar, JLabel transactionLabel, JLabel feesLabel) {
+		// Refresh the UI components
 		SwingUtilities.updateComponentTreeUI(GUI.super.rootPane);
-		channels = String.valueOf(dataFetcher.getChannels().size());
-		size = String.valueOf(dataFetcher.getNodes().size());
+
+		// calculate the entire network balance
 		Double amount = 0.00;
 		for (com.carlos.lnsim.lnsim.Node node: dataFetcher.getNodes()) {
 			amount += node.getBalance();
 		}
 		balance = String.valueOf(amount);
+
+		// Draw the UI simulation results label and values
 		Font font = new Font(" Courier", Font.BOLD, 12);
 		panel1[0] = new JPanel();
 		panel1[0].add(new JLabel(" Transactions: ")).setFont(font);
@@ -771,19 +882,24 @@ public class GUI extends JFrame {
 		panel1[0].add(new JLabel(" Fees: ")).setFont(font);
 		panel1[0].add(feesLabel);
 		panel1[0].add(new JLabel(" Channels: ")).setFont(font);
-		panel1[0].add(new JLabel(channels));
+		panel1[0].add(new JLabel(String.valueOf(dataFetcher.getChannels().size())));
 		panel1[0].add(new JLabel(" Congested Channels: ")).setFont(font);
 		panel1[0].add(congestedChannelsLabel);
 		panel1[0].add(new JLabel(" Network Balance: ")).setFont(font);
 		panel1[0].add(new JLabel(balance));
 		panel1[0].add(new JLabel(" Network Size: ")).setFont(font);
-		panel1[0].add(new JLabel(size));
+		panel1[0].add(new JLabel(String.valueOf(dataFetcher.getNodes().size())));
+
+		// Set the layout of the simulation results panel to be in the right side
 		panel1[0].setLayout(new GridLayout(0,2));
 		getContentPane().add(panel1[0], BorderLayout.EAST);
 
+		// Initialize the progress bar
 		pbar[0] = new JProgressBar();
 		pbar[0].setMinimum(0);
 		pbar[0].setMaximum(3000);
+
+		// Set the layout of the progress bar to be in the bottom of the simulation
 		getContentPane().add(pbar[0], BorderLayout.SOUTH);
 	}
 
@@ -803,11 +919,16 @@ public class GUI extends JFrame {
 	 * Method to update the entire GUI
 	 */
 	public void updateGUI() {
-		// some code
+		// Since it is an update, the simulation is not new.
+		// This is essential to update the simulation statically
+		// so nodes and channels are static to their positions when updating
 		New = false;
+
+		// Get the graph component and the toolbar menu options
 		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
 		JMenuBar bar = toolbarOptions(graphComponent);
 
+		// Remove all the UI components from the frame
 		getContentPane().removeAll();
 		getContentPane().add(graphComponent, BorderLayout.CENTER);
 		getContentPane().add(bar,BorderLayout.NORTH);
@@ -827,9 +948,11 @@ public class GUI extends JFrame {
 	 * @param s network map file path
 	 */
 	public void restartSim(JMenuItem mi4, String s) {
+		// Set the data fetcher ready to load the simulation in the given path for the network map
 		dataFetcher.setReadyToLoad(true);
 		dataFetcher.setPath(s);
 		try {
+			// load the network map into the system
 			dataFetcher.Load();
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -837,9 +960,14 @@ public class GUI extends JFrame {
 			ex.printStackTrace();
 		}
 
+		// get the graph component from the fetched data from the network map
 		mxGraphComponent graphComponent = drawNetwork(dataFetcher);
+
+		// get the toolbar menu options
 		JMenuBar bar = toolbarOptions(graphComponent);
 		startSim(graphComponent, bar);
+
+		// set the start simulation button enabled
 		mi4.setEnabled(true);
 	}
 
@@ -863,14 +991,18 @@ public class GUI extends JFrame {
 	 * @param mi4 Start button
 	 */
 	private void chooseFile(JMenuItem mi2, JMenuItem mi4) {
+		// create a File Chooser object pointing to where the given default networks maps are
 		JFileChooser chooser = new JFileChooser("src/main/resources/config");
+
+		// filter file browser ot files with the extension .json by default
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
 				".json files", "json");
 		chooser.setFileFilter(filter);
+
+		// when the file is selected restart the simulation which includes loading the network map into the system
 		int returnVal = chooser.showOpenDialog(mi2);
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 			restartSim(mi4, chooser.getSelectedFile().getPath());
-
 		}
 	}
 
@@ -879,10 +1011,17 @@ public class GUI extends JFrame {
 	 * @param args args to run in the execution
 	 */
 	public static void main(String[] args){
+		// Create a GUI object
 		GUI frame = new GUI();
+
+		// When clicking on the exit button of the frame close the application
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		// By default set the maximum size of the frame
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setUndecorated(true);
+
+		// By default set the frame visible
 		frame.setVisible(true);
 	}
 }

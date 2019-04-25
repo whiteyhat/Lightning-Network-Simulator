@@ -11,17 +11,19 @@
 package com.carlos.lnsim.lnsim;
 
 import org.junit.Test;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
-
 import static org.junit.Assert.*;
 
+/**
+ * Class to create the Unit Testing objects to test some key methods of the simulation tool from the Lightning Network Simulator
+ */
 public class SimulationToolTests {
 
 	/**
-	 * Unit test
+	 * Unit Test to assert the network map creation using the network data model syntax according to the design
+	 * spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
 	 */
 	@Test
 	public void createNetworkMap() {
@@ -34,7 +36,8 @@ public class SimulationToolTests {
 	}
 
 	/**
-	 * Unit test
+	 * Unit Test to assert the loading process from the network map to the simulation tool by making use of
+	 * the data fetcher object according to the design spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
 	 */
 	@Test
 	public void loadNetworkSimulation() {
@@ -49,6 +52,10 @@ public class SimulationToolTests {
 		assertEquals(3*40, dataFetcher.getChannels().size());
 	}
 
+	/**
+	 * Unit Test to assert the network is displayed in the simulation by making use of loading a default network map
+	 * according to the design spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
+	 */
 	@Test
 	public void displayNetwork() {
 		DataFetcher dataFetcher = null;
@@ -105,10 +112,5 @@ public class SimulationToolTests {
 			e.printStackTrace();
 		}
 
-	}
-
-	@Test
-	public void routeTransactions() {
-		//TODO
 	}
 }
