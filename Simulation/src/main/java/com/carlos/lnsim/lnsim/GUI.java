@@ -530,7 +530,7 @@ public class GUI extends JFrame {
 				RefineryUtilities.centerFrameOnScreen( demo );
 				demo.setVisible( true );
 
-				PieResults demo1 = new PieResults( 4, trafficGenerator.getRoutedTransactions(), trafficGenerator.getDirectTransactions());
+				PieResults demo1 = new PieResults( 4, trafficGenerator.getRoutedTransactions().size(), trafficGenerator.getRoutedTransactions().size());
 				demo1.init();
 				demo1.setSize( 560 , 367 );
 				demo1.setVisible( true );
@@ -659,7 +659,6 @@ public class GUI extends JFrame {
 			Thread t = new Thread(new Runnable() {
 				public void run() {
 					shortestPathRouting(recipient, timer);
-
 				}
 			});
 
