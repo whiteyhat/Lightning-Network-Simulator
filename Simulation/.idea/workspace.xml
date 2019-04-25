@@ -8,24 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="61dc596c-f13f-4c9a-b75f-7727147f1d36" name="Default Changelist" comment="Link to GitHub repo on Getting Started Bar Menu item">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/GUI.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/GUI.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/Load.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/Load.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/NetworkMapGenerator.html" beforeDir="false" afterPath="$PROJECT_DIR$/com/carlos/lnsim/lnsim/NetworkMapGenerator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index-files/index-10.html" beforeDir="false" afterPath="$PROJECT_DIR$/index-files/index-10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index-files/index-15.html" beforeDir="false" afterPath="$PROJECT_DIR$/index-files/index-15.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serialized-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/serialized-form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Load.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/DataFetcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/NetworkMapGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlaceHolderTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TerminalColors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/custom.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/custom.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/AnalysisToolTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/carlos/lnsim/lnsim/SimulationToolTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../javafx-d3/target/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -68,41 +52,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="846" column="47" selection-start-line="846" selection-start-column="47" selection-end-line="846" selection-end-column="47" />
+            <state relative-caret-position="-5">
+              <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2462#2774#0" />
-                <element signature="e#2777#3050#0" />
-                <element signature="e#3053#3571#0" />
-                <element signature="e#4066#7592#0" />
-                <element signature="e#7707#8735#0" />
-                <element signature="e#7998#9993#0" />
-                <element signature="e#8575#8576#0" expanded="true" />
-                <element signature="e#8619#8620#0" expanded="true" />
-                <element signature="e#9996#10361#0" />
-                <element signature="e#11388#20188#0" />
-                <element signature="e#13389#13390#0" expanded="true" />
-                <element signature="e#13419#13420#0" expanded="true" />
-                <element signature="e#13851#13852#0" expanded="true" />
-                <element signature="e#13882#13883#0" expanded="true" />
-                <element signature="e#14005#14006#0" expanded="true" />
-                <element signature="e#14037#14038#0" expanded="true" />
-                <element signature="e#14158#14159#0" expanded="true" />
-                <element signature="e#14191#14192#0" expanded="true" />
-                <element signature="e#20267#20268#0" expanded="true" />
-                <element signature="e#20309#20310#0" expanded="true" />
-                <element signature="e#19102#19962#0" />
-                <element signature="e#19965#21388#0" />
-                <element signature="e#21391#21607#0" />
-                <element signature="e#21610#21840#0" />
-                <element signature="e#23769#25410#0" />
-                <element signature="e#23450#23602#0" />
-                <element signature="e#23605#24195#0" />
-                <element signature="e#24198#24627#0" />
-                <element signature="e#24630#24940#0" />
-                <element signature="e#24943#25356#0" />
-                <element signature="e#25359#25587#0" />
+                <element signature="e#2502#2616#0" />
+                <element signature="e#2502#2976#0" />
+                <element signature="e#2979#3174#0" />
+                <element signature="e#2979#3449#0" />
+                <element signature="e#3452#3546#0" />
+                <element signature="e#3452#4252#0" />
+                <element signature="e#4255#4426#0" />
+                <element signature="e#4255#8590#0" />
+                <element signature="e#8593#8775#0" />
+                <element signature="e#14755#14756#0" expanded="true" />
+                <element signature="e#14785#14786#0" expanded="true" />
+                <element signature="e#15217#15218#0" expanded="true" />
+                <element signature="e#15248#15249#0" expanded="true" />
+                <element signature="e#15371#15372#0" expanded="true" />
+                <element signature="e#15403#15404#0" expanded="true" />
+                <element signature="e#15524#15525#0" expanded="true" />
+                <element signature="e#15557#15558#0" expanded="true" />
+                <element signature="e#21633#21634#0" expanded="true" />
+                <element signature="e#21675#21676#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,35 +83,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="366" column="42" lean-forward="true" selection-start-line="366" selection-start-column="16" selection-end-line="366" selection-end-column="42" />
+            <state relative-caret-position="1800">
+              <caret line="149" selection-start-line="149" selection-end-line="149" />
               <folding>
-                <element signature="e#2868#2869#0" expanded="true" />
-                <element signature="e#2907#2908#0" expanded="true" />
-                <element signature="e#3064#3065#0" expanded="true" />
-                <element signature="e#3103#3104#0" expanded="true" />
-                <element signature="e#3152#3153#0" expanded="true" />
-                <element signature="e#3178#3179#0" expanded="true" />
-                <element signature="e#3225#3226#0" expanded="true" />
-                <element signature="e#3258#3259#0" expanded="true" />
-                <element signature="e#3317#3318#0" expanded="true" />
-                <element signature="e#3353#3354#0" expanded="true" />
-                <element signature="e#3386#3387#0" expanded="true" />
-                <element signature="e#3419#3420#0" expanded="true" />
-                <element signature="e#3467#3468#0" expanded="true" />
-                <element signature="e#3493#3494#0" expanded="true" />
-                <element signature="e#4142#4143#0" expanded="true" />
-                <element signature="e#4214#4215#0" expanded="true" />
-                <element signature="method#routingMechanism#0;class#TrafficGenerator#0" />
                 <element signature="method#transactionPayload#0;class#TrafficGenerator#0" />
-                <element signature="e#9284#9285#0" expanded="true" />
-                <element signature="e#9316#9317#0" expanded="true" />
-                <element signature="e#9355#9356#0" expanded="true" />
-                <element signature="e#9387#9388#0" expanded="true" />
-                <element signature="method#searchPath#0;class#TrafficGenerator#0" />
-                <element signature="e#11255#11256#0" expanded="true" />
-                <element signature="e#11287#11288#0" expanded="true" />
-                <element signature="method#sendTransaction#0;class#TrafficGenerator#0" />
               </folding>
             </state>
           </provider>
@@ -148,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1592">
+            <state relative-caret-position="1710">
               <caret line="146" column="19" selection-start-line="146" selection-end-line="147" />
             </state>
           </provider>
@@ -277,7 +224,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -285,52 +231,12 @@
               <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
               <item name="Simulation" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="lnsim" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Simulation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -533,6 +439,7 @@
       <workItem from="1555794711544" duration="15000" />
       <workItem from="1555927201298" duration="2637000" />
       <workItem from="1556097511084" duration="4578000" />
+      <workItem from="1556183423971" duration="287000" />
     </task>
     <task id="LOCAL-00001" summary="Link to GitHub repo on Getting Started Bar Menu item">
       <created>1552934386814</created>
@@ -577,7 +484,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198015000" />
+    <option name="totallyTimeSpent" value="199729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -592,7 +499,7 @@
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4969605" visible="true" weight="0.25335777" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4969605" visible="true" weight="0.25641027" />
       <window_info id="Structure" order="1" sideWeight="0.50303954" side_tool="true" weight="0.2753358" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -601,7 +508,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5031056" side_tool="true" weight="0.2722833" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32857144" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.496337" visible="true" weight="0.25306123" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496337" weight="0.25306123" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44693878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -930,18 +837,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#1314#1326#0" expanded="true" />
-            <element signature="e#1410#1416#0" expanded="true" />
-            <element signature="e#1694#1700#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/RoutingTable.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/PlotResults.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -1007,16 +903,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/LinearResults.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="667">
@@ -1051,86 +938,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="94" column="24" selection-start-line="94" selection-start-column="24" selection-end-line="94" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2502#2616#0" />
+            <element signature="e#2502#2976#0" />
+            <element signature="e#2979#3174#0" />
+            <element signature="e#2979#3449#0" />
+            <element signature="e#3452#3546#0" />
+            <element signature="e#3452#4252#0" />
+            <element signature="e#4255#4426#0" />
+            <element signature="e#4255#8590#0" />
+            <element signature="e#8593#8775#0" />
+            <element signature="e#14755#14756#0" expanded="true" />
+            <element signature="e#14785#14786#0" expanded="true" />
+            <element signature="e#15217#15218#0" expanded="true" />
+            <element signature="e#15248#15249#0" expanded="true" />
+            <element signature="e#15371#15372#0" expanded="true" />
+            <element signature="e#15403#15404#0" expanded="true" />
+            <element signature="e#15524#15525#0" expanded="true" />
+            <element signature="e#15557#15558#0" expanded="true" />
+            <element signature="e#21633#21634#0" expanded="true" />
+            <element signature="e#21675#21676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/TrafficGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="366" column="42" lean-forward="true" selection-start-line="366" selection-start-column="16" selection-end-line="366" selection-end-column="42" />
+        <state relative-caret-position="1800">
+          <caret line="149" selection-start-line="149" selection-end-line="149" />
           <folding>
-            <element signature="e#2868#2869#0" expanded="true" />
-            <element signature="e#2907#2908#0" expanded="true" />
-            <element signature="e#3064#3065#0" expanded="true" />
-            <element signature="e#3103#3104#0" expanded="true" />
-            <element signature="e#3152#3153#0" expanded="true" />
-            <element signature="e#3178#3179#0" expanded="true" />
-            <element signature="e#3225#3226#0" expanded="true" />
-            <element signature="e#3258#3259#0" expanded="true" />
-            <element signature="e#3317#3318#0" expanded="true" />
-            <element signature="e#3353#3354#0" expanded="true" />
-            <element signature="e#3386#3387#0" expanded="true" />
-            <element signature="e#3419#3420#0" expanded="true" />
-            <element signature="e#3467#3468#0" expanded="true" />
-            <element signature="e#3493#3494#0" expanded="true" />
-            <element signature="e#4142#4143#0" expanded="true" />
-            <element signature="e#4214#4215#0" expanded="true" />
-            <element signature="method#routingMechanism#0;class#TrafficGenerator#0" />
             <element signature="method#transactionPayload#0;class#TrafficGenerator#0" />
-            <element signature="e#9284#9285#0" expanded="true" />
-            <element signature="e#9316#9317#0" expanded="true" />
-            <element signature="e#9355#9356#0" expanded="true" />
-            <element signature="e#9387#9388#0" expanded="true" />
-            <element signature="method#searchPath#0;class#TrafficGenerator#0" />
-            <element signature="e#11255#11256#0" expanded="true" />
-            <element signature="e#11287#11288#0" expanded="true" />
-            <element signature="method#sendTransaction#0;class#TrafficGenerator#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/Channel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1592">
+        <state relative-caret-position="1710">
           <caret line="146" column="19" selection-start-line="146" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/carlos/lnsim/lnsim/GUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="846" column="47" selection-start-line="846" selection-start-column="47" selection-end-line="846" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2462#2774#0" />
-            <element signature="e#2777#3050#0" />
-            <element signature="e#3053#3571#0" />
-            <element signature="e#4066#7592#0" />
-            <element signature="e#7707#8735#0" />
-            <element signature="e#7998#9993#0" />
-            <element signature="e#8575#8576#0" expanded="true" />
-            <element signature="e#8619#8620#0" expanded="true" />
-            <element signature="e#9996#10361#0" />
-            <element signature="e#11388#20188#0" />
-            <element signature="e#13389#13390#0" expanded="true" />
-            <element signature="e#13419#13420#0" expanded="true" />
-            <element signature="e#13851#13852#0" expanded="true" />
-            <element signature="e#13882#13883#0" expanded="true" />
-            <element signature="e#14005#14006#0" expanded="true" />
-            <element signature="e#14037#14038#0" expanded="true" />
-            <element signature="e#14158#14159#0" expanded="true" />
-            <element signature="e#14191#14192#0" expanded="true" />
-            <element signature="e#20267#20268#0" expanded="true" />
-            <element signature="e#20309#20310#0" expanded="true" />
-            <element signature="e#19102#19962#0" />
-            <element signature="e#19965#21388#0" />
-            <element signature="e#21391#21607#0" />
-            <element signature="e#21610#21840#0" />
-            <element signature="e#23769#25410#0" />
-            <element signature="e#23450#23602#0" />
-            <element signature="e#23605#24195#0" />
-            <element signature="e#24198#24627#0" />
-            <element signature="e#24630#24940#0" />
-            <element signature="e#24943#25356#0" />
-            <element signature="e#25359#25587#0" />
-          </folding>
         </state>
       </provider>
     </entry>
