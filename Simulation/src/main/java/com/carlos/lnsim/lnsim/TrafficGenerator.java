@@ -147,7 +147,6 @@ public class TrafficGenerator {
 		// declare variables to store results
 		int congestion = 0;
 		boolean coincidence = false;
-		boolean transactionFailed = false;
 		Node destination = new Node();
 		boolean valid = false;
 
@@ -160,7 +159,10 @@ public class TrafficGenerator {
 			// Ensure the receiver from is not the same as the sender
 			int receiver = rand.nextInt(l.getNodes().size());
 
-
+			// DESTINATION CALCULATION
+			// if receiver node tries to send a transaction to itself or to none(0).
+			// Keep searching random destinations
+			//This prevents failed transaction configurations
 			if (receiver == from.getId() || receiver == 0){
 				do {
 					receiver = rand.nextInt(l.getNodes().size());
@@ -169,10 +171,9 @@ public class TrafficGenerator {
 						valid = true;
 					}
 				}while (!valid);
-
 			}
 
-			// select the destination from
+			// select the destination from the previous calculation
 			to = to.findNode(to, receiver, l.getNodes());
 			System.out.println();
 			System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() + "***********************************" + terminalColors.getStandard());
@@ -197,6 +198,7 @@ public class TrafficGenerator {
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 				transactionPayload(to, from, currentChannel, r, l, t, congestion, false);
 			}else{
+				// Checker to keep track of the failed transaction
 				int track = failedTransactions.size();
 				do {
 					System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() +"---------- FINDING PATHS ----------"+ terminalColors.getStandard());
@@ -216,10 +218,14 @@ public class TrafficGenerator {
 						transactionPayload(to, from, currentChannel, r, l, t, congestion, true);
 					}
 
+					// If there are more failed transaction and the checker it means the transaction
+					// has failed within the inner path search
 					if (track < failedTransactions.size()){
 						coincidence = true;
 						System.err.println("Transacion Failed");
 					}
+
+					// Clear the checped path before iterating over
 					checkedPaths.clear();
 
 				}while (!coincidence);
@@ -229,11 +235,14 @@ public class TrafficGenerator {
 			}
 
 		}
+		// SANITY CHECKS
 
-		// In case from balances are negative correct values to 0
+		// In case of node balances are negative correct values to 0
 		if (from.getBalance() < 0){
 			from.setBalance(0.0);
 		}
+
+		// In case of channel capacities are negative correct values to 0
 
 		if (currentChannel.getCapacity() < 0){
 			currentChannel.setCapacity(0.0);
@@ -296,58 +305,68 @@ public class TrafficGenerator {
 
 	/**
 	 * Recursive method to search the path for a destination node. If a path is found it returns the destination node.
-	 * @param from Sender node
+	 * @param destinationNode destination node
 	 * @param to Receiver node
 	 * @param l Data fetcher object entity
 	 * @param r Amount of the transaction recipient
 	 * @return The destination node
 	 */
-	private Node searchPath(Node from, Node to, DataFetcher l, int r) {
+	private Node searchPath(Node destinationNode, Node to, DataFetcher l, int r) {
 		boolean skip = false;
 		boolean ocurrence = false;
+		// create temporary variable to host a node
 		Node temp = new Node();
 
+		// if it is the first time accessing this recursive method
+		// add this as a check
+		// so when next times checking the same node it reports a failed path
+		// to break the recursive loop
 		if (hops>0){
 			if (checkedPaths.contains(channel)){
 				skip = true;
 				invalidPath = true;
-				failedTransactions.add(new Transaction(from, Double.valueOf(r)));
+				failedTransactions.add(new Transaction(destinationNode, Double.valueOf(r)));
 			}else {
 				// add last channel used in the list to no stop infinite recursion
 				checkedPaths.add(channel);
 			}
 		}
 
+		// if the is the first time checking this node
 		if (!invalidPath){
+
+			// double check
 			if (!skip){
 				// for each channel of selected node
-					for (Channel c : from.getChannels()) {
+					for (Channel c : destinationNode.getChannels()) {
 
 						// receiver node from path route
-						temp = from.findNode(from, c.getTo(), l.getNodes());
-						channel = l.findChannel(channel, from.getId(), temp.getId());
+						temp = destinationNode.findNode(destinationNode, c.getTo(), l.getNodes());
+						channel = l.findChannel(channel, destinationNode.getId(), temp.getId());
 
 						// print the path
 						System.out.println("PATH: Node " + c.getFrom() + " - Node " + c.getTo());
 
 						// receiver node equal to destination
 						if (c.getTo() == to.getId()) {
-							from = from.findNode(from, c.getTo(), l.getNodes());
+							destinationNode = destinationNode.findNode(destinationNode, c.getTo(), l.getNodes());
 							ocurrence = true;
 							fee = c.getFee();
 							break;
 						}
 					}
 				}
+
+			// increase the hops counter
 			hops++;
 
-			//recursive call
+			//recursive call to keep searching the path
 			if (!ocurrence)
-				from = searchPath(temp, to, l, r);
+				destinationNode = searchPath(temp, to, l, r);
 			}
 
 		// force the node to be the found node
-		return from;
+		return destinationNode;
 	}
 
 	/**
