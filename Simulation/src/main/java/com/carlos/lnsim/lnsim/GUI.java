@@ -733,7 +733,8 @@ public class GUI extends JFrame {
 		final int[] value = { 0 };
 
 		// set the transaction recipient
-		int recipient = 1;
+		Random random = new Random();
+		int recipient = random.nextInt(20);
 
 			// Stress test based on multi-hop transactions
 			Thread t = new Thread(new Runnable() {
