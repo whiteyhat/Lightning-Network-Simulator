@@ -143,11 +143,11 @@ public class TrafficGenerator {
 	 * @param to Receiver node
 	 * @param from Sender node
 	 * @param currentChannel Current channel used
-	 * @param r Amount of the transaction recipient
+	 * @param type Transaction recipient type
 	 * @param l Data fetcher object entity
 	 * @param t Timer to update the GUI
 	 */
-	protected void routingMechanism(Node to, Node from, Channel currentChannel, int r, DataFetcher l, Timer t[]) {
+	protected void routingMechanism(Node to, Node from, Channel currentChannel, int type, DataFetcher l, Timer t[]) {
 		// declare variables to store results
 		int congestion = 0;
 		boolean coincidence = false;
@@ -192,22 +192,19 @@ public class TrafficGenerator {
 			// select the fee from the channel
 			fee = channel.getFee();
 
-			// keep track of the global fee amount
-
-
 			// if there is direct channel. No need for routinh
 			if (l.getRoutingTable().get(from).getId() == to.getId()){
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"       Direct Transaction sent     "+ terminalColors.getStandard());
 				System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
-				transactionPayload(to, from, currentChannel, r, l, t, congestion, false);
+				transactionPayload(to, from, currentChannel, type, l, t, congestion, false);
 			}else{
 				// Checker to keep track of the failed transaction
 				int track = failedTransactions.size();
 				do {
 					System.out.println(terminalColors.getBlackBg() + terminalColors.getWhite() +"---------- FINDING PATHS ----------"+ terminalColors.getStandard());
 					// Crucial path finding
-					destination = searchPath(from, to, l, r);
+					destination = searchPath(from, to, l);
 					invalidPath = false;
 					staticHops += hops;
 					hops = 0;
@@ -219,7 +216,7 @@ public class TrafficGenerator {
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +" $$$$ Routed Transaction sent $$$$ "+ terminalColors.getStandard());
 						System.out.println(terminalColors.getGreenBg() + terminalColors.getBlack() +"-----------------------------------"+ terminalColors.getStandard());
 						coincidence = true;
-						transactionPayload(to, from, currentChannel, r, l, t, congestion, true);
+						transactionPayload(to, from, currentChannel, type, l, t, congestion, true);
 					}
 
 					// If there are more failed transaction and the checker it means the transaction
@@ -258,16 +255,30 @@ public class TrafficGenerator {
 	 * @param to Receiver node
 	 * @param from Sender node
 	 * @param currentChannel Current channel used
-	 * @param r Amount of the transaction recipient
+	 * @param type Transaction recipient type
 	 * @param l Data fetcher object entity
 	 * @param t Timer to update the GUI
 	 * @param congestion Amount of congested channel
 	 * @param isRouted Boolean to check the transaction is routed or direct
 	 */
-	private void transactionPayload(Node to, Node from, Channel currentChannel, int r, DataFetcher l, Timer[] t,
+	private void transactionPayload(Node to, Node from, Channel currentChannel, int type, DataFetcher l, Timer[] t,
 			int congestion, boolean isRouted) {
+
+		// Initialize random object and recipient integer
+		Random rand = new Random();
+		int r = 1;
+
+
 		if ((from.getBalance() > 0) || (currentChannel.getCapacity() > 0)){
 			do {
+				// set up recipient amount based on the type
+				if (type == 1){
+					r = rand.nextInt(7);
+				} else if(type == 2){
+					r = rand.nextInt(35);
+				} else if (type == 3){
+					r = rand.nextInt(100);
+				}
 				// EMIT TRANSACTION
 				Transaction tx = sendTransaction(to, from, currentChannel, r, l, fee);
 
@@ -295,7 +306,7 @@ public class TrafficGenerator {
 	 * Method to get the routed transactions
 	 * @return The list of routed transactions
 	 */
-	public ArrayList<Transaction> getRoutedTransactions() {
+	protected ArrayList<Transaction> getRoutedTransactions() {
 		return routedTransactions;
 	}
 
@@ -303,7 +314,7 @@ public class TrafficGenerator {
 	 * Method to get the direct transactions
 	 * @return The list of direct transactions
 	 */
-	public ArrayList<Transaction> getDirectTransactions() {
+	protected ArrayList<Transaction> getDirectTransactions() {
 		return directTransactions;
 	}
 
@@ -312,10 +323,9 @@ public class TrafficGenerator {
 	 * @param destinationNode destination node
 	 * @param to Receiver node
 	 * @param l Data fetcher object entity
-	 * @param r Amount of the transaction recipient
 	 * @return The destination node
 	 */
-	private Node searchPath(Node destinationNode, Node to, DataFetcher l, int r) {
+	private Node searchPath(Node destinationNode, Node to, DataFetcher l) {
 		boolean skip = false;
 		boolean ocurrence = false;
 		// create temporary variable to host a node
@@ -329,7 +339,7 @@ public class TrafficGenerator {
 			if (checkedPaths.contains(channel)){
 				skip = true;
 				invalidPath = true;
-				failedTransactions.add(new Transaction(destinationNode, Double.valueOf(r)));
+				failedTransactions.add(new Transaction(destinationNode, 0.0));
 			}else {
 				// add last channel used in the list to no stop infinite recursion
 				checkedPaths.add(channel);
@@ -366,7 +376,7 @@ public class TrafficGenerator {
 
 			//recursive call to keep searching the path
 			if (!ocurrence)
-				destinationNode = searchPath(temp, to, l, r);
+				destinationNode = searchPath(temp, to, l);
 			}
 
 		// force the node to be the found node

@@ -46,6 +46,7 @@ public class GUI extends JFrame {
 	private TrafficGenerator trafficGenerator;
 	private NetworkMapGenerator networkMapGenerator;
 	private JLabel transactionLabel, feesLabel, hopsLabel, failedTransactionLabel, congestedChannelsLabel;
+	private JCheckBoxMenuItem lowTransactions, mediumTransactions, highTransactions;
 	private ArrayList<Channel> congestedChannels;
 	private JMenuItem mi7, mi8, mi9, mi8i;
 
@@ -398,6 +399,7 @@ public class GUI extends JFrame {
 
 		// Create the 3rd level menu
 		JMenu editBalances = new JMenu("Set Balances", true);
+		JMenu editTransactions = new JMenu("Set Transactions", true);
 		JMenu editCapacities = new JMenu("Set Capacities", true);
 		JMenu setRouting = new JMenu("Set Routing", true);
 
@@ -427,6 +429,15 @@ public class GUI extends JFrame {
 		editCapacities.add(mediumCapacity);
 		editCapacities.add(highCapacity);
 
+		 lowTransactions = new JCheckBoxMenuItem("Low Recipients");
+		 mediumTransactions = new JCheckBoxMenuItem("Medium Recipients", true);
+		 highTransactions = new JCheckBoxMenuItem("High Recipients");
+
+
+		editTransactions.add(lowTransactions);
+		editTransactions.add(mediumTransactions);
+		editTransactions.add(highTransactions);
+
 		// Create the 3rd level menu
 		JCheckBoxMenuItem shortestPath = new JCheckBoxMenuItem("Shortest Path", true);
 
@@ -442,6 +453,8 @@ public class GUI extends JFrame {
 		setRouting.add(AMP);
 
 		// Add toolbar separator
+		m2.addSeparator();
+		m2.add(editTransactions);
 		m2.addSeparator();
 
 		// add menu items to 2nd menu level
@@ -505,6 +518,27 @@ public class GUI extends JFrame {
 		//*********************************************************************
 		//                     E V E N T      H A N D L E R S
 		//*********************************************************************
+
+		lowTransactions.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				mediumTransactions.setState(false);
+				highTransactions.setState(false);
+			}
+		});
+
+		mediumTransactions.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				lowTransactions.setState(false);
+				highTransactions.setState(false);
+			}
+		});
+
+		highTransactions.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				lowTransactions.setState(false);
+				mediumTransactions.setState(false);
+			}
+		});
 
 		mi2.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -732,13 +766,23 @@ public class GUI extends JFrame {
 		// Instantiate an int to increase the progress bar
 		final int[] value = { 0 };
 
-		// set the transaction recipient
-		int recipient = 1;
+		// set up the recipient type
+		int type = 2;
+		if (lowTransactions.getState()){
+			type = 1;
+		}else if (mediumTransactions.getState()){
+			type = 2;
+		}else if (highTransactions.getState()){
+			type = 3;
+		}
 
-			// Stress test based on multi-hop transactions
-			Thread t = new Thread(new Runnable() {
+		// set the recipient final in a new object
+		int finalType = type;
+
+		// Stress test based on multi-hop transactions
+		Thread t = new Thread(new Runnable() {
 				public void run() {
-					shortestPathRouting(recipient, timer);
+					shortestPathRouting(finalType, timer);
 				}
 			});
 
@@ -761,10 +805,10 @@ public class GUI extends JFrame {
 
 	/**
 	 * Method to find the shortest path to create the transactions in the simulation
-	 * @param recipient transaction recipient
+	 * @param type transaction recipient type
 	 * @param timer Timer that counts the simulation time
 	 */
-	private void shortestPathRouting(int recipient, Timer[] timer) {
+	private void shortestPathRouting(int type, Timer[] timer) {
 
 		// For each node in the fetched network map
 		for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
@@ -779,7 +823,7 @@ public class GUI extends JFrame {
 			if (!node.getChannels().isEmpty()){
 
 				// Start the routing mechanisms to perform the simulated transaction stress test
-				trafficGenerator.routingMechanism(to, node, currentChannel, recipient, dataFetcher, timer );
+				trafficGenerator.routingMechanism(to, node, currentChannel, type, dataFetcher, timer );
 
 				// Once the simulation has completed, set the simulation results in the data fetcher object
 				// to export the simulation results in the network map
@@ -829,7 +873,7 @@ public class GUI extends JFrame {
 	 * @param i start minimum range
 	 * @param j end minimum range
 	 */
-	public void setCapacities(int i, int j) {
+	protected void setCapacities(int i, int j) {
 		for (Channel c : dataFetcher.getChannels()) {
 			c.setCapacity((double) ThreadLocalRandom.current().nextInt(i, j + 1));
 		}
@@ -843,7 +887,7 @@ public class GUI extends JFrame {
 	 * @param i start minimum range
 	 * @param j end minimum range
 	 */
-	public void setBalances(int i, int j) {
+	protected void setBalances(int i, int j) {
 		for (com.carlos.lnsim.lnsim.Node node : dataFetcher.getNodes()) {
 			node.setBalance(ThreadLocalRandom.current().nextDouble(i, j + 1));
 		}
@@ -918,7 +962,7 @@ public class GUI extends JFrame {
 	/**
 	 * Method to update the entire GUI
 	 */
-	public void updateGUI() {
+	private void updateGUI() {
 		// Since it is an update, the simulation is not new.
 		// This is essential to update the simulation statically
 		// so nodes and channels are static to their positions when updating
@@ -947,7 +991,7 @@ public class GUI extends JFrame {
 	 * @param mi4 start button
 	 * @param s network map file path
 	 */
-	public void restartSim(JMenuItem mi4, String s) {
+	private void restartSim(JMenuItem mi4, String s) {
 		// Set the data fetcher ready to load the simulation in the given path for the network map
 		dataFetcher.setReadyToLoad(true);
 		dataFetcher.setPath(s);
