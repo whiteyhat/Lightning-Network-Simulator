@@ -14,8 +14,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+/**
+ * Class to create the Unit Testing objects to test some key methods of the analysis tool from the Lightning Network Simulator
+ */
 public class AnalysisToolTests {
 
+	/**
+	 * Unit Test method to assert the function to manage the simulation inputs before starting the simulations
+	 * according to the design spec at: https://github.com/whiteyhat/Lightning-Network-Simulator/wiki/Design
+	 */
 	@Test public void manageInputSimulations() {
 		DataFetcher dataFetcher = null;
 		System.out.println("Creating network map using the network data model syntax");
@@ -44,8 +51,5 @@ public class AnalysisToolTests {
 		}
 		System.out.println("Capacity inputs tested");
 
-	}
-
-	@Test public void exportSimulationResults() {
 	}
 }
