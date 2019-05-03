@@ -277,7 +277,7 @@ public class TrafficGenerator {
 				} else if(type == 2){
 					r = rand.nextInt(35);
 				} else if (type == 3){
-					r = rand.nextInt(100);
+					r = rand.nextInt(150);
 				}
 				// EMIT TRANSACTION
 				Transaction tx = sendTransaction(to, from, currentChannel, r, l, fee);

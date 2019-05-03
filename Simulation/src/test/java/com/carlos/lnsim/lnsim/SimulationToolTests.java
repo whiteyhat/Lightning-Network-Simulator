@@ -29,7 +29,8 @@ public class SimulationToolTests {
 	public void createNetworkMap() {
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3);
 		System.out.println("Creating network map using the network data model syntax");
-		network.createNetworkMap();
+		DataFetcher dataFetcher = new DataFetcher();
+		network.createNetworkMap(dataFetcher);
 		System.out.println("Network Map created");
 		assertEquals(40, network.getNetworkSize());
 		assertEquals(3, network.getChannelsPerNode());
@@ -44,10 +45,10 @@ public class SimulationToolTests {
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3);
 		System.out.println("Network Map created");
-		network.createNetworkMap();
-		System.out.println("Loading network map into the simulation");
 		DataFetcher dataFetcher = new DataFetcher();
 		System.out.println("Network loaded into the simulation");
+		network.createNetworkMap(dataFetcher);
+		System.out.println("Loading network map into the simulation");
 		assertEquals(40, dataFetcher.getNodes().size());
 		assertEquals(3*40, dataFetcher.getChannels().size());
 	}
@@ -62,9 +63,9 @@ public class SimulationToolTests {
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, dataFetcher);
 		System.out.println("Network Map created");
-		network.createNetworkMap();
-		System.out.println("Loading network map into the simulation");
 		dataFetcher = new DataFetcher();
+		network.createNetworkMap(dataFetcher);
+		System.out.println("Loading network map into the simulation");
 		System.out.println("Network loaded into the simulation");
 
 		System.out.println("Displaying simulation");
