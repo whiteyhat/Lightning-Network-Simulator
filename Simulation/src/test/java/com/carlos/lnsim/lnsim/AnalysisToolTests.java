@@ -28,7 +28,7 @@ public class AnalysisToolTests {
 		System.out.println("Creating network map using the network data model syntax");
 		NetworkMapGenerator network = new NetworkMapGenerator(40, 3, dataFetcher);
 		System.out.println("Network Map created");
-		network.createNetworkMap();
+		network.createNetworkMap(dataFetcher);
 		System.out.println("Loading network map into the simulation");
 		dataFetcher = new DataFetcher();
 		System.out.println("Network loaded into the simulation");

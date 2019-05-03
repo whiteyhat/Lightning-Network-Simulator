@@ -661,17 +661,26 @@ public class GUI extends JFrame {
 
 		start.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
+				try{
+
+
 				chargeSimulation(graphComponent);
 				networkMapGenerator.setNetworkSize(Integer.parseInt(nodesSize[0].getText()));
 				networkMapGenerator.setChannelsPerNode(Integer.parseInt(channelsSize[0].getText()));
 				networkMapGenerator.setDataFetcher(dataFetcher);
-				networkMapGenerator.createNetworkMap();
+				networkMapGenerator.createNetworkMap(dataFetcher);
 				restartSim(mi4, "src/main/resources/config/custom.json");
+				} catch (Exception e1){
+					Toast toastMessage = new Toast("Please type a number ",2000, 2);
+					toastMessage.setVisible(true);
+				}
 			}
 
 			private void chargeSimulation(mxGraphComponent graphComponent) {
 				graphComponent = drawNetwork(dataFetcher);
 				System.out.println();
+				Toast toastMessage = new Toast("Network Created ",2000, 3);
+				toastMessage.setVisible(true);
 			}
 		});
 
@@ -841,7 +850,7 @@ public class GUI extends JFrame {
 				// When the simulation outputs are successfully ready to be displayed, finish the simulation and
 				// update the network map with the simulation results
 				networkMapGenerator.setSimulationCompleted(true);
-				networkMapGenerator.createNetworkMap();
+				networkMapGenerator.createNetworkMap(dataFetcher);
 
 				// When the simulation results are exported into the network map, update the GUI with the results
 				updateGUI();
@@ -866,6 +875,8 @@ public class GUI extends JFrame {
 		mi8.setEnabled(true);
 		mi8i.setEnabled(true);
 		mi9.setEnabled(true);
+		Toast toastMessage = new Toast("Simulation Completed ",2000, 1);
+		toastMessage.setVisible(true);
 	}
 
 	/**
@@ -1047,6 +1058,8 @@ public class GUI extends JFrame {
 		int returnVal = chooser.showOpenDialog(mi2);
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 			restartSim(mi4, chooser.getSelectedFile().getPath());
+			Toast toastMessage = new Toast("Network Loaded ",2000, 1);
+			toastMessage.setVisible(true);
 		}
 	}
 

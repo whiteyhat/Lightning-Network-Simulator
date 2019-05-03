@@ -34,8 +34,10 @@ public class NetworkMapGenerator {
 		this.networkSize = networkSize;
 		this.channelsPerNode = channelsPerNode;
 		this.dataFetcher = dataFetcher;
-		createNetworkMap();
+		createNetworkMap(dataFetcher);
 	}
+
+
 
 	/**
 	 * Constructor to create a Network Map Generator object entity with some required parameters.
@@ -45,7 +47,7 @@ public class NetworkMapGenerator {
 	public NetworkMapGenerator(int networkSize, int channelsPerNode) {
 		this.networkSize = networkSize;
 		this.channelsPerNode = channelsPerNode;
-		createNetworkMap();
+		createNetworkMap(dataFetcher);
 	}
 
 	/**
@@ -81,15 +83,24 @@ public class NetworkMapGenerator {
 	/**
 	 * Method to create a network map using the network data model syntax
 	 */
-	public void createNetworkMap(){
+	public void createNetworkMap(DataFetcher dataFetcher){
 		Random rand = new Random();
 		rand.setSeed(System.currentTimeMillis());
 //		TODO NetworkMapGenerator seed in config file to replicate scenario
-		try {
-			init(networkSize, channelsPerNode, 2, dataFetcher);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (dataFetcher != null){
+			try {
+				init(networkSize, channelsPerNode, 2, dataFetcher);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}else {
+			try {
+				init(networkSize, channelsPerNode, 2, this.dataFetcher);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+
 	}
 
 	/**
@@ -117,7 +128,7 @@ public class NetworkMapGenerator {
 	}
 
 	/**
-	 * Method to write Load the Network data model writing into the JSON Network Map.
+	 * Method to write the Network data model writing into the JSON Network Map.
 	 * @param nodeSize Number of nodes to write into the network map
 	 * @param channelsPerNode Number of channels per node to write into the network map
 	 * @param transactionSize Number of transactions to write into the network map
@@ -129,6 +140,8 @@ public class NetworkMapGenerator {
 		JSONArray config = new JSONArray();
 		int id = 0;
 		int channelId = 0;
+		System.out.println();
+		System.out.println("Writing Network Map...");
 		for (int i = 1; i < nodeSize+1; i++) {
 			id++;
 			JSONObject nodes = new JSONObject();
@@ -146,13 +159,27 @@ public class NetworkMapGenerator {
 
 		json.put("Nodes", config);
 
-
-		if (simulationCompleted){
-			writeSimulationResults(dataFetcher, json);
-		}
-		// try-with-resources statement based on post comment below :)
 		try (FileWriter file = new FileWriter("src/main/resources/config/custom.json")) {
+			if (simulationCompleted){
+				writeSimulationResults(dataFetcher, json);
+
+				System.out.println();
+				System.out.println("Network exported in file src/main/resources/config/config.json");
+			}else {
+				System.out.println();
+				System.out.println("Network size: " + dataFetcher.getNodes().size());
+				System.out.println("Channels number: " + dataFetcher.getChannels().size());
+				System.out.println("Network created in file src/main/resources/config/config.json");
+			}
 			file.write(json.toJSONString());
+		}
+
+		if (!simulationCompleted){
+			try (FileWriter file = new FileWriter("src/main/resources/config/pre-config.json")) {
+				System.out.println();
+				System.out.println("Network backup without results saved in file src/main/resources/config/pre-config.json");
+				file.write(json.toJSONString());
+			}
 		}
 	}
 
