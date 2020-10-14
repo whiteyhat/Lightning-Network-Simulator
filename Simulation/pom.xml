@@ -129,9 +129,7 @@
 						<phase>prepare-package</phase>
 						<configuration>
 							<tasks>
-								<replace token="JavaSE-1.8&#34;&#62;"
-									value="JavaSE-1.8&#34;&#62;&#13; &#60;accessrules&#62;&#13; &#60;accessrule kind=&#34;accessible&#34; pattern=&#34;javafx/**&#34;/&#62;&#13; &#60;accessrule kind=&#34;accessible&#34; pattern=&#34;com/sun/javafx/**&#34;/&#62;&#13;&#60;/accessrules&#62;"
-									file=".classpath">
+								<replace token="JavaSE-1.8&quot;>" value="JavaSE-1.8&quot;> &lt;accessrules> &lt;accessrule kind=&quot;accessible&quot; pattern=&quot;javafx/**&quot;/> &lt;accessrule kind=&quot;accessible&quot; pattern=&quot;com/sun/javafx/**&quot;/>&lt;/accessrules>" file=".classpath">
 								</replace>
 							</tasks>
 						</configuration>
@@ -228,7 +226,7 @@
 						<format>html</format>
 						<format>xml</format>
 					</formats>
-					<check />
+					<check/>
 				</configuration>
 			</plugin>
 			
@@ -241,7 +239,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.1</version>
 		</dependency>
 
 		<dependency>
